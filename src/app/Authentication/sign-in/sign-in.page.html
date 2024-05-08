@@ -1,0 +1,44 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+
+
+<ion-content [fullscreen]="true">
+  <div class="circle">
+    <img src="../../../assets/img/AwanLearningLogo.png" alt="Awan Learning">
+  </div>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Masuk</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <form>
+      <h2>Masuk</h2>
+      <div class="wrap-input">
+        <i class="fa fa-user"></i>
+        <ion-input label="Email" [(ngModel)]="form.email" ngModel [ngModelOptions]="{standalone: true}" label-placement="floating" placeholder="Email" autocomplete="email" ></ion-input>
+        <i class="fa fa-lock"></i>
+      </div>
+      <app-input-password-toogle (Password)="getPassword($event)" label="Password" > </app-input-password-toogle>
+    </form>
+    <div class="container-forgot-password">
+      <p>Lupa Password?</p>
+    </div>  
+
+    <app-full-button (click) = "onClick()" ></app-full-button>
+
+    <div class="container-noAccount">
+      <p>Tidak Punya Akun?</p>
+      <a routerLink="/sign-up">
+        <h3>Daftar Disini</h3>
+      </a>
+    </div>
+  </div>
+  
+</ion-content>

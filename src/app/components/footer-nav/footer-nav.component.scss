@@ -1,0 +1,28 @@
+ion-grid{
+  background-color: #F5F5F5;
+  height: 90px;
+  ion-row{
+    a{
+      text-decoration: none;
+      color: none;
+    }
+    i{
+      margin-bottom: 5px;
+      display: block;     
+      
+    }
+    .fa-house,.fa-play,.fa-heart,.fa-user{
+      color: black;
+      font-size: 2rem;
+    }
+    .active{
+      color: #2300B7;
+    }
+  }
+  ion-col{
+    text-align: center;
+    gap: 2px;
+    
+  }
+  
+}
