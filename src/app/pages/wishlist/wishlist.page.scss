@@ -1,0 +1,23 @@
+ion-content{
+    .container-header{
+        background-color: #75A6F0;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    
+        ion-searchbar{
+          width: 80%;
+          --border-radius:30px;
+          --background: #FAF8FF;
+          --color:black;
+          --placeholder-color:black;
+          opacity: 0.8;
+          --box-shadow:none;
+        }
+        ion-icon{
+          font-size: 1rem;
+        }
+      }
+}

@@ -1,16 +1,38 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-      
-    </ion-toolbar>
-  </ion-header>
+  <div class="container-header">
+    <ion-searchbar placeholder="Temukan Kursus" ></ion-searchbar>
+    <ion-icon name="cart-outline" size="large" color="light" ></ion-icon>
+  </div>
+  <div class="container">
+    <div class="container-profile">
+      <div class="profile-box">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-margin-start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png"/>
+            </ion-col>
+            <ion-col size="8" size-lg="10">
+              <ion-row class="name" >Selamat Datang Mark Lee</ion-row>
+              <ion-row class="target" >Advancing Machine Leaning Engineer</ion-row>
+              <ion-row class="edit-target" >Edit Sasaran</ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+  <div class="container-gap">
+    <ion-select aria-label="filter" interface="action-sheet" color="primary" fill="outline"  placeholder="Filter Kursus">
+      <ion-select-option value="Terbaru">Terbaru</ion-select-option>
+      <ion-select-option value="Terpopuler">Terpopuler</ion-select-option>
+      <ion-select-option value="Rating Tertinggi">Rating Tertinggi</ion-select-option>
+    </ion-select>
+  </div>
 </ion-content>
 
 

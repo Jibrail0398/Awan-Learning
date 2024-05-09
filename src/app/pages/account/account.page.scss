@@ -1,0 +1,89 @@
+
+ion-content{
+    --background: #E2E9F2;
+  
+    .container-header{
+        background-color: #75A6F0;
+        height: 20%;
+
+        .container-h1{
+            padding-top: 1px;
+
+            h1{
+                font-style: "Inter",sans-serif;
+            }
+        }
+        .container-search{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            ion-searchbar{
+                width: 80%;
+                --border-radius:30px;
+                --background: #FAF8FF;
+                --color:black;
+                --placeholder-color:black;
+                opacity: 0.8;
+                --box-shadow:none;
+              }
+            ion-icon{
+                font-size: 1rem;
+                text-align: center;
+            }
+        }
+    }
+
+    .container-profile{
+      width: 100%;
+      position: absolute;
+      z-index: 1;
+      top: 120px;
+      display: flex;
+      justify-content: center;
+  
+      .profile-box{
+        background-color: #FAF8FF;
+        width: 90%;
+        height: 200px;
+        border-radius: 30px;
+        
+        .EmailName{
+          --ion-margin:20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img{
+            border-radius: 100%;
+            width: 100px;
+            height: 100px;
+          }
+        }
+        ion-grid{
+          font-style: "Inter", sans-serif;
+          .name{
+            color:#2300B7;
+            font-size: 1.5rem;
+            margin: 5px 0;
+          }
+          .Email{
+            color:#75A6F0;
+          }
+        }
+      }
+    }
+  
+  }
+  
+  .ion-content-scroll-host {
+      position: absolute;
+      top: 0;
+      left: 0;
+  
+      height: 100%;
+      width: 100%;
+      overflow-y: auto;
+    }
+  
+  
+  
+  
