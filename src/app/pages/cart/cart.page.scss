@@ -1,0 +1,10 @@
+ion-content{
+    .container-text{
+        position: absolute;
+        display: block;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+}

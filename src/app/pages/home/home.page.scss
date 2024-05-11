@@ -7,9 +7,7 @@ ion-content{
     height: 20%;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-
-
+    align-items: center;
     ion-searchbar{
       width: 80%;
       --border-radius:30px;
@@ -20,8 +18,8 @@ ion-content{
       --box-shadow:none;
     }
     ion-icon{
-      margin-top: 10px;
       font-size: 1rem;
+      text-align: center;
     }
   }
   .container-profile{

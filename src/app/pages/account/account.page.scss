@@ -5,33 +5,22 @@ ion-content{
     .container-header{
         background-color: #75A6F0;
         height: 20%;
+        display: flex;
+        padding-top: 1px;
+        justify-content: space-between;
 
-        .container-h1{
-            padding-top: 1px;
-
-            h1{
-                font-style: "Inter",sans-serif;
-            }
+        h1{
+            font-style: "Inter",sans-serif;
+            margin-left: 20px;
         }
-        .container-search{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            ion-searchbar{
-                width: 80%;
-                --border-radius:30px;
-                --background: #FAF8FF;
-                --color:black;
-                --placeholder-color:black;
-                opacity: 0.8;
-                --box-shadow:none;
-              }
-            ion-icon{
-                font-size: 1rem;
-                text-align: center;
-            }
+      
+        ion-icon{
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 20px;
+            margin-right: 20px;
         }
-    }
+          }
 
     .container-profile{
       width: 100%;
