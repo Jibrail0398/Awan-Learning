@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sign-up',
@@ -25,16 +26,34 @@ export class SignUpPage implements OnInit {
     
   }
 
-  constructor() { }
+  constructor(
+    private alertController: AlertController
+    
+  ) { }
 
   ngOnInit() {
   }
 
-  onClick(){
-    console.log(this.form.username);
-    console.log(this.form.email);
-    console.log(this.form.password);
-    console.log(this.form.passwordConfirm);
+  async onClick(){
+    if (this.form.password !== this.form.passwordConfirm) {
+      const alert = await this.alertController.create({
+        header: 'Password Tidak Sama',
+        message: 'Password dan Konfirmasi password tidak sama.',
+        buttons: ['OK'],
+        cssClass:"custom-alert"
+      });
+
+      await alert.present();
+    }else {
+      
+      console.log(this.form.username);
+      console.log(this.form.email);
+      console.log(this.form.password);
+      console.log(this.form.passwordConfirm);
+      
+    }
+
   }
+  
 
 }

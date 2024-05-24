@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/api/api.service';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -14,9 +17,11 @@ export class SignInPage implements OnInit {
   }
   
   constructor(
-    private router:Router,
+    private http: HttpClient,
+    private api:ApiService,
+    private router:Router 
    ) { 
-    
+      
    }
 
   ngOnInit() {
@@ -24,15 +29,23 @@ export class SignInPage implements OnInit {
   password:string = "";
   
   getPassword(Password:string){
-    this.password = Password;
-    
+    this.form.password = Password;
   }
-  onClick(){
-    console.log(this.form.email);
-    console.log(this.password);
-    this.router.navigate(["/home"]);
+ 
+  // onClick(){
+  //   console.log(this.form.email);
+  //   console.log(this.form.password);
+  //   this.router.navigate(["/home"]);
     
+  // }
+  onLogin(){
+      
+    this.api.onLogin(this.form).subscribe(async (res)=>{
+      
+      console.log('res',res);
+      localStorage.setItem('token',res.token);
+      this.router.navigate(['/home']);
+    })
   }
-
 
 }

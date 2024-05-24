@@ -1,3 +1,5 @@
+//wajib membuat sharedModule jika ingin mengimport element dibanyak page
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FullButtonComponent } from 'src/app/components/full-button/full-button.component';

@@ -8,6 +8,7 @@ import { SignInPageRoutingModule } from './sign-in-routing.module';
 
 import { SignInPage } from './sign-in.page';
 import { SharedModuleModule } from 'src/app/components/module/shared-module/shared-module.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { SharedModuleModule } from 'src/app/components/module/shared-module/shar
     FormsModule,
     IonicModule,
     SignInPageRoutingModule,
-    SharedModuleModule
+    SharedModuleModule,
+    HttpClientModule
     
   ],
   declarations: [

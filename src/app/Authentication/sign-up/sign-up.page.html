@@ -3,10 +3,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
-<ion-content [fullscreen]="true">
+  <ion-content [fullscreen]="true" keyboard-events="true" keyboardVerticalOffset="60">
 
-  <div class="circle">
+  <!-- <div class="circle">
     <img src="../../../assets/img/AwanLearningLogo.png" alt="Awan Learning">
   </div>
 
@@ -39,7 +43,72 @@
         <h3>Masuk Disini</h3>
       </a>
     </div>
-  </div>
+  </div> -->
 
+  <i class="fa-solid fa-arrow-left"></i>
+  <h1>Sign Up</h1>
+  <div class="rectangle">
+    <h2>Buat Akun</h2>
+    <h3>Yuk Buat Akun Disini!</h3>
+
+    <div class="container-input-label">
+      <div class="container-icon">
+        <i class="fa-solid fa-user"></i>
+        <h4>Nama</h4>
+      </div>
+      <div class="container-input">
+        <ion-input  shape="round" [(ngModel)]="form.username" ngModel [ngModelOptions]="{standalone: true}" placeholder="Masukkan nama anda"></ion-input>
+      </div>
+    </div>
+
+    <div class="container-input-label">
+      <div class="container-icon">
+        <i class="fa-solid fa-envelope"></i>
+        <h4>Email</h4>
+      </div>
+      <div class="container-input">
+        <ion-input  shape="round"  [(ngModel)]="form.email" ngModel [ngModelOptions]="{standalone: true}" placeholder="Masukkan email anda"></ion-input>
+      </div>
+    </div>  
+
+    <div class="container-input-label">
+      <div class="container-icon">
+        <i class="fa-solid fa-key"></i>
+        <h4>Password</h4>
+      </div>
+      <div class="container-input">
+        <app-input-password-toogle 
+         (Password)="getPassword($event)" 
+         placeholder="Password">
+        </app-input-password-toogle>
+      </div>
+    </div>  
+   
+
+    <div class="container-input-label">
+      <div class="container-icon">
+        <i class="fa-solid fa-key"></i>
+        <h4>Konfirmasi Password</h4>
+      </div>
+      <div class="container-input">
+        <app-input-password-toogle  
+        (Password)="getConfirmPassword($event)" 
+        placeholder="Konfirmasi Password" >
+        </app-input-password-toogle>
+      </div>
+    </div>   
+    <h4>
+      Lupa Password
+    </h4>
+    <div class="container-bottom">
+      <app-full-button (click) = "onClick()"  >Sign Up</app-full-button>
+      <p>Sudah Mempunyai akun? 
+        <a>
+          <span routerLink="/sign-in">Sign In disini</span>
+        </a>
+      </p>
+    </div>  
+
+  </div>
 
 </ion-content>

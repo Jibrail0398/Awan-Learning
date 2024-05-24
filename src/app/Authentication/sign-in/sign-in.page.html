@@ -7,6 +7,46 @@
 
 
 <ion-content [fullscreen]="true">
+  <i class="fa-solid fa-arrow-left"></i>
+  <h1>Sign In</h1>
+  <div class="rectangle">
+    
+    <h2>Selamat Datang Kembali</h2>
+    <h3>Hallo, masuk untuk melanjutkan</h3>
+
+    <div class="container-input-label">
+      <div class="container-icon">
+        <i class="fa-solid fa-envelope"></i>
+        <h4>Email</h4>
+      </div>
+      <div class="container-input">
+        <ion-input  shape="round" [(ngModel)]="form.email"   [ngModelOptions]="{standalone: true}"  placeholder="Enter text" autocomplete="email" required></ion-input>
+      </div>
+    </div>  
+    <div class="container-input-label">
+      <div class="container-icon">
+        <i class="fa-solid fa-key"></i>
+        <h4>Password</h4>
+      </div>
+      <div class="container-input">
+        <app-input-password-toogle (Password)="getPassword($event)" placeholder="Password" ></app-input-password-toogle>
+      </div>
+    </div>  
+     <h4>Forgot Password?</h4>
+    <div class="container-bottom">
+      <app-full-button (click) = "onLogin()" >Sign In</app-full-button>
+      <p>Tidak Punya akun? 
+        <a routerLink="/sign-up">
+          <span> Sign up disini!</span>
+        </a>
+      </p>
+    </div>
+
+
+  </div>
+
+
+<!-- <ion-content [fullscreen]="true">
   <div class="circle">
     <img src="../../../assets/img/AwanLearningLogo.png" alt="Awan Learning">
   </div>
@@ -22,7 +62,7 @@
       <h2>Masuk</h2>
       <div class="wrap-input">
         <i class="fa fa-user"></i>
-        <ion-input label="Email" [(ngModel)]="form.email" ngModel [ngModelOptions]="{standalone: true}" label-placement="floating" placeholder="Email" autocomplete="email" ></ion-input>
+        <ion-input label="Email"   [(ngModel)]="form.email" ngModel [ngModelOptions]="{standalone: true}" label-placement="floating" placeholder="Email" autocomplete="email" ></ion-input>
         <i class="fa fa-lock"></i>
       </div>
       <app-input-password-toogle (Password)="getPassword($event)" label="Password" > </app-input-password-toogle>
@@ -41,4 +81,4 @@
     </div>
   </div>
   
-</ion-content>
+</ion-content> -->
