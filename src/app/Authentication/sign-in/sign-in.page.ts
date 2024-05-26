@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api/api.service';
-import { environment } from 'src/environments/environment';
+import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -19,7 +20,9 @@ export class SignInPage implements OnInit {
   constructor(
     private http: HttpClient,
     private api:ApiService,
-    private router:Router 
+    private router:Router,
+    private alert:AlertController ,
+    private location:Location
    ) { 
       
    }
@@ -32,20 +35,24 @@ export class SignInPage implements OnInit {
     this.form.password = Password;
   }
  
-  // onClick(){
-  //   console.log(this.form.email);
-  //   console.log(this.form.password);
-  //   this.router.navigate(["/home"]);
-    
-  // }
+  goBack(){
+    this.location.back();
+  }
   onLogin(){
       
-    this.api.onLogin(this.form).subscribe(async (res)=>{
-      
-      console.log('res',res);
-      localStorage.setItem('token',res.token);
-      this.router.navigate(['/home']);
-    })
+    this.api.onLogin(this.form).subscribe(async(res)=>{
+        if(res){
+          console.log('res',res);
+          localStorage.setItem('token',res.token);
+          const alert = await this.alert.create({
+            header: 'Login Berhasil',
+            buttons: ['OK'],
+          });
+          await alert.present();
+          this.router.navigate(['/home']);
+        }
+      },
+    )
   }
 
 }

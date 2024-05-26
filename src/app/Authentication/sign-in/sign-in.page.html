@@ -7,7 +7,7 @@
 
 
 <ion-content [fullscreen]="true">
-  <i class="fa-solid fa-arrow-left"></i>
+  <i class="fa-solid fa-arrow-left" default-href="/" (click)="goBack()" ></i>
   <h1>Sign In</h1>
   <div class="rectangle">
     
@@ -20,7 +20,7 @@
         <h4>Email</h4>
       </div>
       <div class="container-input">
-        <ion-input  shape="round" [(ngModel)]="form.email"   [ngModelOptions]="{standalone: true}"  placeholder="Enter text" autocomplete="email" required></ion-input>
+        <ion-input  shape="round" [(ngModel)]="form.email"   [ngModelOptions]="{standalone: true}"  placeholder="Enter text" autocomplete="email"  ></ion-input>
       </div>
     </div>  
     <div class="container-input-label">
