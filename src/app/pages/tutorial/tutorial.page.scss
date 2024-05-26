@@ -1,0 +1,16 @@
+ion-content{
+    --background: linear-gradient(-0.34deg, rgba(93, 159, 255, 100%) 0%, rgba(184, 220, 255, 100%) 52%, rgba(70, 170, 255, 100%) 100%);
+    --swiper-pagination-color:white;
+
+    .container{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        
+
+        
+        ion-button{
+            margin-bottom: min(60vw,5%);
+        }
+    }
+}

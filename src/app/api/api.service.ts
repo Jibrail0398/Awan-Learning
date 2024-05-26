@@ -14,7 +14,7 @@ export class ApiService {
   
 
   onLogin(obj:any) : Observable<any>{
-    return this.http.post(environment.urlDomain+"/api/login",obj);
+    return this.http.post("https://jibrailif22a.ylladev.my.id/api/login",obj);
 
   }
 }

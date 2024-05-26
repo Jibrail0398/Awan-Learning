@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';  //Wajib import ketika 
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
+  
 })
 
 
