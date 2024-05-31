@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.page.html',
@@ -44,8 +45,15 @@ export class SignUpPage implements OnInit {
       });
 
       await alert.present();
+    }else if(this.form.password ==="" && this.form.passwordConfirm == ""){
+      const alert = await this.alertController.create({
+        header: 'Password Kosong',
+        message: 'Password dan Konfirmasi password tidak boleh kosong.',
+        buttons: ['OK'],
+        cssClass:"custom-alert"
+      });
+      await alert.present();  
     }else {
-      
       console.log(this.form.username);
       console.log(this.form.email);
       console.log(this.form.password);

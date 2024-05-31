@@ -5,37 +5,106 @@
 
 <ion-content [fullscreen]="true">
   <div class="container-header">
-    <ion-searchbar></ion-searchbar>
-    <ion-icon name="cart-outline" size="large" color="light" routerLink="/cart" ></ion-icon>
+    <ion-searchbar 
+    placeholder="Cari kursus yang ingin dipelajari" 
+    (ionFocus)="onFocus()"
+    (ionBlur)="onBlur()"
+    (ionInput)="onInput($event)"
+    ></ion-searchbar>
+    <ion-icon name="cart-outline" size="large" routerLink="/cart" ></ion-icon>
   </div>
-  <div class="container">
-    <div class="container-profile">
-      <div class="profile-box">
-        <ion-grid>
-          <ion-row>
-            <ion-col class="ion-margin-start">
-              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png"/>
-            </ion-col>
-            <ion-col size="8" size-lg="10">
-              <ion-row class="name" >Selamat Datang Mark Lee</ion-row>
-              <ion-row class="target" >Advancing Machine Leaning Engineer</ion-row>
-              <ion-row class="edit-target" >Edit Sasaran</ion-row>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+
+  <div *ngIf="!isSearchFocused">
+    <div class="container-user">
+      <div class="container-text">
+        <h1>Selamat Datang, User</h1>
       </div>
     </div>
+  
+    <div class="rectangle">
+      <div class="mulaiBelajar">
+        <h1>Mulai</h1>
+        <h1>Belajar</h1>
+      </div>
+        <img 
+        src="/assets/img/home.png"
+        alt="Foto User"
+        >
+    </div>
+    <h1 class="judulSlide" >Direkomendasikan Untuk Anda</h1>
+    <swiper-container
+    (afterinit)="swiperInit($event)"
+      >
+        <swiper-slide *ngFor="let item of data" >
+          
+          <ion-grid>
+            <ion-row size="3" >
+              <ion-card>
+                <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+                <ion-card-header>
+                  <ion-card-title>{{item.title}}</ion-card-title>
+                  <ion-card-subtitle>{{item.title}}</ion-card-subtitle>
+                </ion-card-header>
+              
+                <ion-card-content>
+                  {{item.description}}
+                </ion-card-content>
+              </ion-card>
+            </ion-row>
+          </ion-grid>
+  
+        </swiper-slide>
+      </swiper-container>
+      
+      <h1 class="judulSlide" >Kursus Paling Populer</h1>
+      <swiper-container
+      (afterinit)="swiperInit($event)"
+      
+      >
+        <swiper-slide *ngFor="let item of data" >
+          
+          <ion-grid>
+            <ion-row size="3" >
+              <ion-card>
+                <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+                <ion-card-header>
+                  <ion-card-title>{{item.title}}</ion-card-title>
+                  <ion-card-subtitle>{{item.title}}</ion-card-subtitle>
+                </ion-card-header>
+              
+                <ion-card-content>
+                  {{item.description}}
+                </ion-card-content>
+              </ion-card>
+            </ion-row>
+          </ion-grid>
+  
+        </swiper-slide>
+      </swiper-container>
   </div>
-  <div class="container-gap">
-    <ion-select aria-label="filter" interface="action-sheet" color="primary" fill="outline"  placeholder="Filter Kursus">
-      <ion-select-option value="Terbaru">Terbaru</ion-select-option>
-      <ion-select-option value="Terpopuler">Terpopuler</ion-select-option>
-      <ion-select-option value="Rating Tertinggi">Rating Tertinggi</ion-select-option>
-    </ion-select>
+  
+  <div *ngIf="hasFilteredData">
+    <ion-card>
+      <ion-card-header>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-list *ngFor="let item of filteredData" >
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+            </ion-thumbnail>
+            <ion-label>{{item.title}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>{{item.description}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
   </div>
+
 </ion-content>
-
-
 
 <ion-footer collapse="fade">
   

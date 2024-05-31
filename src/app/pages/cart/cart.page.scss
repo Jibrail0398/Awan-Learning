@@ -1,10 +1,65 @@
 ion-content{
-    .container-text{
-        position: absolute;
-        display: block;
-        text-align: center;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
+  ion-title{
+    font-family: "Ramaraja", serif;
+    font-size: 24px;
+    margin-top: 10px;
+    
+  }
+  h1{
+    font-family: "Ramaraja", serif;
+    font-weight:400 ;
+    color: #000;
+    font-size: 20px;
+    margin: 100px 0 20px 20px;
+  }
+  .rectangle{
+    background: linear-gradient(180deg, #B8DCFF 0%, #5D9FFF 86%) ;
+    height: 55%;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px; /* Tambahkan margin agar tidak mepet dengan background */
+    text-align: center;
+  }
+  h2{
+    font-family: "PT Sans", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    font-style: normal;
+   
+  }
+  h3{
+    font-family: "PT Sans", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    font-style: normal;
+    
+   
+  }
+
+
+
+
+  // .white-rectangle{
+  //   background: #fff;
+  //   height: 50px; /* Ubah tinggi menjadi 50px atau ukuran yang Anda inginkan */
+  //   width: 200px; /* Ubah lebar menjadi 100px atau ukuran yang Anda inginkan */
+  //   border-radius: 10px;
+  //   position: fixed; /* Tetapkan posisi absolut */
+  //   top: 50%; /* Sesuaikan dengan posisi vertikal yang diinginkan */
+  //   left: 50%; /* Sesuaikan dengan posisi horizontal yang diinginkan */
+  //   transform: translate(-50%, -50%); /* Pusatkan elemen relatif terhadap parentnya */
+  // }
+
+
+
+    // .container-text{
+    //     position: absolute;
+    //     display: block;
+    //     text-align: center;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+    //   }
 }

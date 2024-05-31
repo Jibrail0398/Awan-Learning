@@ -1,17 +1,42 @@
-<ion-header [translucent]="true">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ramaraja&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button default-href="/"></ion-back-button>
     </ion-buttons>
     <ion-title>cart</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <div class="container-text">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+
+  <h1>0 Kursus dalam Keranjang</h1>
+  <div class="rectangle">
+    <div class="text-container">  
+      <h2>Keranjang Anda kosong.</h2>
+      <h3>Temukan kursus pilihan Anda</h3>
+    </div>
+
+    <!-- <div class="white-rectangle">
+      <h4>Judul Konten</h4>
+    </div> -->
+  </div>
+  <!-- <div class="container-text">
     <h1>
       Anda Belum Melakukan Pesanan
     </h1>
     <p>Ayo gali potensi anda dengan jelajahi semua kursus <a routerLink="/home"><b>disini</b></a> </p>
-  </div>
+  </div> -->
 </ion-content>

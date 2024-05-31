@@ -7,6 +7,7 @@ ion-content{
         margin: 20px 0 0 20px;
         color: white;
     }
+    
     h1{
         font-family: "Open Sans", sans-serif;
         font-weight: 700;
@@ -85,9 +86,21 @@ ion-content{
             text-align: center;
             display: block;
             margin: 0 auto;
+            ion-button{
+                --background: #75A6F0;
+                width: 90%;
+                margin: 0 auto;
+                --border-radius: 30px;
+            }
         }
         .ion-valid.sc-ion-input-md-h {
             --highlight-color: blue;
+        }
+        .ion-invalid.sc-ion-input-md-h {
+            --highlight-color: red;
+        }
+        .ion-default.sc-ion-input-md-h {
+            --highlight-color: red;
         }
         .custom-alert{
             border-radius: 30px;

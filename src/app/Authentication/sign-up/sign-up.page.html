@@ -57,7 +57,19 @@
         <h4>Nama</h4>
       </div>
       <div class="container-input">
-        <ion-input  shape="round" [(ngModel)]="form.username" ngModel [ngModelOptions]="{standalone: true}" placeholder="Masukkan nama anda"></ion-input>
+        <ion-input  
+        shape="round" [(ngModel)]="form.username" 
+        type="text"
+        id="name"
+        name="name"
+        class="form-control"
+        required
+        #name="ngModel"
+        placeholder="Masukkan nama anda">
+      </ion-input>
+      <div *ngIf="name.errors?.['required']"
+       style="color: red; margin-top: 20px;"
+       >Nama tidak boleh kosong.</div>
       </div>
     </div>
 
@@ -67,7 +79,21 @@
         <h4>Email</h4>
       </div>
       <div class="container-input">
-        <ion-input  shape="round"  [(ngModel)]="form.email" ngModel [ngModelOptions]="{standalone: true}" placeholder="Masukkan email anda"></ion-input>
+        <ion-input  shape="round"  [(ngModel)]="form.email"
+        required email
+        name="email" ngModel email="true"
+        ngModel [ngModelOptions]="{standalone: true}"
+        #emailInput="ngModel" 
+        placeholder="Masukkan email anda">
+      </ion-input>
+      <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+        <div *ngIf="emailInput.errors?.['required']" style="color: red; margin-top: 20px;">
+          Email tidak boleh kosong
+        </div>
+        <div *ngIf="emailInput.errors?.['email']" style="color: red; margin-top: 20px;">
+          Format email tidak valid
+        </div>
+      </div>
       </div>
     </div>  
 
@@ -101,7 +127,7 @@
       Lupa Password
     </h4>
     <div class="container-bottom">
-      <app-full-button (click) = "onClick()"  >Sign Up</app-full-button>
+      <ion-button (click) = "onClick()" [disabled]="emailInput?.invalid || name?.invalid" >Sign Up</ion-button>
       <p>Sudah Mempunyai akun? 
         <a>
           <span routerLink="/sign-in">Sign In disini</span>

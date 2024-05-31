@@ -17,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule,
     SignInPageRoutingModule,
     SharedModuleModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
     
   ],
   declarations: [

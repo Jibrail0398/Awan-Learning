@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { SharedModuleModule } from 'src/app/components/module/shared-module/shared-module.module';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   imports: [
@@ -18,8 +19,10 @@ import { SharedModuleModule } from 'src/app/components/module/shared-module/shar
     IonicModule,
     HomePageRoutingModule,
     SharedModuleModule,
-    RouterModule
+    RouterModule,
+
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [HomePage]
 })
 export class HomePageModule {}
