@@ -81,10 +81,19 @@ ion-content{
             border-radius: 20px;
             margin-bottom: 20px;
             box-shadow: 0 10px 20px 0px rgba(57,71,82,0.12);
+            
 
             ion-input{
                 --padding-top:5px;
                 --padding-start:20px;
+                --highlight-color: none;
+                
+            }
+            .valid{
+                --highlight-color: blue;
+            }
+            .invalid{
+                --highlight-color: rgb(255, 0, 0);
             }
         }
         
@@ -98,9 +107,9 @@ ion-content{
         display: block;
         margin: 0 auto;
     }
-    .ion-valid.sc-ion-input-md-h {
-        --highlight-color: blue;
-    }
+    // .ion-valid.sc-ion-input-md-h {
+    //     --highlight-color: blue;
+    // }
 }
    
     
