@@ -6,27 +6,40 @@
 <ion-content [fullscreen]="true">
   <div class="container-header">
     <h1>Akun</h1>
-    <ion-icon name="cart-outline" size="large" color="light" routerLink="/cart"></ion-icon>
+    <ion-icon name="cart-outline" size="large"  routerLink="/cart"></ion-icon>
   </div>
-  <div class="container">
-    <div class="container-profile">
-      <div class="profile-box">
-        <ion-grid>
-          <ion-col>
-            <ion-row class="EmailName">
-              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png"/>
-            </ion-row>
-            <ion-row class="EmailName">
-              <ion-row class="name" >Mark Lee</ion-row>
-            </ion-row>
-            <ion-row class="EmailName">
-              <ion-row class="Email" >MarkLee Mahasiswa.ubp.karawang.ac.id</ion-row>
-            </ion-row>
-          </ion-col>
-        </ion-grid>
-      </div>
+  
+  <div class="container-profile">
+    <img src="/assets/img/user.jpg" alt="Foto User">
+    <h1>Jibrail Adji</h1>
+    <div class="akun">
+      <i class="fa-brands fa-google"></i>
+      <p>jibrail&#64;yahoo.com</p>
     </div>
+    <p class="instruktur" >Menjadi Instruktur</p>
   </div>
+
+  <ion-accordion-group >
+    <ion-accordion value="first">
+      <ion-item slot="header" color="none" >
+        <ion-label>First Accordion</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">First Content</div>
+    </ion-accordion>
+    <ion-accordion value="second">
+      <ion-item slot="header" color="none">
+        <ion-label>Second Accordion</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Second Content</div>
+    </ion-accordion>
+    <ion-accordion value="third">
+      <ion-item slot="header" color="none">
+        <ion-label>Third Accordion</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Third Content</div>
+    </ion-accordion>
+  </ion-accordion-group>
+
 </ion-content>
 
 

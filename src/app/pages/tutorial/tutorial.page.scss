@@ -13,7 +13,12 @@ ion-content{
             flex-direction: column;
             align-items: center;
         }
-        
+        ion-img{
+            width: 300px; 
+            height: auto; 
+            // display: block; /* Ensure the image is displayed as a block element */
+            // margin-bottom: 50px; 
+        }
         .button-google{
             width: 90%;
             color: rgb(20, 118, 183);
@@ -26,6 +31,24 @@ ion-content{
         }
         .button-register{
             width: 90%;
+        }
+        h1{
+            font-family: "Open Sans", sans-serif;
+            font-weight: 700;
+            font-size: 36px;
+            font-style: normal;
+            position: relative;
+            color: #fff;
+            margin-top: 30px;
+        }
+        h2{
+            font-family: "Open Sans", sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            font-style: normal;
+            position: relative;
+            color: #fff;
+            text-align: center;
         }
 
     }

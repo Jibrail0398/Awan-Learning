@@ -1,65 +1,58 @@
 
 ion-content{
-    --background: #E2E9F2;
+    
   
     .container-header{
-        background-color: #75A6F0;
         height: 20%;
         display: flex;
         padding-top: 1px;
         justify-content: space-between;
 
-        h1{
-            font-style: "Inter",sans-serif;
-            margin-left: 20px;
-        }
-      
         ion-icon{
-            font-size: 1rem;
-            text-align: center;
-            margin-top: 20px;
-            margin-right: 20px;
-        }
-          }
-
-    .container-profile{
-      width: 100%;
-      position: absolute;
-      z-index: 1;
-      top: 120px;
-      display: flex;
-      justify-content: center;
-  
-      .profile-box{
-        background-color: #FAF8FF;
-        width: 90%;
-        height: 200px;
-        border-radius: 30px;
-        
-        .EmailName{
-          --ion-margin:20px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          img{
-            border-radius: 100%;
-            width: 100px;
-            height: 100px;
-          }
-        }
-        ion-grid{
-          font-style: "Inter", sans-serif;
-          .name{
-            color:#2300B7;
-            font-size: 1.5rem;
-            margin: 5px 0;
-          }
-          .Email{
-            color:#75A6F0;
-          }
+          margin-top: 20px;
+          color: #2300B7;
+          font-size: 1rem;
         }
       }
+      
+      .container-profile{
+      display: flex;
+      align-items: center;
+      flex-direction: column  ;
+
+      img{
+        height: 30%;
+        width: 30%;
+        border-radius: 100%;
+      }
+      h1{
+        font-size: clamp(2rem,8vw,4rem);
+      }
+      .akun{
+        display: flex;
+        flex-direction: row;
+
+        i{
+          margin-right: 5px;
+          font-size: clamp(0.5rem,5vw,1.5rem);
+        }
+
+        p{
+          margin: 0;
+          font-size: clamp(0.5rem,5vw,1.5rem);
+        }
+      }
+      .instruktur{
+        margin-top: 50px;
+        font-size: clamp(0.6rem,5vw,1.5rem);
+        font-weight: 700;
+        color: #2300B7;
+      }
+
     }
+    // ion-accordion-group{
+
+    // }
   
   }
   

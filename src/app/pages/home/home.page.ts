@@ -9,6 +9,7 @@ import { Component, OnInit} from '@angular/core';
 export class HomePage implements OnInit {
 
   isSearchFocused = false;
+  isDataFiltered = false;
 
   constructor() { }
   ngOnInit() {
@@ -40,6 +41,8 @@ export class HomePage implements OnInit {
         slidesPerView: 6
       }
     }
+
+  
   
   }
   onFocus() {
@@ -48,18 +51,18 @@ export class HomePage implements OnInit {
   }
   onBlur(){
     this.isSearchFocused = false;
+    this.isDataFiltered = false;
     this.filteredData = this.data;
   }
   onInput(event:any){
     const query = event.target.value.toLowerCase();
     this.filteredData = this.data.filter(data => data.title.toLowerCase().includes(query));
+    this.isDataFiltered = true;
     console.log(this.filteredData);
     console.log(this.filteredData.length);
 
   }
-  get hasFilteredData() {
-    return this.filteredData.length > 0;
-  }
+ 
   
 
 }

@@ -1,10 +1,41 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Ramaraja&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
 <ion-content [fullscreen]="true">
-  <div class="container-header">
+  <ion-toolbar>
+    <ion-title>Wishlist</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="cart-outline" size="large" color="primary" routerLink="/cart"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <h1>Ingin menyimpan sesuatu untuk nanti?</h1>
+  <h2>Daftar keinginan Anda akan disimpan di sini.</h2>
+  
+  <!-- <div class="container"> -->
+    <ion-title class="title">Telusuri kategori</ion-title>
+    <ion-list class="category-list">
+        <ion-item>TI & Perangkat Lunak</ion-item>
+        <ion-item>Bisnis</ion-item>
+        <ion-item>Desain</ion-item>
+        <ion-item>Keuangan & Akuntansi</ion-item>
+        <ion-item>Gaya Hidup</ion-item>
+        <ion-item>Produktivitas Kantor</ion-item>
+        <ion-item>Pemasaran</ion-item>
+        <ion-item>Fotografi & Video</ion-item>
+        <ion-item>Musik</ion-item>
+        <ion-item>Kesehatan dan Kebugaran</ion-item>
+        <ion-item>Pengajaran & Akademis</ion-item>
+        <ion-item>Pengembangan Personal</ion-item>
+    </ion-list>
+<!-- </div> -->
+
+  <!-- <div class="container-header">
     <ion-searchbar></ion-searchbar>
     <ion-icon name="cart-outline" size="large" color="light" routerLink="/cart" ></ion-icon>
   </div>
@@ -13,7 +44,7 @@
       Anda Belum Menyimpan Daftar Keinginan
     </h1>
     <p>Ayo gali potensi anda dengan jelajahi semua kursus <a routerLink="/home"><b>disini</b></a> </p>
-  </div>
+  </div> -->
 </ion-content>
 
 
@@ -24,6 +55,3 @@
 
   </app-footer-nav>
 </ion-footer>
-
-
-

@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController,LoadingController } from '@ionic/angular';
+import { Location } from '@angular/common';
+import { ApiService } from 'src/app/api/api.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -7,6 +13,9 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './sign-up.page.html',
   styleUrls: ['./sign-up.page.scss'],
 })
+
+
+
 export class SignUpPage implements OnInit {
 
 
@@ -18,6 +27,7 @@ export class SignUpPage implements OnInit {
   }
 
   
+  
   getPassword(Password:any){
     this.form.password = Password;
     
@@ -28,11 +38,20 @@ export class SignUpPage implements OnInit {
   }
 
   constructor(
-    private alertController: AlertController
+    private alertController: AlertController,
+    private loadingController:LoadingController,
+    private router:Router,
+    private http: HttpClient,
+    private api:ApiService,
+    private location:Location
     
   ) { }
 
   ngOnInit() {
+  }
+
+  goBack(){
+    this.location.back();
   }
 
   async onClick(){
@@ -44,23 +63,57 @@ export class SignUpPage implements OnInit {
         cssClass:"custom-alert"
       });
 
+      console.log(this.form)
+
       await alert.present();
-    }else if(this.form.password ==="" && this.form.passwordConfirm == ""){
+    }else if(this.form.password ==="" || this.form.passwordConfirm === ""){
       const alert = await this.alertController.create({
         header: 'Password Kosong',
         message: 'Password dan Konfirmasi password tidak boleh kosong.',
         buttons: ['OK'],
         cssClass:"custom-alert"
       });
-      await alert.present();  
+      await alert.present();
+        
     }else {
-      console.log(this.form.username);
-      console.log(this.form.email);
-      console.log(this.form.password);
-      console.log(this.form.passwordConfirm);
+      return this.onRegister();
       
     }
 
+  }
+  async onRegister(){
+    
+    const formSubmit = {
+      name: this.form.username,
+      email:this.form.email,
+      password:this.form.passwordConfirm,
+    }
+    console.log(formSubmit);
+    const loading = await this.loadingController.create();
+    await loading.present();
+    this.api.onRegister(formSubmit).subscribe(
+      {
+        next:async(res)=>{
+          await loading.dismiss();
+          const alert = await this.alertController.create({
+            header: 'Registrasi Berhasil',
+            buttons: ['OK'],
+            message: "Silahkan verifikasi email anda"
+          });
+          await alert.present();
+          this.router.navigate(['/sign-in']);
+        },
+        error: async (res) => {
+          await loading.dismiss();
+          const alert = await this.alertController.create({
+          header: 'Registrasi Gagal',
+          buttons: ['OK'],
+          message:res.error.message
+        });
+          await alert.present();
+        }
+      }
+    )
   }
   
 
