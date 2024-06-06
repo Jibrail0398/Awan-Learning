@@ -10,42 +10,8 @@
 
   <ion-content [fullscreen]="true" keyboard-events="true" keyboardVerticalOffset="60">
 
-  <!-- <div class="circle">
-    <img src="../../../assets/img/AwanLearningLogo.png" alt="Awan Learning">
-  </div>
 
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Daftar</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div class="ion-padding">
-    <form>
-      <h2>Daftar</h2>
-      <div class="wrap-input">
-        <i class="fa fa-user"></i>
-        <ion-input label="username" [(ngModel)]="form.username" ngModel [ngModelOptions]="{standalone: true}" label-placement="floating" placeholder="Username"></ion-input>
-        <i class="fa fa-lock"></i>
-      </div>
-      <div class="wrap-input">
-        <i class="fa fa-envelope "></i>
-        <ion-input label="email" [(ngModel)]="form.email" ngModel [ngModelOptions]="{standalone: true}" label-placement="floating" placeholder="Username" autocomplete="email" ></ion-input>
-        <i class="fa fa-lock"></i>
-      </div>
-      <app-input-password-toogle (Password)="getPassword($event)" label="Masukkan Password" > </app-input-password-toogle>
-      <app-input-password-toogle (Password)="getConfirmPassword($event)" label="Konfirmasi Password" ></app-input-password-toogle>
-    </form>
-    <app-full-button (click) = "onClick()" ></app-full-button>
-    <div class="container-haveAccount">
-      <p>Sudah Punya Akun?</p>
-      <a routerLink="/sign-in">
-        <h3>Masuk Disini</h3>
-      </a>
-    </div>
-  </div> -->
-
-  <i class="fa-solid fa-arrow-left"></i>
+  <i class="fa-solid fa-arrow-left" (click)="goBack()" ></i>
   <h1>Sign Up</h1>
   <div class="rectangle">
     <h2>Buat Akun</h2>

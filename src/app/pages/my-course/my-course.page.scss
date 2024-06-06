@@ -1,12 +1,13 @@
 ion-content{
-    --background: #E2E9F2;
+    
 
     .container-header{
-        background-color: #75A6F0;
+        
         height: 20%;
         display: flex;
         justify-content: center;
         align-items: center;
+        
         ion-searchbar{
             width: 80%;
             --border-radius:30px;
@@ -19,23 +20,35 @@ ion-content{
         ion-icon{
             font-size: 1rem;
             text-align: center;
+            color: #2300B7;
+        }        
+    }
+    ion-card{
+        img{
+            max-width: 20%;
         }
-        
+        ion-card-content{
+            display: flex;
+            ion-list{
+                ion-item{
+                    font-size: clamp(0.7rem,5vw,2rem);
+                }
+                p{
+                    margin-left: 18px;
+                    font-size: clamp(0.3rem,5vw,1.2rem);
+                }
+            }
+        }
     }
 
-    .container-filter{
-        display: flex;
-        justify-content: flex-start;
-
-        .filter1,.filter2{
-            font-style: "Inter",sans-serif;
-            margin: 10px;
-            font-size: 1.5rem;
-            border: 2px solid #75A6F0;
-            padding: 10px;
-            border-radius: 30px;
-        }
-        
+    .text-container{
+        position: absolute;
+        display: block;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
+
     
 }

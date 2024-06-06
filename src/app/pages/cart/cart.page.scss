@@ -1,9 +1,12 @@
 ion-content{
+  ion-back-button{
+    --color: #124CFF;
+  }
   ion-title{
     font-family: "Ramaraja", serif;
     font-size: 24px;
     margin-top: 10px;
-    
+    color: #000;
   }
   h1{
     font-family: "Ramaraja", serif;
@@ -16,45 +19,45 @@ ion-content{
     background: linear-gradient(180deg, #B8DCFF 0%, #5D9FFF 86%) ;
     height: 55%;
     border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     margin: 20px; /* Tambahkan margin agar tidak mepet dengan background */
     text-align: center;
+  }
+  .container-text{
+    position: relative;
+    top: 50%;
   }
   h2{
     font-family: "PT Sans", sans-serif;
     font-weight: 500;
     font-size: 18px;
     font-style: normal;
-   
+    position: relative;
+    
+    
   }
   h3{
     font-family: "PT Sans", sans-serif;
     font-weight: 500;
     font-size: 18px;
     font-style: normal;
+    margin: 0;
+    position: relative;
     
-   
+  }
+  .container-button{
+    position: relative;
+    top: 55%;
+  }
+  .button-cart{
+    font-family: "Ramaraja", serif;
   }
 
 
+ 
+}
 
-
-  // .white-rectangle{
-  //   background: #fff;
-  //   height: 50px; /* Ubah tinggi menjadi 50px atau ukuran yang Anda inginkan */
-  //   width: 200px; /* Ubah lebar menjadi 100px atau ukuran yang Anda inginkan */
-  //   border-radius: 10px;
-  //   position: fixed; /* Tetapkan posisi absolut */
-  //   top: 50%; /* Sesuaikan dengan posisi vertikal yang diinginkan */
-  //   left: 50%; /* Sesuaikan dengan posisi horizontal yang diinginkan */
-  //   transform: translate(-50%, -50%); /* Pusatkan elemen relatif terhadap parentnya */
-  // }
-
-
-
-    // .container-text{
+   // .container-text{
     //     position: absolute;
     //     display: block;
     //     text-align: center;
@@ -62,4 +65,3 @@ ion-content{
     //     left: 50%;
     //     transform: translate(-50%, -50%);
     //   }
-}

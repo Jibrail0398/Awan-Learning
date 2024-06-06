@@ -14,12 +14,11 @@ export class ApiService {
   
 
   onLogin(obj:any) : Observable<any>{
-    return this.http.post("https://jibrailif22a.ylladev.my.id/api/login",obj);
+    return this.http.post("https://awan.ylladev.my.id/api/login",obj);
 
   }
-  // onLogin(obj:any) : Observable<any>{
-  //   return this.http.post("https://jibrailif22a.ylladev.my.id/api/login",obj);
-
-  // }
+  onRegister(obj:any):Observable<any>{
+    return this.http.post("https://awan.ylladev.my.id/api/register",obj)
+  }
 
 }

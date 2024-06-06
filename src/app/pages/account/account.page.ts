@@ -11,5 +11,5 @@ export class AccountPage implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 }
