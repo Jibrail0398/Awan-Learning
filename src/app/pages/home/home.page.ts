@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/api/api.service';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +12,19 @@ export class HomePage implements OnInit {
   isSearchFocused = false;
   isDataFiltered = false;
 
-  constructor() { }
+  constructor(
+    private http:HttpClient,
+    private api:ApiService
+  ) { }
   ngOnInit() {
+  }
+
+  listCourse:any;
+  getCourseData(){
+    this.api.getCourseData().subscribe((data:any) =>{
+      this.listCourse = data['data'];
+      console.log(this.listCourse);
+    })
   }
   data = [
     { title: 'Web Programming', description: 'Deskripsi card 1' },
