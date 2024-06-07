@@ -20,5 +20,8 @@ export class ApiService {
   onRegister(obj:any):Observable<any>{
     return this.http.post("https://awan.ylladev.my.id/api/register",obj)
   }
+  getCourseData(){
+    return this.http.get<any>("https://awan.ylladev.my.id/api/course",{});
+  }
 
 }
