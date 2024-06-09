@@ -1,0 +1,30 @@
+ion-content{
+    ion-toolbar{
+        ion-icon{
+            margin-right: 10px;
+        }
+    }
+
+    .promotional-video{
+        display: flex;
+        justify-content: center;
+
+        video{
+            width: 90%;
+        }
+    }
+
+}
+
+@media only screen and (min-width: 800px) {
+    ion-content{
+        .promotional-video{
+            display: flex;
+            justify-content: center;
+    
+            video{
+                width: 70%;
+            }
+        }
+    }
+  }

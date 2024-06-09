@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail Kursus</ion-title>
+    <ion-icon slot="end" name="cart-outline" size="large" routerLink="/cart" ></ion-icon>
+  </ion-toolbar>
+
+  <div class="promotional-video">
+    <video  
+    controls >
+      <source 
+      src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+      >
+      Not support in your Device
+    </video>
+  </div>
+
+  <h1>{{ course.name }}</h1>
+  <p>{{course.Description}}</p>
+  <p>{{course.rating}}</p>
+
+  <p>{{course.price}}</p>
+
+
+
+
+  
+  
+</ion-content>
