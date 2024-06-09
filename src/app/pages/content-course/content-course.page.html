@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <!-- <ion-toolbar>
+    <ion-title>contentCourse</ion-title>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">contentCourse</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+  <div class="promotional-video">
+    <video #videoPlayer controls >
+      <source 
+      [src]="currentVideo.videoUrl"
+      >
+      Not support in your Device
+      </video>
+      
+        <div class="overlay-controls">
+          <button (click)="prevVideo()" class="next-button" >Prev</button>
+          <button (click)="nextVideo()" class="prev-button"  >Next</button>
+        </div>
+  </div>
+
+  <div class="list-content">
+    <ion-card *ngFor="let content of contentCourse;let i = index" (click)="playVideo(i)" >
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item>{{content.title}}</ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>
+

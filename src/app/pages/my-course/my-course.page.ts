@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface Course{
   title:string;
   category:string;
   description:string;
-
 }
 
 @Component({
@@ -15,7 +15,9 @@ interface Course{
 
 export class MyCoursePage implements OnInit {
   
-  constructor() { }
+  constructor(
+    private route:Router
+  ) { }
 
   isSearchInput = false;
   isSearchFocused = false;
@@ -68,6 +70,9 @@ export class MyCoursePage implements OnInit {
   onBlur(){
     this.isSearchInput = false;
     this.isSearchFocused = false;
+  }
+  onClick(){
+    this.route.navigate(['content-course']);
   }
 
 

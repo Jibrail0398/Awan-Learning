@@ -96,6 +96,17 @@ ion-content{
       font-size: clamp(0.7rem, 5vw, 4rem);
       color: #468CE7;
     }
+    ion-card-title{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  
+    }
+    ion-card-subtitle{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 }
 
 

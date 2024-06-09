@@ -13,7 +13,7 @@
   </div>
 
   <div *ngIf="isSearchInput" >
-    <ion-card *ngFor="let filter of filteredItems" >
+    <ion-card *ngFor="let filter of filteredItems" (click)="onClick()" >
       <ion-card-content>
         <img alt="Silhouette of mountains" src="/assets/img/home.png" />
         <ion-list lines="none">
@@ -27,13 +27,13 @@
   
   <div *ngIf="course.length > 0 && !isSearchInput ">
 
-      <ion-card *ngFor="let c of course" >
+      <ion-card *ngFor="let c of course" (click)="onClick()" >
         <ion-card-content>
           <img alt="Silhouette of mountains" src="/assets/img/home.png" />
           <ion-list lines="none">
             <ion-item>{{c.title}}</ion-item>
-            <p>{{c.category}}</p>
-            <p>{{c.description}}</p>
+            <ion-item>{{c.category}}</ion-item>
+            <ion-item>{{c.description}}</ion-item>
           </ion-list>
         </ion-card-content>
       </ion-card>
