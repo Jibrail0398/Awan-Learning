@@ -1,5 +1,7 @@
 ion-content{
-    --background: linear-gradient(-0.34deg, rgba(93, 159, 255, 100%) 0%, rgba(184, 220, 255, 100%) 52%, rgba(70, 170, 255, 100%) 100%);
+    // --background: linear-gradient(-0.34deg, rgba(93, 159, 255, 100%) 0%, rgba(184, 220, 255, 100%) 52%, rgba(70, 170, 255, 100%) 100%);
+    // --swiper-pagination-color:white;
+    --background: linear-gradient(to bottom, #5D9FFF 0%, #B8DCFF 100%);
     --swiper-pagination-color:white;
 
     swiper-container{
@@ -20,6 +22,7 @@ ion-content{
             // margin-bottom: 50px; 
         }
         .button-google{
+            margin-top: 50px;
             width: 90%;
             color: rgb(20, 118, 183);
             --background: white;
@@ -30,26 +33,45 @@ ion-content{
             }
         }
         .button-register{
+            --background: #22319E;
             width: 90%;
+            margin-top: 15px;
         }
         h1{
             font-family: "Open Sans", sans-serif;
             font-weight: 700;
-            font-size: 36px;
+            font-size: 30px;
             font-style: normal;
             position: relative;
-            color: #fff;
+            color: #0D0F44;
             margin-top: 30px;
+           
         }
         h2{
             font-family: "Open Sans", sans-serif;
             font-weight: 700;
-            font-size: 18px;
+            font-size: 20px;
             font-style: normal;
             position: relative;
-            color: #fff;
+            color: #0D0F44;
             text-align: center;
         }
+        .button-next {
+            --background: #22319E;
+            --background-activated: #1a257d;
+            --background-focused: #22319E;
+            --background-hover: #2a3ab8;
+            --color: #fff; /* Text color */
+            --border-radius: 20px; /* Rounded corners */
+            width: 200px; /* Set the width */
+            height: 50px; /* Set the height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 50px;
+          }
+          
 
     }
  

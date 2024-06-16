@@ -4,7 +4,7 @@ ion-content{
         background-color: #75A6F0;
         height: 100px;
         width: 100%;
-        margin:0;
+        margin:0 0 clamp(20px,5vw,60px) 0;
         border-radius: 0 0 50% 50% / 0 0 100% 100%;
         display: flex;
         justify-content: center;
@@ -17,14 +17,13 @@ ion-content{
         align-items: center;
         flex-direction: column;
         width: 90%;
-        height: 70%;
-        // background: linear-gradient(180deg, #B8DCFF 0%, #5D9FFF 86%);
+        background: linear-gradient(180deg, #B8DCFF 0%, #5D9FFF 86%);
         border-radius: 30px;
         
         img{
+            width: 90%;
+            height: 90%;
             object-fit: contain;
-            margin-bottom: 20px;
-            margin-top: 0;
         }
 
        ion-button{
@@ -32,6 +31,7 @@ ion-content{
             --margin-top: 20px;
             --border-radius:50px;
             --background:white;
+            margin-top: 40px;
             width: 70%;
         }
         
