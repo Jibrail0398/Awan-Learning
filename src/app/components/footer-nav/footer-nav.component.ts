@@ -3,9 +3,6 @@ import { Router } from '@angular/router';
 
 
 
-
-
-
 @Component({
   selector: 'app-footer-nav',
   templateUrl: './footer-nav.component.html',

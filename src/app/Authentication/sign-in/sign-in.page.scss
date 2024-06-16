@@ -86,11 +86,11 @@ ion-content{
             ion-input{
                 --padding-top:5px;
                 --padding-start:20px;
-                --highlight-color: none;
+                --highlight-color: blue;
                 
             }
             .valid{
-                --highlight-color: blue;
+                --highlight-color: blue
             }
             .invalid{
                 --highlight-color: rgb(255, 0, 0);

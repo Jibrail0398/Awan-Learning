@@ -1,9 +1,8 @@
 ion-content{
     ion-title{
       font-family: "Ramaraja", serif;
-      font-size: 24px;
-      margin-top: 10px;
-      color: black;
+      font-size: clamp(2rem,5vw,3rem);
+      margin-left: 30px;
     }
     .nothing-content{
 

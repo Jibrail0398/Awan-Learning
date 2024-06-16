@@ -41,7 +41,8 @@ const routes: Routes = [
   {
     path: 'tutorial',
     loadChildren: () => import('./pages/tutorial/tutorial.module').then( m => m.TutorialPageModule)
-  },  {
+  },
+  {
     path: 'intro',
     loadChildren: () => import('./pages/instructor/intro/intro.module').then( m => m.IntroPageModule)
   },
@@ -53,6 +54,28 @@ const routes: Routes = [
     path: 'content-course',
     loadChildren: () => import('./pages/content-course/content-course.module').then( m => m.ContentCoursePageModule)
   },
+  {
+    path: 'main',
+    loadChildren: () => import('./pages/instructor/main/main.module').then( m => m.MainPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./pages/instructor/notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'teacher-account',
+    loadChildren: () => import('./pages/instructor/teacher-account/teacher-account.module').then( m => m.TeacherAccountPageModule)
+  },
+  {
+    path: 'upload-content',
+    loadChildren: () => import('./pages/instructor/upload-content/upload-content.module').then( m => m.UploadContentPageModule)
+  },
+  
+
+
+  
+
+ 
 
 ];
 

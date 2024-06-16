@@ -9,7 +9,8 @@
 
 <ion-content [fullscreen]="true">
   
-  <swiper-container
+  <!-- Wajib Install Swiper -->
+  <swiper-container 
     #swiper
     (afterinit) = "swiperReady()"
     (slideChange) = "swiperSlideChanged($event)"
@@ -69,7 +70,7 @@
           SELAMAT DATANG
         </h1>
         <ion-button class="button-google">
-          <ion-icon name="logo-google"></ion-icon>
+          <ion-icon name="logo-google" (click)="authGoogle()" ></ion-icon>
           Sign in dengan google
         </ion-button>
         <ion-button class="button-register" routerLink="/sign-in" >

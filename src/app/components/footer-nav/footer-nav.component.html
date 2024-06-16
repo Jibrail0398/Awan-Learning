@@ -1,33 +1,50 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
 <ion-grid>
   <ion-row>
     <ion-col>
-      <a >
-        <i class="fa fa-house" routerLink="/home" routerLinkActive="active" ></i>
+      <a routerLink="/home" >
+        <img class="icon" src="/assets/icon/Home.png">
+      
+      <p  routerLinkActive="active"  >
+        Home
+      </p>
+
       </a>
-      Home 
     </ion-col>
     <ion-col>
-      <a>
-        <i class="fa fa-play"  routerLink="/my-course" routerLinkActive="active" ></i>
+      <a routerLink="/my-course" >
+        <img class="icon" src="/assets/icon/University.png">
+
+        <p routerLinkActive="active"   >
+          Kursus Saya
+        </p>
+        
       </a>
-      Kursus Saya
+      
     </ion-col>
+    
     <ion-col>
-      <a>
-        <i class="fa fa-heart" routerLink="/wishlist" routerLinkActive="active" ></i>
+      <a routerLink="/wishlist" >
+        <img class="icon" src="/assets/icon/Bookmark.png"  >
+      
+        <p routerLinkActive="active"  >
+          Wishlist
+        </p>
+
       </a>
-      Daftar Keinginan
     </ion-col>
+
     <ion-col>
-      <a>
-        <i class="fa fa-user" routerLink="/account" routerLinkActive="active"></i>
+      <a routerLink="/account" >
+        <img class="icon" src="/assets/icon/User.png"  >
+      
+        <p routerLinkActive="active"  >
+          Akun 
+        </p>
+
       </a>
-      Akun
     </ion-col>
+
+
   </ion-row>
 </ion-grid>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { SplashScreen } from '@capacitor/splash-screen';
-import { register } from 'swiper/element/bundle';
+import { register } from 'swiper/element/bundle';//Wajib ketika ingin menggunakan swiper
 
-register();
+register();//Wajib ketika ingin menggunakan swiper
 
 @Component({
   selector: 'app-root',

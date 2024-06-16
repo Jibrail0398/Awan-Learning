@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { ApiService } from 'src/app/api/api.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 
 
 
@@ -63,7 +63,7 @@ export class SignUpPage implements OnInit {
         cssClass:"custom-alert"
       });
 
-      console.log(this.form)
+      
 
       await alert.present();
     }else if(this.form.password ==="" || this.form.passwordConfirm === ""){
@@ -88,7 +88,7 @@ export class SignUpPage implements OnInit {
       email:this.form.email,
       password:this.form.passwordConfirm,
     }
-    console.log(formSubmit);
+    
     const loading = await this.loadingController.create();
     await loading.present();
     this.api.onRegister(formSubmit).subscribe(

@@ -1,0 +1,219 @@
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Ramaraja&display=swap" rel="stylesheet">
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">upload-content</ion-title>
+      
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="circle">
+    <!-- <ion-back-button default-href="/"></ion-back-button> -->
+  </div>
+  
+  <!-- tidak dapat menggunakan ng-select didalam swiper -->
+  <!-- <ng-select [items]="categories "
+    bindLabel="name"
+    placeholder="Pilih Kategori"
+    [(ngModel)]="selectedCategory">
+      </ng-select>
+    <p>
+      Selected Category: {{selectedCategory | json}}
+    </p> -->
+
+  <swiper-container
+  #swiper
+  (afterinit)="swiperInit($event)"
+  >
+    <swiper-slide>   
+      
+      <div class="input-container">
+        <label>Judul Kursus</label>
+        <ion-input 
+        [(ngModel)]="courses.name" 
+        [ngModelOptions]="{standalone: true}" 
+        placeholder="Judul Kursus Anda" 
+        id="name"
+        type="text"
+        name="name"
+        class="form-control"
+        required
+        #name="ngModel"
+        fill="outline" >
+      </ion-input>        
+      </div>
+
+      <div class="input-container">
+        <label>Deskripsi Kursus</label>
+        <ion-textarea 
+        [(ngModel)]=" courses.description" 
+        [ngModelOptions]="{standalone: true}" 
+        placeholder="Deskripsi Kursus Anda" 
+        fill="outline"
+        id="description"
+        name="description"
+        class="form-control"
+        required
+        #description="ngModel">
+        </ion-textarea>
+      </div>
+
+      <div class="input-container">
+        <label>Kategori Kursus</label>
+          <ion-select 
+          [(ngModel)]="category" 
+          [ngModelOptions]="{standalone: true}" 
+          fill="outline" 
+          placeholder="Cari Kategori" 
+          interface="popover"
+        >
+          <ion-select-option value="IT Engineering">IT Engineering</ion-select-option>
+          <ion-select-option value="Data Science">Data Science</ion-select-option>
+          <ion-select-option value="Web Programming">Web Programming</ion-select-option>
+    
+        </ion-select>
+      </div>
+      
+      
+
+      <div class="input-container">
+        <label>Unggah Thumbnail Video</label>
+      </div>  
+          <div class="custom-file-input">
+            <div class="file-display">
+              <span>{{ selectedImageName || 'Tidak ada File yang dipilih' }}</span>
+            </div>
+            <div class="container-file-button">
+              <label class="file-button">
+                <input type="file" (change)="onImageSelected($event)" accept="image/*" />
+                Unggah File
+              </label>
+            </div>
+          </div>
+
+          <div class="input-container">
+            <label>Unggah Video Preview</label>
+          </div>  
+              <div class="custom-file-input">
+                <div class="file-display">
+                  <span>{{ selectedVideoName || 'Tidak ada File yang dipilih' }}</span>
+                </div>
+                <div class="container-file-button">
+                  <label class="file-button">
+                    <input type="file" (change)="onVideoSelected($event)" accept="video/*" />
+                    Unggah File
+                  </label>
+                </div>
+              </div>
+            
+            
+          <div class="container">
+            <ion-button (click)="goNext()" >Selanjutnya</ion-button>
+          </div>
+
+          
+    </swiper-slide>
+
+        <swiper-slide >
+          
+          <!-- Perulangan membuat fitur input -->
+          <div *ngFor="let input of inputs; let i = index">
+            <ion-card>
+              <ion-card-header>
+                <div class="title">
+                  <ion-card-title>Bab {{i+1}}</ion-card-title>
+                  <span><ion-icon name="trash-outline" (click)="removeInput(i)" color="danger" ></ion-icon></span>
+                </div>
+                <h1>Judul Bab</h1>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <ion-item>
+                  <ion-label position="floating" color="none" >Masukkan Judul Bab</ion-label>
+                  <ion-input [(ngModel)]="input.value" class="ion-valid" fill="outline" ></ion-input>
+                </ion-item>
+
+                
+              </ion-card-content>
+
+              <ion-card-header>
+                <h1>Deskripsi Bab</h1>
+              </ion-card-header>
+
+              <ion-card-content>
+                <ion-item>
+                  <ion-label color="none" position="floating">Masukkan Deskripsi Bab</ion-label>
+                  <ion-input [(ngModel)]="description.value"  fill="outline" color="primary" ></ion-input>
+                </ion-item>
+              </ion-card-content>
+
+              <ion-card-header>
+                <ion-card-title>Video</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                <div class="custom-file-input">
+                  <div class="file-display">
+                    <span>{{ selectedVideoName || 'Tidak ada File yang dipilih' }}</span>
+                  </div>
+                  <div class="container-file-button">
+                    <label class="file-button">
+                      <input type="file" (change)="onVideoSelected($event)" accept="video/*" />
+                      Unggah File
+                    </label>
+                  </div>
+                </div>
+              </ion-card-content>
+
+
+            </ion-card>
+            
+          </div>
+          <div class="iconadd" (click)="addInput()">
+            <ion-icon name="add-outline"  ></ion-icon>
+            <h1>Tambah Bab</h1>
+          </div>
+
+          <div class="container">
+            <ion-button (click)="goPrev()" >Sebelumnya</ion-button>
+            <ion-button (click)="goNext()" >Selanjutnya</ion-button>
+          </div>
+          
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <ion-card>
+            <ion-card-content>
+
+              <div class="input-container" *ngFor="let requirement of requirements; let i = index">
+                <label>Kebutuhan Kursus</label>
+                <ion-input [(ngModel)]="requirement.value"  placeholder="Kebutuhan untuk Mengikuti Kursus" fill="outline" >
+                  <ion-icon name="trash-outline" (click)="removerequirement(i)" color="danger" ></ion-icon>
+                </ion-input> 
+              </div>
+    
+              <div class="iconadd" (click)="addrequirement()">
+                <ion-icon name="add-outline" class="add"  ></ion-icon>
+                <h1 >Tambah Kebutuhan</h1>
+              </div>
+            </ion-card-content>
+          </ion-card>
+
+          <div class="input-container" style="margin-top: 20px;" >
+            <label color="none">Penetapan Harga</label>
+            <ion-input [(ngModel)]="price" type="number"  placeholder="Tetapkan Harga Kursus" fill="outline" ></ion-input> 
+          </div>  
+
+          <div class="container">
+            <ion-button (click)="goPrev()" >Sebelumnya</ion-button>
+            <ion-button (click)="kirim()">Kirim</ion-button>
+          </div>
+          
+
+        </swiper-slide>
+
+      </swiper-container>
+</ion-content>

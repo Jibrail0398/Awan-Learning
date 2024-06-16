@@ -1,0 +1,40 @@
+ion-content{
+    height: 400px;
+    .circle{
+        background-color: #75A6F0;
+        height: 100px;
+        width: 100%;
+        margin:0;
+        border-radius: 0 0 50% 50% / 0 0 100% 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .rectangle{
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 90%;
+        height: 70%;
+        // background: linear-gradient(180deg, #B8DCFF 0%, #5D9FFF 86%);
+        border-radius: 30px;
+        
+        img{
+            object-fit: contain;
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+
+       ion-button{
+            --color:#006DFF;
+            --margin-top: 20px;
+            --border-radius:50px;
+            --background:white;
+            width: 70%;
+        }
+        
+    }
+        
+}

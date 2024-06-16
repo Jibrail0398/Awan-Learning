@@ -1,0 +1,16 @@
+ion-content{
+    ion-card{
+        ion-card-header{
+            
+            display: flex !important;
+            justify-content: space-between !important;
+            flex-direction: row;
+            align-items: center;
+            height: 20px;
+        }
+        ion-card-content{
+            margin-top: 10px;
+        }
+    }
+}
+        

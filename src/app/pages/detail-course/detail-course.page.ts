@@ -9,6 +9,7 @@ import { VgApiService, VgMediaDirective } from '@videogular/ngx-videogular/core'
 })
 export class DetailCoursePage implements OnInit {
 
+  
   constructor() { }
 
   ngOnInit() {
@@ -16,5 +17,16 @@ export class DetailCoursePage implements OnInit {
   }
 
   data = localStorage.getItem("data");
+  rating:number = 4.5;
   course =new Function('return ' + this.data)();
+
+  convertrRupiah(price:number){
+    
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+    }).format(price);
+  }
+  coursePrice = this.convertrRupiah(500000);
+
 }

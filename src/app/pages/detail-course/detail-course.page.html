@@ -8,11 +8,12 @@
       <ion-back-button default-href="/"></ion-back-button>
     </ion-buttons>
     <ion-title>Detail Kursus</ion-title>
-    <ion-icon slot="end" name="cart-outline" size="large" routerLink="/cart" ></ion-icon>
+    
   </ion-toolbar>
 
   <div class="promotional-video">
     <video  
+    poster="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Big_Buck_Bunny_thumbnail_vlc.png/1200px-Big_Buck_Bunny_thumbnail_vlc.png"
     controls >
       <source 
       src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
@@ -21,11 +22,53 @@
     </video>
   </div>
 
-  <h1>{{ course.name }}</h1>
-  <p>{{course.Description}}</p>
-  <p>{{course.rating}}</p>
+  <div class="container-text">
 
-  <p>{{course.price}}</p>
+    <ion-row class="ion-justify-content-evenly ">
+      <ion-col size="10" >
+        <h1>{{ course.name }}</h1>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="bookmark-outline" ></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <p class="description" >{{course.Description}}</p>
+
+    <div class="instructor">
+
+      <p>Dr. Nikola Tesla</p>
+    </div>
+
+
+    <div class="rating">
+      <ion-icon name="star" aria-hidden="true"></ion-icon>
+
+      <p>{{rating}}</p>
+
+    </div>
+    
+    <p>{{coursePrice}}</p>
+
+    <div class="kurikulum">
+      <h1>Kurikulum</h1>
+     <ul>
+      <li>Dasar Python</li>
+      <li>Pengenalan Machine Learning</li>
+     </ul>
+    </div>
+    <div class="requirement">
+      <h1>Persyaratan</h1>
+     <ul>
+      <li>Mampu Mengoperasikan Komputer</li>
+      <li>Komputer ram 4gb</li>
+     </ul>
+    </div>
+    <div class="container-button">
+      <ion-button>Tambah ke keranjang</ion-button>
+      <ion-button>Beli Sekarang</ion-button>
+    </div>
+  </div>
 
 
 

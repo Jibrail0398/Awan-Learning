@@ -1,0 +1,34 @@
+ion-grid{
+    background-color: #F5F5F5;
+    height: 100px;
+    
+    ion-row{
+      text-align: center;
+
+      a{
+        text-decoration: none;
+        color: black;
+        .icon{
+          width: 20%;
+          margin: 0;
+        }
+        p{
+          margin: 0;
+          font-size: 1.5rem;
+        }
+      }
+    }
+    
+
+    .active{
+      color:#2300B7;
+    }
+    
+  }
+
+  // @media only screen and (min-width: 800px) {
+  //   .icon{
+  //     width: 10%;
+  //     margin: 0;
+  //   }
+  // }

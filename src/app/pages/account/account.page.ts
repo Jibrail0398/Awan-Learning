@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route:Router
+  ) { }
 
   ngOnInit() {
   }
  
+  toInstructor(){
+    this.route.navigate(['main'])
+  }
 }

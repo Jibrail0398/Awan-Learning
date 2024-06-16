@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/api/api.service';
 import { Router } from '@angular/router';
-
+import { AuthService } from 'src/app/api/auth.service';
 
 interface Course{
   id:number;
@@ -30,7 +30,8 @@ export class HomePage implements OnInit {
   constructor(
     private http:HttpClient,
     private api:ApiService,
-    private router:Router
+    private router:Router,
+    private auth:AuthService
   ) { }
   ngOnInit() {
     this.getCourseData()
@@ -40,10 +41,14 @@ export class HomePage implements OnInit {
   listCourse: Course[] = [];
   filteredData: any[] = [];
 
+  token = this.auth.getBearerToken();
+  
+
   getCourseData(){
     this.api.getCourseData().subscribe((data:any) =>{
       this.listCourse = data['data'];
       this.filteredData = this.listCourse; 
+      
     })
   }
 

@@ -26,4 +26,6 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
   ],
   declarations: [DetailCoursePage]
 })
-export class DetailCoursePageModule {}
+export class DetailCoursePageModule {
+   
+}
