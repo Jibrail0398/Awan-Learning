@@ -1,3 +1,5 @@
 export const environment = {
-  production: false
+  production: true,
+  urlDomain:"https://awan.ylladev.my.id/api",
+  storageKey: "I Love you **************"
 };

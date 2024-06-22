@@ -2,6 +2,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { StorageService } from './storage.service';
 import { environment } from 'src/environments/environment';
 
 
@@ -13,39 +14,114 @@ export class ApiService {
 
   constructor(
     private http:HttpClient,
-    private auth:AuthService
+    private auth:AuthService,
+    private storage:StorageService
   ) {
   }
   
   
-  token = localStorage.getItem('token');
-  headers = new HttpHeaders({
-    'Authorization': `Bearer ${this.token}`
-  });
+  token = this.auth.getBearerToken();
+  headers = new HttpHeaders().set(
+    "Authorization",
+    // this.storage.decrypt(this.token)
+    `Bearer ${this.token}`
+  );
+
+  //home
   
-
-  // onLogin(obj:any) : Observable<any>{
-  //   return this.http.post("https://awan.ylladev.my.id/api/login",obj);
-
-  // }
-  onRegister(obj:any):Observable<any>{
-    return this.http.post("https://awan.ylladev.my.id/api/register",obj)
-  }
+  
+  //Course
   getCourseData(){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`
-    });
+     });
 
-    const options = { headers: headers };
-    return this.http.get<any>("https://awan.ylladev.my.id/api/courses",options);
+    return this.http.get<any>(environment.urlDomain+"/courses",{ headers: headers });
   }
 
-  // getContentCourse(){
-  //   return this.http.get<any>("https://gist.githubusercontent.com/poudyalanil/ca84582cbeb4fc123a13290a586da925/raw/14a27bd0bcd0cd323b35ad79cf3b493dddf6216b/videos.json",{});
+  //upload Course
+
+  uploadCourse(
+    title: string,
+    description: string,
+    price: number,
+    image:File|null,
+    pre_vidio:File|null,
+    category_ids: number[],
+    level_id: any,
+    
+  ){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+  });
+
+  const formData = new FormData();
+  formData.append('title', title);
+  formData.append('description', description);
+  formData.append('price', price.toString());
+  // Append image and vidio file
+  if (image && pre_vidio) {
+    formData.append('image', image, image.name);
+    formData.append('pre_vidio', pre_vidio, pre_vidio.name);
+  }
+  // Append category_ids
+  category_ids.forEach(id => {
+    formData.append('category_ids[]', id.toString());
+  });
+  
+  formData.append('level_id', level_id.toString());
+  
+  return this.http.post<any>(environment.urlDomain + "/courses", formData, { headers: headers });
+  }
+
+  //uploadCourseContent
+
+  uploadCourseContent(
+    id:number,
+    title:string,
+    description:string,
+    vidioURL:File|null
+  ){
+    
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+  });
+    
+    
+    const formData = new FormData();
+    
+    formData.append('title', title);
+    formData.append('description', description);
+
+    if (vidioURL) {
+      formData.append('vidioURL', vidioURL, vidioURL.name);
+
+  }
+  return this.http.post<any>(environment.urlDomain + '/courses/'+id+'/contents', formData, { headers: headers }); 
+
+  }
+
+  // uploadrequirements(requirements:any){
+  //   const headers = this.headers;
+  //   return this.http.post<any>(environment.urlDomain+"/requirements", {headers});
   // }
-  authGoogle(){
-    return this.http.get<any>("https://jibrailif22a.ylladev.my.id/api/oauth/register",{});
+  
+ 
+  //Categories
+  getCategory(){
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      // this.storage.decrypt(this.token)
+      this.token
+    );
+    const options = { headers: headers };
+    return this.http.get(environment.urlDomain+"/categories", options);
   }
+
+  
+  // authGoogle(){
+  //   return this.http.get<any>("https://jibrailif22a.ylladev.my.id/api/oauth/register",{});
+  // }
 
   
 }

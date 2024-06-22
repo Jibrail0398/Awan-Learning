@@ -1,0 +1,214 @@
+ion-content{
+
+    .ng-select {
+      border: 1px solid #000000;
+      border-radius: 4px;
+      padding: 5px;
+      
+    }
+  
+    .circle{
+      background: linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+      height: 150px;
+      width: 100%;
+      margin: 0 0 20px 0;
+      border-radius: 0 0 50% 50% / 0 0 100% 100%;
+      display: flex;
+    
+    }
+  
+    
+  
+   
+    .input-container{
+      width: 90%;
+      margin: 0 auto;
+      label{
+        margin-top: 200px;
+        margin-left: 20px;
+        font-size: clamp(1.5rem,4vw,3rem);
+        font-family: "ramaraja",sans-serif;
+        font-weight: 300;
+      }
+  
+      ion-input,ion-textarea,ion-select{
+        --highlight-color:blue;
+        --border-width:1px;
+        --border-color:black;
+        margin-bottom: 20px;
+      }
+      ion-icon{
+        float: right;
+        margin: clamp(7px,5vw,10px);
+        
+        font-size: clamp(16px,5vw,32px);
+      }
+  
+    }
+  
+  
+    .custom-file-input{
+      display: flex;
+      justify-content: center;
+      // border: 1px solid black;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-sizing: border-box;
+      width: 90%;
+      margin-bottom: 20px;
+      
+    }
+  
+    .file-display{
+     
+      border: 1px solid black;
+      text-align: center;
+      padding: clamp(1px,5vw,5px);
+      font-size:clamp(0.5rem,3vw,1.5rem);
+      width: 100%;
+      
+      
+    }
+    
+    
+    .file-button {
+      
+      font-size: clamp(1rem,3vw,2rem);
+      font-weight: 500;
+      
+    }
+    .container-file-button{
+      
+      
+      
+      border: 1px solid black;
+      padding: clamp(1px,5vw,5px);
+      width: 40%;
+      
+      
+      justify-self: center;
+  
+      .file-button input{
+        display: none;
+      }
+    }
+  
+    .container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 30px;
+      ion-button{
+        --background:linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+        width: 90%;
+        color: black;
+      }
+    }
+  
+    
+    ion-card{
+      
+      ion-card-header{
+        .title{
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0;
+        }
+        ion-icon{
+          font-size: clamp(24px,5vw,48px);
+          
+        }
+        ion-card-title{
+          color: black;
+          font-weight: 300;
+          font-size: clamp(1.5rem,5vw,3rem);
+  
+        }
+        h1{
+          color: black;
+          font-size: clamp(1rem,5vw,2rem);
+          margin-bottom: 5px;
+        }
+      }
+  
+      ion-card-content{
+        color: black;
+        ion-item{
+          ion-input{
+            margin-top: 0;
+          }
+        }
+        .custom-file-input{
+  
+          display: flex;
+          justify-content: center;
+          margin: 0 auto;
+          border-radius: 10px;
+          box-sizing: border-box;
+          width: 90%;
+          margin-bottom: 20px;
+  
+          .file-display{
+            border: 1px solid black;
+            text-align: center;
+            font-weight: 200;
+            padding: clamp(1px,5vw,5px);
+            font-size:clamp(0.5rem,3vw,1.5rem);
+            width: 100%;
+            color: black;
+          }
+          .file-button{
+            color: black;
+          }
+        }
+      }
+    }
+    
+    .ion-valid{
+      
+      --highlight-color-valid: blue;
+    }
+    .tambahkursus{
+      display: flex;
+      .container-ion-icon{
+        border: 1px solid black;
+        width: 10%;
+        height: auto;
+        margin-left: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        ion-icon{
+          font-size: clamp(32px,5vw,64px);
+        }
+      }
+      h1{
+        margin-left: 10px;
+      }
+    }
+    
+    .iconadd{
+      margin: 0 auto; 
+      h1{
+        margin: 10px;
+        font-size: clamp(15px,3vw,30px);
+      }
+      display: flex;
+      justify-content: center;
+      border: 2px solid black;
+      width: 40%; 
+      text-align: center;
+      align-items: center;
+      // background:linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+      
+  
+      .add{
+        font-size: clamp(32px,5vw,64px);
+        margin-left: 3px;
+      }
+    
+    }
+ 
+}

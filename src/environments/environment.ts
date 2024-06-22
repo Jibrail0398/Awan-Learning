@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  urlDomain:"https://jibrailif22a.ylladev.my.id"
-  
+  urlDomain:"https://awan.ylladev.my.id/api",
+  JWT_SECRET_KEY: "ThisIsSecret" ,
+  storageKey: "I Love you **************"
 };
 
 /*

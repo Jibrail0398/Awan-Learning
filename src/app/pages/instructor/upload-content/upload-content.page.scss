@@ -1,5 +1,11 @@
 ion-content{
 
+  .ng-select {
+    border: 1px solid #000000;
+    border-radius: 4px;
+    padding: 5px;
+    
+  }
 
   .circle{
     background: linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
@@ -13,9 +19,7 @@ ion-content{
 
   
 
-  swiper-slide{
-    margin-bottom: 0;
-  }
+ 
   .input-container{
     width: 90%;
     margin: 0 auto;
@@ -206,7 +210,6 @@ ion-content{
     }
   
   }
-  
   
   
 

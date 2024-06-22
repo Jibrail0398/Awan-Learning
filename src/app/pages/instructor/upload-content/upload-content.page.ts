@@ -1,7 +1,8 @@
 import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
-import Swiper from 'swiper';
 
-
+import { ApiService } from 'src/app/api/api.service';
+import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -14,111 +15,112 @@ import Swiper from 'swiper';
 export class UploadContentPage implements OnInit {
 
 
-  @ViewChild('swiper')
-  swiperRef: ElementRef | undefined;
-  swiper?:Swiper;
-
-  selectedImage: string | ArrayBuffer | null = null;
-  selectedVideo: string | ArrayBuffer | null = null;
   selectedImageName: string = '';
-  selectedVideoName: string = ''; 
+  selectedVideoName: string[] = [];
+  
+  thumbnailVideo : File | null = null;
+  videoPreview : File | null = null;
 
-  //Swiper Slide 1
-
-  courses = {
-    name:"",
-    description:"",
-    image:"",
-  }
-
-  category = "";
-
-  constructor() { 
+  
+  constructor(
+    private api:ApiService,
+    private alert:AlertController,
+    private loading:LoadingController
+  ) { 
     
   }
 
   ngOnInit() {
-
+    this.getCategory()
   }
+
+  courses = {
+    title:"",
+    description:"",
+  }
+
+  category_id:number[]=[];
   
-  
-  categories = [
-    {id: 1, name: 'IT'},
-    {id: 2, name: 'Engineering'},
-    {id: 3, name: 'Science', disabled: true},
-    {id: 4, name: 'Art'},
-    {id: 5, name: 'Music'}
-  ];  
-  
-  selectedCategory: any;
 
-  myswiper:any;
-  swiperInit(event: any) {
-    this.swiper = this.swiperRef?.nativeElement.swiper;
-    this.myswiper = event.target;
-    this.myswiper.loop = false;  
-    this.myswiper.allowTouchMove = false;
+  level:number=0;
+
+  categories:any;
+
+  getCategory(){
+    this.api.getCategory().subscribe((res:any) =>{
+      this.categories = res;
+      
+    })
   }
 
-  goNext(){
-    this.swiper?.slideNext();
-  }
-  goPrev(){
-    this.swiper?.slidePrev();
-    
-  }
+ 
 
-  onImageSelected(event: Event) {
+  onImageSelected(event: any) {
+    this.thumbnailVideo = event.target.files[0]
+
     const input = event.target as HTMLInputElement;
     if (input && input.files && input.files[0]) {
       const file = input.files[0];
       this.selectedImageName = file.name;
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target) {
-          this.selectedImage = e.target.result;
-        }
-      };
-      reader.readAsDataURL(file);
+      
     }
   }
 
-  onVideoSelected(event: Event) {
+  onVideoSelected(event:any) {
+    
+    this.videoPreview = event.target.files[0];
     const input = event.target as HTMLInputElement;
     if (input && input.files && input.files[0]) {
-      const file = input.files[0];
-      this.selectedImageName = file.name;
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target) {
-          this.selectedVideo = e.target.result;
-        }
-      };
-      reader.readAsDataURL(file);
+      const file = input.files[0];                    
+      this.selectedVideoName.push(file.name);
+   
     }
   }
 
-  //Swiper Slide 2
+  async uploadTabelCourses(){
+    
+    const loading = await this.loading.create();
 
-  contentCourse = {
-    title:[''],
-    description:['']
-  }
-
-  inputs: { value: string }[] = [{ value: '' }];
-  descContent: { value: string }[] = [{ value: '' }];
-
-  addInput() {
-    this.inputs.push({ value: '' });
+    this.api.uploadCourse(
+      this.courses.title,
+      this.courses.description,
+      this.price,
+      this.thumbnailVideo,
+      this.videoPreview,
+      this.category_id,
+      this.level,
+      
+    ).subscribe(
+      {
+        next: async (res) => {
+          await loading.dismiss();
+          const alert = await this.alert.create({
+            header: 'Upload Berhasil',
+            buttons: ['OK'],
+            message:res.message
+          });
+          await alert.present();
+          
+          
+        },
+        error: async (res) => {
+            await loading.dismiss();
+            const alert = await this.alert.create({
+            header: 'Upload Gagal',
+            message: res.message,
+            buttons: ['OK'],
+            
+            });
+            await alert.present();
+        }
+      }
+    )
+   
     
   }
-  removeInput(index: number) {
-    this.inputs.splice(index, 1);
-    this.descContent.splice(index, 1);
-  }
 
+  
 
-  //Swiper Slide 3
 
   requirements:{value:string}[]=[{value:''}];
   price:number=0;
@@ -131,13 +133,12 @@ export class UploadContentPage implements OnInit {
   }
 
   kirim(){
-    this.contentCourse.title = this.inputs.map(input=>input.value);
-    this.contentCourse.description = this.descContent.map(descContent=>descContent.value);
-    console.log(this.courses);
-    console.log(this.contentCourse);
-    console.log(this.contentCourse);
-    console.log(this.requirements);
-    console.log(this.price)
+   
+
+      this.uploadTabelCourses();
+      console.log(this.category_id);
+      console.log(this.level);
+    
   }
 
 }

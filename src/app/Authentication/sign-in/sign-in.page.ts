@@ -4,6 +4,11 @@ import { AuthService } from 'src/app/api/auth.service';
 import { AlertController,LoadingController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
+// import { StorageService } from 'src/app/api/storage.service';
+
+
+
+// import { ApiService } from 'src/app/api/api.service';
 
 
 @Component({
@@ -17,16 +22,15 @@ export class SignInPage implements OnInit {
     email: '',
     password: ''
   }
-  
-  
-  
+    
   constructor(
     private http: HttpClient,
     private auth:AuthService,
     private router:Router,
     private alert:AlertController ,
     private location:Location,
-    private loadingController:LoadingController 
+    private loadingController:LoadingController, 
+    // private storage:StorageService
    ) { 
       
    }
@@ -54,15 +58,15 @@ export class SignInPage implements OnInit {
             buttons: ['OK'],
           });
           await alert.present();
-          this.auth.setBearerToken(res.access_token);
+          // this.storage.saveData('token',res.token)
+          localStorage.setItem('token',res.token);
           this.router.navigate(['/home']);
         },
         error: async (res) => {
             await loading.dismiss();
-            const errorMessage = res.error?res.error.error:"UknownError";
             const alert = await this.alert.create({
             header: 'Login Gagal',
-            message: errorMessage,
+            message: res.message,
             buttons: ['OK'],
             
             });

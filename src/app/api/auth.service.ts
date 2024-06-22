@@ -1,28 +1,34 @@
-import { Injectable } from '@angular/core';
+import { EnvironmentProviders, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  link = "https://awan.ylladev.my.id/api/";
+  
   constructor(
     private http:HttpClient,
+    private storage:StorageService
   ) { }
   
-  bearerToken="";
+  bearerToken=localStorage.getItem('token');
+  
   
   onLogin(obj:any) : Observable<any>{
-    return this.http.post(`${this.link}login`,obj);
+    return this.http.post(environment.urlDomain+"/login",obj);
   }
-
-  setBearerToken(token: string) {
-    this.bearerToken = token;
+  onRegister(obj:any):Observable<any>{
+    return this.http.post(environment.urlDomain+"/register",obj)
   }
+  // onLogin(obj:any) : Observable<any>{
+  //   return this.http.post("https://jibrailif22a.ylladev.my.id/api/login",obj);
+  // }
 
-  getBearerToken(): string {
+  getBearerToken(): any {
     return this.bearerToken;
   }
 }

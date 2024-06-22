@@ -6,7 +6,7 @@ ion-content{
 
     swiper-container{
         height: 100%;
-        --swiper-pagination-bottom:5%;
+        --swiper-pagination-bottom:2%;
         .container{
             position: relative;
             top: 10%;
@@ -16,7 +16,7 @@ ion-content{
             align-items: center;
         }
         ion-img{
-            width: 300px; 
+            width: 150px; 
             height: auto; 
             // display: block; /* Ensure the image is displayed as a block element */
             // margin-bottom: 50px; 
@@ -40,8 +40,9 @@ ion-content{
         h1{
             font-family: "Open Sans", sans-serif;
             font-weight: 700;
-            font-size: 30px;
+            font-size: clamp(25px,5vw,30px);
             font-style: normal;
+            text-align: center;
             position: relative;
             color: #0D0F44;
             margin-top: 30px;
@@ -50,8 +51,9 @@ ion-content{
         h2{
             font-family: "Open Sans", sans-serif;
             font-weight: 700;
-            font-size: 20px;
+            font-size: clamp(15px,5vw,30px);
             font-style: normal;
+            text-align: center;
             position: relative;
             color: #0D0F44;
             text-align: center;
@@ -74,6 +76,16 @@ ion-content{
           
 
     }
+
+    @media only screen and (min-width: 800px ) {
+        .container{
+            ion-img{
+                width: 200px;
+                height: auto;
+            }           
+        }
+      }
+      
  
 
     

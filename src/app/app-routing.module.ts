@@ -69,7 +69,15 @@ const routes: Routes = [
   {
     path: 'upload-content',
     loadChildren: () => import('./pages/instructor/upload-content/upload-content.module').then( m => m.UploadContentPageModule)
+  },  {
+    path: 'upload-content-course',
+    loadChildren: () => import('./pages/upload-content-course/upload-content-course.module').then( m => m.UploadContentCoursePageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+
   
 
 

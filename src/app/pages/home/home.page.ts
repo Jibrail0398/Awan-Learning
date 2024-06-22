@@ -3,18 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/api/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/api/auth.service';
+import { environment } from 'src/environments/environment';
 
-interface Course{
-  id:number;
-  name:string;
-  Description:Text;
-  category_id:number;
-  rating:number;
-  price:number;
-  deleted_at:Date;
-  created_at:Date;
-  updated_at:Date;
-
+interface Course {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  pre_vidio: string;
+  instructor_id: number;
+  price: number;
+  level_id: number;
+  status: string;
+  created_at: Date;
+  updated_at: Date;
 }
 
 @Component({
@@ -27,6 +29,8 @@ export class HomePage implements OnInit {
   isSearchFocused = false;
   isDataFiltered = false;
 
+  category:any;
+
   constructor(
     private http:HttpClient,
     private api:ApiService,
@@ -34,7 +38,7 @@ export class HomePage implements OnInit {
     private auth:AuthService
   ) { }
   ngOnInit() {
-    this.getCourseData()
+    this.getCourseData();
   }
 
  
@@ -43,11 +47,32 @@ export class HomePage implements OnInit {
 
   token = this.auth.getBearerToken();
   
-
+  
   getCourseData(){
-    this.api.getCourseData().subscribe((data:any) =>{
-      this.listCourse = data['data'];
+    this.api.getCourseData().subscribe((res:any) =>{
+      
+      this.listCourse = res.course.map((course: any) => ({
+        id: course.id,
+        title: course.title,
+        description: course.description,
+        image: "https://awan.ylladev.my.id/storage/" + course.image,
+        pre_vidio: course.pre_vidio,
+        instructor_id: course.instructor_id,
+        price: course.price,
+        level_id: course.level_id,
+        status: course.status,
+        created_at: new Date(course.created_at),
+        updated_at: new Date(course.updated_at)
+      }));
       this.filteredData = this.listCourse; 
+      console.log(this.listCourse);
+    })
+  }
+  
+  getCategory(){
+    this.api.getCategory().subscribe((res:any) =>{
+      this.category = res;
+      console.log(this.category);
       
     })
   }
@@ -92,7 +117,7 @@ export class HomePage implements OnInit {
   }
   onInput(event:any){
     const query = event.target.value.toLowerCase();
-    this.filteredData = this.listCourse.filter(listCourse => listCourse.name.toLowerCase().includes(query));
+    this.filteredData = this.listCourse.filter(listCourse => listCourse.title.toLowerCase().includes(query));
     this.isDataFiltered = true;
     
 
