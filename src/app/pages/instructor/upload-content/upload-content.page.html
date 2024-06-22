@@ -116,7 +116,7 @@
 
           <div class="input-container" *ngFor="let requirement of requirements; let i = index">
             <label>Kebutuhan Kursus</label>
-            <ion-input [(ngModel)]="requirement.value"  placeholder="Kebutuhan untuk Mengikuti Kursus" fill="outline" >
+            <ion-input [(ngModel)]="requirement.description"  placeholder="Kebutuhan untuk Mengikuti Kursus" fill="outline" >
               <ion-icon name="trash-outline" (click)="removerequirement(i)" color="danger" ></ion-icon>
             </ion-input> 
           </div>

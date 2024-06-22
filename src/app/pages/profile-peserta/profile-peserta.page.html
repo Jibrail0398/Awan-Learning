@@ -1,0 +1,80 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ramaraja&display=swap" rel="stylesheet">
+
+<ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profil Peserta</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-title>Data Diri</ion-title>
+  </ion-toolbar>
+
+      <div class="avatar-container">
+        <img src="/assets/img/morklii.jpg" alt="Foto Profil">
+        <!-- Ganti 'path_to_your_image' dengan path atau URL foto Anda -->
+      </div>
+    
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Nama Lengkap</ion-label>
+          <ion-input type="text" placeholder="Nama Lengkap"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Nomor Handphone</ion-label>
+          <ion-input type="tel" placeholder="Nomor Handphone"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" placeholder="Email"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>Jenis Kelamin</ion-label>
+        </ion-item>
+
+        <ion-radio-group style="display: flex; flex-direction: row; align-items: center;">
+          <ion-item style="flex: 1;">
+            <ion-label style="font-size: 20px;">Laki - Laki</ion-label>
+            <ion-radio slot="start" value="male"></ion-radio>
+          </ion-item>
+          <ion-item style="flex: 1;">
+            <ion-label style="font-size: 20px;">Perempuan</ion-label>
+            <ion-radio slot="start" value="female"></ion-radio>
+          </ion-item>
+        </ion-radio-group>        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="block" color="primary" style="margin-top: 20px;">
+          Simpan Perubahan
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

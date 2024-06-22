@@ -21,7 +21,7 @@ export class AccountPage implements OnInit {
     this.route.navigate(['main'])
   }
   logout(){
-    localStorage.removeItem('token');
+    localStorage.clear();
     this.route.navigate(['sign-in']);
   }
 }

@@ -11,13 +11,13 @@
     (ionBlur)="onBlur()"
     (ionInput)="onInput($event)"
     ></ion-searchbar>
-    <ion-icon title="cart-outline" size="large" routerLink="/cart" ></ion-icon>
+    <ion-icon name="cart-outline" size="large" color="primary" routerLink="/cart" ></ion-icon>
   </div>
 
   <div *ngIf="!isSearchFocused">
     <div class="container-user">
       <div class="container-text">
-        <h1>Selamat Datang, User</h1>
+        <h1>Selamat Datang</h1>
         
       </div>
     </div>
@@ -32,7 +32,7 @@
         alt="Foto User"
         >
     </div>
-    <h1 class="judulSlide" >Direkomendasikan Untuk Anda</h1>
+    <!-- <h1 class="judulSlide" >Direkomendasikan Untuk Anda</h1>
     <swiper-container
     (afterinit)="swiperInit($event)"
       >
@@ -55,9 +55,9 @@
           </ion-grid>
   
         </swiper-slide>
-      </swiper-container>
+    </swiper-container> -->
       
-      <h1 class="judulSlide" >Kursus Paling Populer</h1>
+      <h1 class="judulSlide" >Kursus yang Tersedia</h1>
       <swiper-container
       (afterinit)="swiperInit($event)"
       

@@ -13,40 +13,40 @@
 
   <div class="promotional-video">
     <video  
-    poster="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Big_Buck_Bunny_thumbnail_vlc.png/1200px-Big_Buck_Bunny_thumbnail_vlc.png"
+    [poster]="[imageDomain]"
+    [src]="[vidioDomain]"
     controls >
       <source 
-      src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+      
       >
       Not support in your Device
     </video>
   </div>
 
   <div class="container-text">
-
     <ion-row class="ion-justify-content-evenly ">
       <ion-col size="10" >
-        <h1>{{ course.name }}</h1>
+        <h1>{{ detailCourse.title }}</h1>
       </ion-col>
       <ion-col size="2">
         <ion-icon name="bookmark-outline" ></ion-icon>
       </ion-col>
     </ion-row>
 
-    <p class="description" >{{course.Description}}</p>
+    <p class="description" >{{detailCourse.description}}</p>
 
     <div class="instructor">
 
-      <p>Dr. Nikola Tesla</p>
+      <p>{{ detailCourse.owner.name }}</p>
     </div>
 
 
-    <div class="rating">
+    <!-- <div class="rating">
       <ion-icon name="star" aria-hidden="true"></ion-icon>
 
       <p>{{rating}}</p>
 
-    </div>
+    </div> -->
     
     <p>{{coursePrice}}</p>
 

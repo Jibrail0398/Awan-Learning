@@ -1,0 +1,23 @@
+ion-content{
+    ion-back-button{
+        --color: #124CFF;
+    }
+    ion-title{
+        font-family: "Ramaraja", serif;
+        font-size: 24px;
+        margin-top: 10px;
+        color: #000;
+    }
+    .content {
+        max-width: 600px; /* Sesuaikan dengan lebar maksimum yang diinginkan */
+        margin: 0 auto; /* Center the content horizontally */
+        padding: 20px; /* Optional: Tambahkan padding sesuai kebutuhan */
+    }
+    
+    p {
+        text-align: justify; /* Optional: Justifikasi teks */
+        font-family: 'Ramaraja', sans-serif; /* Gunakan font yang telah dimuat */
+        font-size: 25px; /* Sesuaikan ukuran font sesuai preferensi */
+        line-height: 1.5; /* Sesuaikan line-height sesuai preferensi */
+    }
+}

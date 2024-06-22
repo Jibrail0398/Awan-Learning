@@ -27,16 +27,17 @@ export class ApiService {
     `Bearer ${this.token}`
   );
 
-  //home
-  
-  
-  //Course
-  getCourseData(){
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
-     });
 
-    return this.http.get<any>(environment.urlDomain+"/courses",{ headers: headers });
+  //Home
+  getCourseData(){
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      // this.storage.decrypt(this.token)
+      this.token
+    );
+    const options = { headers: headers };
+
+    return this.http.get<any>(environment.urlDomain+"/courses",options);
   }
 
   //upload Course
@@ -49,6 +50,7 @@ export class ApiService {
     pre_vidio:File|null,
     category_ids: number[],
     level_id: any,
+    requirements: { description: string }[]
     
   ){
     const headers = new HttpHeaders({
@@ -70,6 +72,10 @@ export class ApiService {
   });
   
   formData.append('level_id', level_id.toString());
+
+   requirements.forEach((req, index) => {
+    formData.append(`requirements[${index}][description]`, req.description);
+  });
   
   return this.http.post<any>(environment.urlDomain + "/courses", formData, { headers: headers });
   }
@@ -80,7 +86,7 @@ export class ApiService {
     id:number,
     title:string,
     description:string,
-    vidioURL:File|null
+    vidioURL:File|null,
   ){
     
     const headers = new HttpHeaders({
@@ -100,12 +106,7 @@ export class ApiService {
   return this.http.post<any>(environment.urlDomain + '/courses/'+id+'/contents', formData, { headers: headers }); 
 
   }
-
-  // uploadrequirements(requirements:any){
-  //   const headers = this.headers;
-  //   return this.http.post<any>(environment.urlDomain+"/requirements", {headers});
-  // }
-  
+ 
  
   //Categories
   getCategory(){
@@ -118,10 +119,15 @@ export class ApiService {
     return this.http.get(environment.urlDomain+"/categories", options);
   }
 
-  
-  // authGoogle(){
-  //   return this.http.get<any>("https://jibrailif22a.ylladev.my.id/api/oauth/register",{});
-  // }
+  getDetailCourse(id:any){
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      // this.storage.decrypt(this.token)
+      this.token
+    );
+    const options = { headers: headers };
+    return this.http.get(environment.urlDomain+"/courses/"+id, options);
+  }
 
-  
+    
 }

@@ -77,6 +77,22 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
+  {
+    path: 'tentang-awan',
+    loadChildren: () => import('./pages/tentang-awan/tentang-awan.module').then( m => m.TentangAwanPageModule)
+  },
+  {
+    path: 'update-content',
+    loadChildren: () => import('./pages/update-content/update-content.module').then( m => m.UpdateContentPageModule)
+  },
+  {
+    path: 'keamanan-akun',
+    loadChildren: () => import('./pages/keamanan-akun/keamanan-akun.module').then( m => m.KeamananAkunPageModule)
+  },
+  {
+    path: 'profile-peserta',
+    loadChildren: () => import('./pages/profile-peserta/profile-peserta.module').then( m => m.ProfilePesertaPageModule)
+  },
 
   
 

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/api/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/api/auth.service';
+import { StorageService } from 'src/app/api/storage.service';
 import { environment } from 'src/environments/environment';
 
 interface Course {
@@ -35,7 +36,8 @@ export class HomePage implements OnInit {
     private http:HttpClient,
     private api:ApiService,
     private router:Router,
-    private auth:AuthService
+    private auth:AuthService,
+    private storage:StorageService
   ) { }
   ngOnInit() {
     this.getCourseData();
@@ -44,7 +46,7 @@ export class HomePage implements OnInit {
  
   listCourse: Course[] = [];
   filteredData: any[] = [];
-
+  
   token = this.auth.getBearerToken();
   
   
@@ -65,30 +67,19 @@ export class HomePage implements OnInit {
         updated_at: new Date(course.updated_at)
       }));
       this.filteredData = this.listCourse; 
-      console.log(this.listCourse);
+      
     })
   }
   
   getCategory(){
     this.api.getCategory().subscribe((res:any) =>{
       this.category = res;
-      console.log(this.category);
+      
       
     })
   }
 
-  // data = [
-  //   { title: 'Web Programming', description: 'Deskripsi card 1' },
-  //   { title: 'Data Science', description: 'Deskripsi card 2' },
-  //   { title: 'Bahasa Inggris', description: 'Deskripsi card 3' },
-  //   { title: 'Matematika', description: 'Deskripsi card 4' },
-  //   { title: 'Fisika Quantum', description: 'Deskripsi card 4' },
-  //   { title: 'Teknik Nuklir', description: 'Deskripsi card 4' },
-  //   { title: 'Biology', description: 'Deskripsi card 4' },
-  // ];
   
-  // filteredData = this.data;
-
   myswiper:any;
   swiperInit(event: any) {
     this.myswiper = event.target;
@@ -119,16 +110,13 @@ export class HomePage implements OnInit {
     const query = event.target.value.toLowerCase();
     this.filteredData = this.listCourse.filter(listCourse => listCourse.title.toLowerCase().includes(query));
     this.isDataFiltered = true;
-    
-
   }
   
   
-  getDetailCourse(id:number){
-    const data = this.listCourse.find(listCourse =>listCourse.id==id);
-    localStorage.setItem('data', JSON.stringify(data));
-    this.router.navigate(["\detail-course"])
-    
+  getDetailCourse(id:any){
+    localStorage.setItem('data',id);    
+    this.router.navigate(["\detail-course"]);
+        
   }
 
 }

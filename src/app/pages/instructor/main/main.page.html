@@ -1,15 +1,32 @@
 <ion-content [fullscreen]="true">
-  
-    <div class="circle">
-      
-    </div>
+  <div class="circle"></div>
 
+  <div *ngIf="course.length==0" >
     <div class="rectangle">
       <img src="/assets/img/8262271.jpg" alt="">
-      <ion-button (click)="toUpload()" >Buat Kursus Anda</ion-button>
+      <ion-button (click)="toUpload()">Buat Kursus Anda</ion-button>
     </div>
-    
+  </div>
 
+  
+  <div *ngIf="course.length > 0">
+    <ion-card *ngFor="let c of course">
+      <ion-card-content>
+        <img alt="Silhouette of mountains" src="/assets/img/home.png" />
+        <ion-list lines="none">
+          <ion-item class="item-with-icons">
+            {{ c.title }}
+            <div class="icons">
+              <ion-icon name="add-circle-outline" routerLink="/upload-content-course" ></ion-icon>
+              <ion-icon name="pencil-outline" routerLink="/update-content"></ion-icon>
+            </div>
+          </ion-item>
+          <p>{{ c.category }}</p>
+          <p>{{ c.description }}</p>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
 
 <ion-footer>
