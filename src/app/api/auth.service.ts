@@ -16,6 +16,7 @@ export class AuthService {
   ) { }
   
   bearerToken=localStorage.getItem('token');
+  sub=localStorage.getItem('sub');
   
   
   onLogin(obj:any) : Observable<any>{
@@ -24,11 +25,14 @@ export class AuthService {
   onRegister(obj:any):Observable<any>{
     return this.http.post(environment.urlDomain+"/register",obj)
   }
-  // onLogin(obj:any) : Observable<any>{
-  //   return this.http.post("https://jibrailif22a.ylladev.my.id/api/login",obj);
-  // }
-
+ 
   getBearerToken(): any {
     return this.bearerToken;
   }
+  getSub():any{
+    return this.sub;
+  }
+
+  
+
 }

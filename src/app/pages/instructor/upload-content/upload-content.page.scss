@@ -99,8 +99,14 @@ ion-content{
     align-items: center;
     flex-direction: column;
     margin-top: 30px;
-    ion-button{
+    .send{
       --background:linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+      width: 90%;
+      color: black;
+    }
+    .back{
+      --background:white;
+      border: 1px solid rgb(28, 166, 212);
       width: 90%;
       color: black;
     }
@@ -210,6 +216,7 @@ ion-content{
     }
   
   }
+  
   
   
 

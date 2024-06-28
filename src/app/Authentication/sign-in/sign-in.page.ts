@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 import { AuthService } from 'src/app/api/auth.service';
 import { AlertController,LoadingController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
+import { NavController } from '@ionic/angular';
 // import { StorageService } from 'src/app/api/storage.service';
 
 
@@ -26,10 +27,11 @@ export class SignInPage implements OnInit {
   constructor(
     private http: HttpClient,
     private auth:AuthService,
-    private router:Router,
+    // private router:Router,
     private alert:AlertController ,
     private location:Location,
     private loadingController:LoadingController, 
+    private navCtrl: NavController
     // private storage:StorageService
    ) { 
       
@@ -60,7 +62,9 @@ export class SignInPage implements OnInit {
           await alert.present();
           // this.storage.saveData('token',res.token)
           localStorage.setItem('token',res.token);
-          this.router.navigate(['/home']);
+          localStorage.setItem('sub',res.sub);
+          this.navCtrl.navigateRoot('/home');
+          
         },
         error: async (res) => {
             await loading.dismiss();

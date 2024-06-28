@@ -5,12 +5,11 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">upload-content</ion-title>
-      
     </ion-toolbar>
   </ion-header>
 
   <div class="circle">
-    <!-- <ion-back-button default-href="/"></ion-back-button> -->
+    
   </div>
   
   
@@ -122,14 +121,20 @@
           </div>
 
           <div class="iconadd" (click)="addrequirement()">
-            <ion-icon name="add-outline" class="add"  ></ion-icon>
+            <ion-icon name="add-outline" class="add"></ion-icon>
             <h1 >Tambah Kebutuhan</h1>
           </div>
         </ion-card-content>
       </ion-card>
 
       <div class="container">
-        <ion-button (click)="kirim()">Kirim</ion-button>
+        <ion-button (click)="kirim()" class="send" >Kirim</ion-button>
+        <ion-button (click)="kembali()" class="back"   >Kembali</ion-button>
+      </div>
+      <div class="container">
+        <a >
+
+        </a>
       </div>
 
         

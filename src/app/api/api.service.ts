@@ -21,23 +21,15 @@ export class ApiService {
   
   
   token = this.auth.getBearerToken();
-  headers = new HttpHeaders().set(
-    "Authorization",
-    // this.storage.decrypt(this.token)
-    `Bearer ${this.token}`
-  );
 
 
   //Home
   getCourseData(){
-    const headers = new HttpHeaders().set(
-      "Authorization",
-      // this.storage.decrypt(this.token)
-      this.token
-    );
-    const options = { headers: headers };
-
-    return this.http.get<any>(environment.urlDomain+"/courses",options);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    
+    return this.http.get<any>(environment.urlDomain+"/courses",{ headers: headers });
   }
 
   //upload Course

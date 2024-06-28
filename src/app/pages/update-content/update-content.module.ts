@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { UpdateContentPageRoutingModule } from './update-content-routing.module';
 
 import { UpdateContentPage } from './update-content.page';
+import { ModalEditComponent } from 'src/app/components/modal-edit/modal-edit.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UpdateContentPageRoutingModule
+    UpdateContentPageRoutingModule,
+    ModalEditComponent
   ],
   declarations: [UpdateContentPage]
 })

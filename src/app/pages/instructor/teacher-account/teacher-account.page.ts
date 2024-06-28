@@ -16,6 +16,11 @@ export class TeacherAccountPage implements OnInit {
   }
 
   toStudent(){
-    this.route.navigate(['/home'])
+    this.route.navigate(['/home']);
+  }
+  logout(){
+    this.route.navigate(["/sign-in"]);
+    localStorage.removeItem('sub');
+    localStorage.removeItem('token');
   }
 }

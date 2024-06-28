@@ -1,4 +1,12 @@
 ion-content{
+    a{
+        ion-button{
+            --background:linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+            color: black;
+            margin-bottom: 30px;
+        }
+
+    }
     ion-card{
         img{
             max-width: 20%;
@@ -6,32 +14,33 @@ ion-content{
         ion-card-content{
             display: flex;
             ion-list{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 ion-item{
+                    
                     font-size: clamp(0.7rem,5vw,2rem);
                 }
                 p{
                     margin-left: 18px;
                     font-size: clamp(0.3rem,5vw,1.2rem);
+                    
                 }
             }
         }
     }
 
-    .item-with-icons {
-        display: flex;
-        justify-content: space-between;
-       
-    }
-      
-    .icons {
-        display: flex;
-        justify-content: flex-end;
-        margin-left: 275px;
+    ion-list{
+        width: 100%;
     }
 
-    ion-item ion-icon {
-        color: var(--ion-color-primary);
-    }
+   .item-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+   }
+      
+    
 
     height: 400px;
     .circle{
@@ -51,7 +60,7 @@ ion-content{
         align-items: center;
         flex-direction: column;
         width: 90%;
-        background: linear-gradient(180deg, #B8DCFF 0%, #5D9FFF 86%);
+        background: white;
         border-radius: 30px;
         
         img{
@@ -70,5 +79,33 @@ ion-content{
         }
         
     }
+    ion-card{
+        img{
+            height: auto;
+            width: auto;
+            object-fit: contain;
+        }
+    }
+    .container-description{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: black;
+
+        display: flex;
+        flex-direction: column;
         
+        
+
+        .confirm{
+            color: rgb(92, 213, 64);
+            align-self: flex-end;
+            
+        }
+        .notconfirm{
+            color: red;
+            align-self: flex-end;
+            
+        }
+    }
 }

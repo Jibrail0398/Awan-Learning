@@ -3,6 +3,7 @@
   import { ApiService } from 'src/app/api/api.service';
   import { AlertController } from '@ionic/angular';
   import { LoadingController } from '@ionic/angular';
+  import { Router } from '@angular/router';
 
 
   @Component({
@@ -25,7 +26,8 @@
     constructor(
       private api:ApiService,
       private alert:AlertController,
-      private loading:LoadingController
+      private loading:LoadingController,
+      private route:Router
     ) { 
       
     }
@@ -49,7 +51,7 @@
     getCategory(){
       this.api.getCategory().subscribe((res:any) =>{
         this.categories = res;
-        console.log(res);
+        
         
       })
     }
@@ -87,51 +89,101 @@
     removerequirement(index: number) {
       this.requirements.splice(index, 1);
     }
-    async uploadTabelCourses(){
+    // async uploadTabelCourses(){
       
-      const loading = await this.loading.create();
-      await loading.present();
+    //   const loading = await this.loading.create();
+    //   await loading.present();
       
 
-      this.api.uploadCourse(
-        this.courses.title,
-        this.courses.description,
-        this.price,
-        this.thumbnailVideo,
-        this.videoPreview,
-        this.category_id,
-        this.level,
-        this.requirements
+    //   this.api.uploadCourse(
+    //     this.courses.title,
+    //     this.courses.description,
+    //     this.price,
+    //     this.thumbnailVideo,
+    //     this.videoPreview,
+    //     this.category_id,
+    //     this.level,
+    //     this.requirements
         
-      ).subscribe(
-        {
-          next: async (res) => {
-            await loading.dismiss();
-            const alert = await this.alert.create({
-              header: 'Upload Berhasil',
-              buttons: ['OK'],
-              message:res.message
-            });
-            await alert.present();
+    //   ).subscribe(
+    //     {
+    //       next: async (res) => {
+    //         await loading.dismiss();
+    //         const alert = await this.alert.create({
+    //           header: 'Upload Berhasil',
+    //           buttons: ['OK'],
+    //           message:res.message
+    //         });
+    //         await alert.present();
             
             
-          },
-          error: async (res) => {
-              await loading.dismiss();
-              const alert = await this.alert.create({
-              header: 'Upload Gagal',
-              message: res.message,
-              buttons: ['OK'],
+    //       },
+    //       error: async (res) => {
+    //           await loading.dismiss();
+    //           const alert = await this.alert.create({
+    //           header: 'Upload Gagal',
+    //           message: res.message,
+    //           buttons: ['OK'],
               
-              });
-              await alert.present();
-          }
-        }
-      )
+    //           });
+    //           await alert.present();
+    //       }
+    //     }
+    //   )
     
       
-    }
+    // }
+    async uploadTabelCourses(){
+      const confirm = await this.alert.create({
+        header: 'Konfirmasi Upload',
+        message: 'Apakah Anda yakin ingin mengirim kursus ini? Detail Kursus yang sudah dikirim tidak dapat diubah',
+        buttons: [
+          {
+            text: 'Batal',
+            role: 'cancel'
+          },
+          {
+            text: 'Upload',
+            handler: async () => {
+              const loading = await this.loading.create();
+              await loading.present();
     
+              this.api.uploadCourse(
+                this.courses.title,
+                this.courses.description,
+                this.price,
+                this.thumbnailVideo,
+                this.videoPreview,
+                this.category_id,
+                this.level,
+                this.requirements
+              ).subscribe({
+                next: async (res) => {
+                  await loading.dismiss();
+                  const alert = await this.alert.create({
+                    header: 'Upload Berhasil',
+                    buttons: ['OK'],
+                    message: "Kursus Berhasil dibuat"
+                  });
+                  await alert.present();
+                },
+                error: async (res) => {
+                  await loading.dismiss();
+                  const alert = await this.alert.create({
+                    header: 'Upload Gagal',
+                    message: res.message,
+                    buttons: ['OK']
+                  });
+                  await alert.present();
+                }
+              });
+            }
+          }
+        ]
+      });
+      await confirm.present();
+      this.route.navigate(["/main"]);
+    }
 
     kirim(){
     
@@ -141,5 +193,7 @@
         this.uploadTabelCourses();
       
     }
-
+    kembali(){
+      this.route.navigate(["/main"])
+    }
   }

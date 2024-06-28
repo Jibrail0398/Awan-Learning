@@ -1,4 +1,6 @@
 ion-content{
+    
+    height: 900px;
     ion-toolbar{
         ion-icon{
             margin-right: 10px;
@@ -15,6 +17,7 @@ ion-content{
     }
 
     .container-text{
+        
         margin-left: clamp(20px,5vw,40px);
         
         
@@ -63,24 +66,21 @@ ion-content{
             font-size: clamp(1rem,5vw,3rem);
         }
 
-        .kurikulum{
+        .Konten{
             h1{
                 font-size: clamp(2rem,7vw,4rem);
                 margin-bottom: 0;
             }
             
         }
-        .container-button{
-            width: 90%;
-            display: flex;
-            justify-content: center;
-
-            ion-button{
-                width: 50%;
-                --padding-bottom:5px;
-            }
-        }
+        
     }
+
+    ion-button{
+        --background:linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+        color: black;
+    }
+    
 
 }
 

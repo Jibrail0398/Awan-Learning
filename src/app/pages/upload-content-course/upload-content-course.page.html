@@ -6,7 +6,7 @@
     <ion-card>
       <ion-card-header>
         <div class="title">
-          <ion-card-title>Bab {{i+1}}</ion-card-title>
+          <ion-card-title>Detail Bab</ion-card-title>
           <span><ion-icon name="trash-outline" (click)="removeInput(i)" color="danger"></ion-icon></span>
         </div>
         <h1>Judul Bab</h1>
@@ -55,7 +55,8 @@
   </div>
   
   <div class="container">
-    <ion-button (click)="kirim()">Kirim</ion-button>
+    <ion-button (click)="kirim()" class="send" >Kirim</ion-button>
+    <ion-button (click)="kembali()" class="back"  >Kembali</ion-button>
   </div> 
   
   

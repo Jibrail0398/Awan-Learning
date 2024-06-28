@@ -1,0 +1,37 @@
+<ion-modal [isOpen]="isOpen" [backdropDismiss]="false" >
+
+  <ng-template>
+
+    
+    <ion-content>
+
+      <h1>Ubah Isian Bab</h1>
+      <h1 class="label">Judul Bab</h1>
+      <div class="input-container">
+        <ion-input  labelPlacement="floating"  label="Judul" [(ngModel)]="title" ></ion-input>
+      </div>
+      <h1 class="label">Deskripsi Bab</h1>
+      <div class="input-container">
+        <ion-input labelPlacement="floating" style="--padding-start:5px;"  fill="outline" [(ngModel)]="description" label="Deskripsi"></ion-input>
+      </div>
+
+      <h1 class="label">Video</h1>
+      <div class="input-container">
+        <input type="file" (change)="onVideoSelected($event)" accept="video/*">
+        
+      </div>
+    </ion-content>
+
+    <ion-footer>
+      <ion-button slot="end" class="cancel" (click)="cancel()" >
+        Batal
+      </ion-button>
+      <ion-button slot="end" class="confirm" (click)="ubah()" >
+        Ubah
+      </ion-button>
+
+    </ion-footer>
+  </ng-template>
+
+  
+</ion-modal>

@@ -3,6 +3,7 @@ import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/api/api.service';
 import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload-content-course',
@@ -14,7 +15,7 @@ export class UploadContentCoursePage implements OnInit {
    
   selectedVideoName: string[] = [];
 
-  id: number = 2;
+  id: any = localStorage.getItem("data");
   inputs: { title: string; description: string; video: File | null }[] = [{
     
     title: '',
@@ -27,7 +28,8 @@ export class UploadContentCoursePage implements OnInit {
   constructor(
     private api: ApiService,
     private alert: AlertController,
-    private loading: LoadingController
+    private loading: LoadingController,
+    private route:Router
   ) {}
 
   ngOnInit() {
@@ -53,11 +55,11 @@ export class UploadContentCoursePage implements OnInit {
     this.selectedVideoName.splice(index, 1);
   }
 
-  async uploadAllContents(){
+  async uploadAllContents(id:any){
     const loading = await this.loading.create();
     await loading.present();  
     this.inputs.forEach(input => {
-      this.api.uploadCourseContent(this.id, input.title, input.description, input.video)
+      this.api.uploadCourseContent(id, input.title, input.description, input.video)
         .subscribe(
           {
             next: async (res) => {
@@ -80,18 +82,25 @@ export class UploadContentCoursePage implements OnInit {
                 await alert.present();
             }
           }
+          
         );
+
+    
     });
+    
   }
 
   kirim() {
     
     
-    this.uploadAllContents();
+    this.uploadAllContents(this.id);
+    this.route.navigate(["/main"]);
     
     
     
   }
-
+  kembali(){
+    this.route.navigate(["/main"]);
+  }
 
 }

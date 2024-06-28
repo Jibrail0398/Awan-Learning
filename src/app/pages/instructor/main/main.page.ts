@@ -1,109 +1,21 @@
-// // import { Component, OnInit } from '@angular/core';
-// // import { Router } from '@angular/router';
-
-// // @Component({
-// //   selector: 'app-main',
-// //   templateUrl: './main.page.html',
-// //   styleUrls: ['./main.page.scss'],
-// // })
-// // export class MainPage implements OnInit {
-
-// //   constructor(
-// //     private route:Router,
-// //   ) { }
-
-// //   ngOnInit() {
-// //   }
-// //   toUpload(){
-// //     this.route.navigate(['/upload-content'])
-// //   }
-
-  
-
-// // }
-
-// import { Component, OnInit } from '@angular/core';
-// import { Router } from '@angular/router';
-
-// interface Course {
-//   title: string;
-//   category: string;
-//   description: string;
-// }
-
-// @Component({
-//   selector: 'app-main',
-//   templateUrl: './main.page.html',
-//   styleUrls: ['./main.page.scss'],
-// })
-// export class MainPage implements OnInit {
-//   isSearchInput = false;
-//   isSearchFocused = false;
-//   course: Course[] = [
-//     {
-//       title: "Python Course",
-//       category: "IT",
-//       description: "Python course for Beginner"
-//     },
-//     {
-//       title: "English Course",
-//       category: "Language",
-//       description: "English course for Beginner"
-//     },
-//     {
-//       title: "Electronics Course",
-//       category: "Electronics and electrical",
-//       description: "Electronics course for Beginner"
-//     },
-//     {
-//       title: "Physics Course",
-//       category: "Physics",
-//       description: "Physics course for Beginner"
-//     },
-//     {
-//       title: "Astronomy Course",
-//       category: "Astronomy",
-//       description: "Astronomy course for Beginner"
-//     },
-//     {
-//       title: "Math Course",
-//       category: "Math",
-//       description: "Math course for Beginner"
-//     },
-//   ];
-//   filteredItems: Course[] = this.course;
-
-//   constructor(
-//     private router: Router,
-//   ) { }
-
-//   ngOnInit() {
-//   }
-
-//   toUpload() {
-//     this.router.navigate(['/upload-content']);
-//   }
-
-//   filterItems(event: any) {
-//     this.isSearchInput = true;
-//     const query = event.target.value.toLowerCase();
-//     this.filteredItems = this.course.filter(item => item.title.toLowerCase().includes(query));
-//     console.log(this.filteredItems);
-//   }
-
-//   onBlur() {
-//     this.isSearchInput = false;
-//     this.isSearchFocused = false;
-//   }
-// }
-
+import { TeacherService } from 'src/app/api/teacher.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/api/auth.service';
 
-interface Course {
+
+interface Courses {
+  id: number;
   title: string;
-  category: string;
   description: string;
+  image: string;
+  pre_vidio: string;
+  instructor_id: number;
+  price: number;
+  level_id: number;
+  status: string;
+  created_at: Date;
+  updated_at: Date;
 }
 
 @Component({
@@ -112,38 +24,64 @@ interface Course {
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit {
-  isSearchInput = true; // Set ini ke true untuk debug awal
-  isSearchFocused = false;
-  course: Course[] = [
-    { title: "Python Course", category: "IT", description: "Python course for Beginner" },
-    { title: "English Course", category: "Language", description: "English course for Beginner" },
-    { title: "Electronics Course", category: "Electronics and electrical", description: "Electronics course for Beginner" },
-    { title: "Physics Course", category: "Physics", description: "Physics course for Beginner" },
-    { title: "Astronomy Course", category: "Astronomy", description: "Astronomy course for Beginner" },
-    { title: "Math Course", category: "Math", description: "Math course for Beginner" }
-  ];
-  filteredItems: Course[] = this.course;
 
-  constructor(private router: Router) {}
+  course:Courses[] = [];
+  
+  constructor(
+    private router: Router,
+    private teacher:TeacherService,
+    private auth:AuthService
+  ) {}
 
   ngOnInit() {
-    console.log('ngOnInit called');
-    console.log('initial filteredItems:', this.filteredItems);
+    this.getCourseUploaded();
   }
+  sub = this.auth.getSub();
 
   toUpload() {
     this.router.navigate(['/upload-content']);
   }
 
-  filterItems(event: any) {
-    this.isSearchInput = true;
-    const query = event.target.value.toLowerCase();
-    this.filteredItems = this.course.filter(item => item.title.toLowerCase().includes(query));
-    console.log('filteredItems after filter:', this.filteredItems);
+  getCourseUploaded(){
+    this.teacher.getCourseUploaded(this.sub).subscribe((res:any)=>{
+      this.course = Object.values(res.courses).map((course: any) => ({
+        id: course.id,
+        title: course.title,
+        description: course.description,
+        image: "https://awan.ylladev.my.id/storage/" + course.image,
+        pre_vidio: course.pre_vidio,
+        instructor_id: course.instructor_id,
+        price: course.price,
+        level_id: course.level_id,
+        status: course.status,
+        created_at: new Date(course.created_at),
+        updated_at: new Date(course.updated_at)
+      }));
+      
+      
+
+    });
+   
+
+  }
+  getStatusText(status: string): string {
+    switch (status) {
+      case 'confirm':
+        return 'Telah disetujui';
+      case 'not_confirm':
+        return 'Belum disetujui';
+      default:
+        return 'Unknown status';
+    }
   }
 
-  onBlur() {
-    this.isSearchInput = false;
-    this.isSearchFocused = false;
+  toContentCourse(id:any){
+    this.router.navigate(["/update-content"]);
+    localStorage.setItem("data",id);
   }
+  toUploadContentCourse(id:any){
+    this.router.navigate(["/upload-content-course"]);
+    localStorage.setItem("data",id);
+  }
+ 
 }
