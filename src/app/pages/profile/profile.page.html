@@ -1,0 +1,133 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ramaraja&display=swap" rel="stylesheet">
+
+<ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profil Instruktor</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-title>Data Diri</ion-title>
+  </ion-toolbar>
+
+      <div class="avatar-container">
+        <img src="/assets/img/user.png" alt="Foto Profil">
+        
+      </div>
+    
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked" >Nama Lengkap</ion-label>
+          <ion-input type="text"  readonly value="{{ name }}"  placeholder="Nama Lengkap"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item style="width: 100%;" >
+          <ion-label  position="stacked">Nomor Handphone  </ion-label>
+          <p style="display: inline;font-size: 0.7rem;margin: 3px 0 0 0;" >Harus terdaftar di E-wallet</p>
+          <ion-input type="tel"  [(ngModel)]="phone" placeholder="contoh:085812344321"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" readonly value="{{ email }}" placeholder="Email"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label>Jenis Kelamin</ion-label>
+        </ion-item>
+
+        <ion-radio-group [(ngModel)]="gender" style="display: flex; flex-direction: row; align-items: center;">
+          <ion-item style="flex: 1;">
+            <ion-label style="font-size: 20px;">Laki - Laki</ion-label>
+            <ion-radio slot="start" value="male"></ion-radio>
+          </ion-item>
+          
+          <ion-item style="flex: 1;">
+            <ion-label style="font-size: 20px;">Perempuan</ion-label>
+            <ion-radio slot="start" value="female"></ion-radio>
+          </ion-item>
+        </ion-radio-group>        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+
+  <ion-toolbar>
+    <ion-title>Alamat Domisili</ion-title>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Provinsi</ion-label>
+          <ion-input  [(ngModel)]="state" type="text" placeholder="Nama Provinsi"></ion-input>
+          
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Kabupaten/Kota</ion-label>
+          <ion-input type="text" [(ngModel)]="city" placeholder="Nama Kota"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Kode Pos</ion-label>
+          <ion-input type="text" [(ngModel)]="zipcode" placeholder="Kode Pos"></ion-input>
+          
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="stacked">Alamat Tempat Tinggal</ion-label>
+          <ion-textarea [(ngModel)]="address" placeholder="Alamat Tempat Tinggal"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <div *ngIf="profile==='error'" >
+          <ion-button  expand="block" (click)="simpanProfile()"  style="margin-top: 20px;">
+            Simpan Profile
+          </ion-button>
+        </div>
+        <div *ngIf="profile!=='error'" >
+          <ion-button  expand="block" (click)="ubahProfile()"  style="margin-top: 20px;">
+            Ubah Profile
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

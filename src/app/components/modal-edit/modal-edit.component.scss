@@ -1,0 +1,57 @@
+
+
+ion-content{
+    color: black;
+    h1{
+        margin-bottom: 20px;
+        font-size: 2rem;
+    }
+    .input-container{
+        margin: 20px;
+        border: 1px solid black;
+    }
+
+    .custom-file-input{
+
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        border-radius: 10px;
+        box-sizing: border-box;
+        width: 90%;
+        margin-bottom: 20px;
+
+        .file-display{
+          border: 1px solid black;
+          text-align: center;
+          font-weight: 200;
+          padding: clamp(1px,5vw,5px);
+          font-size:clamp(0.5rem,3vw,1.5rem);
+          width: 100%;
+          color: black;
+        }
+        .file-button{
+          color: black;
+        }
+      }
+    .label{
+        font-size: 1rem;
+        font-weight: 600;
+    }
+}
+
+ion-footer{
+
+    display: flex;
+    justify-content: space-between;
+    .confirm{
+        --background:linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+    }
+    .cancel{
+        --background: linear-gradient(-148.622deg, rgba(255, 93, 93, 90%) 0%, rgba(255, 184, 184, 90%) 48%, rgba(255, 70, 70, 90%) 100%);
+    }
+    .confirm, .cancel{
+        color: black;
+        width: 50%;
+    }
+}

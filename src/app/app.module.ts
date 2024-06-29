@@ -7,8 +7,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { SharedModuleModule  } from './components/module/shared-module/shared-module.module';
+import { SharedModuleModule  } from './components/module/shared-module/shared-module.module'; //Wajib ketika ingin menggunakan components di banyak halaman
 import { HttpClientModule } from '@angular/common/http';  //Wajib import ketika menggunakan service API, Jika tidak halaman yang diinject akan kosong
+
 
 
 

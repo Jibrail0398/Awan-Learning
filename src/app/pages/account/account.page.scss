@@ -13,6 +13,12 @@ ion-content{
           color: #2300B7;
           font-size: 1rem;
         }
+        h1{
+          font-family: "Ramaraja", serif;
+          font-size: clamp(2rem,5vw,3rem);
+          margin-left: 30px;
+        
+        }
       }
       
       .container-profile{
@@ -44,16 +50,26 @@ ion-content{
       }
       .instruktur{
         margin-top: 50px;
-        font-size: clamp(0.6rem,5vw,1.5rem);
+        font-size: clamp(1rem,5vw,2rem);
         font-weight: 700;
         color: #2300B7;
       }
 
     }
-    // ion-accordion-group{
-
-    // }
+    ion-label{
+      font-size: clamp(1rem,5vw,2rem);
+    }
+    .logout{
+      text-align: center;
+      font-size: clamp(1rem,5vw,2rem);
+      font-weight: 700;
+      color: #2300B7;
+    }
   
+  }
+
+  a{
+    text-decoration: none;
   }
   
   .ion-content-scroll-host {

@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
+
   <ion-content [fullscreen]="true" keyboard-events="true" keyboardVerticalOffset="60">
 
 
@@ -59,7 +60,7 @@
         <div *ngIf="emailInput.errors?.['email']" style="color: red; margin-top: 20px;">
           Format email tidak valid
         </div>
-      </div>
+      </div> 
       </div>
     </div>  
 
@@ -96,7 +97,7 @@
       <ion-button (click) = "onClick()" [disabled]="emailInput?.invalid || name?.invalid" >Sign Up</ion-button>
       <p>Sudah Mempunyai akun? 
         <a>
-          <span routerLink="/sign-in">Sign In disini</span>
+          <span routerLink="/sign-in">Sign In disini</span> 
         </a>
       </p>
     </div>  

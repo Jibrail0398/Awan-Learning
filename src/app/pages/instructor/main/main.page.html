@@ -1,0 +1,52 @@
+<ion-content [fullscreen]="true">
+  <div class="circle"></div>
+
+  
+
+  <div *ngIf="!course.length" >
+    <div class="rectangle">
+      <img src="/assets/img/8262271.jpg" alt="">
+      <ion-button (click)="toUpload()">Buat Kursus Anda</ion-button>
+    </div>
+  </div>
+
+  
+  <div *ngIf="course.length">
+    <a routerLink="/upload-content">
+
+      <ion-button>Upload Kursus Baru</ion-button>
+    </a>
+    <ion-card *ngFor="let listcourse of course" >
+      <ion-card-content>
+        <img alt="Silhouette of mountains" src={{listcourse.image}} />
+        <ion-list lines="none">
+          <ion-item>
+            <div class="item-header">
+              
+              <div class="title">
+                {{ listcourse.title }}
+              </div>
+              <div class="icons">
+                <ion-icon name="add-circle-outline" (click)="toUploadContentCourse(listcourse.id)" ></ion-icon>
+                <ion-icon name="pencil-outline" (click)="toContentCourse(listcourse.id,listcourse.status)"></ion-icon>
+              </div>
+            </div>
+          </ion-item>
+
+          <div class="container-description">
+            
+            <p>{{ listcourse.description }}</p>
+            <p [ngClass]="{'confirm': listcourse.status !== 'not_confirm', 'notconfirm': listcourse.status === 'not_confirm'}" > Status: {{ getStatusText(listcourse.status) }}</p>
+
+          </div>
+        </ion-list>
+
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <app-teacher-footer-nav></app-teacher-footer-nav>
+</ion-footer>

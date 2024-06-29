@@ -1,0 +1,63 @@
+<ion-content [fullscreen]="true">
+  <div class="circle">
+    <!-- <ion-back-button default-href="/"></ion-back-button> -->
+  </div>
+  <div *ngFor="let input of inputs; let i = index">
+    <ion-card>
+      <ion-card-header>
+        <div class="title">
+          <ion-card-title>Detail Bab</ion-card-title>
+          <span><ion-icon name="trash-outline" (click)="removeInput(i)" color="danger"></ion-icon></span>
+        </div>
+        <h1>Judul Bab</h1>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating" color="none">Masukkan Judul Bab</ion-label>
+          <ion-input [(ngModel)]="input.title" class="ion-valid" fill="outline"></ion-input>
+        </ion-item>
+      </ion-card-content>
+  
+      <ion-card-header>
+        <h1>Deskripsi Bab</h1>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-item>
+          <ion-label color="none" position="floating">Masukkan Deskripsi Bab</ion-label>
+          <ion-input [(ngModel)]="input.description" fill="outline"></ion-input>
+        </ion-item>
+      </ion-card-content>
+  
+      <ion-card-header>
+        <ion-card-title>Video</ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <div class="custom-file-input">
+          <div class="file-display">
+            <span>{{ selectedVideoName[i] || 'Tidak ada File yang dipilih' }}</span>
+          </div>
+          <div class="container-file-button">
+            <label class="file-button">
+              <input type="file" (change)="onVideoSelected($event, i)" accept="video/*" />
+              Unggah File
+            </label>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="iconadd" (click)="addInput()">
+    <ion-icon name="add-outline"></ion-icon>
+    <h1>Tambah Bab</h1>
+  </div>
+  
+  <div class="container">
+    <ion-button (click)="kirim()" class="send" >Kirim</ion-button>
+    <ion-button (click)="kembali()" class="back"  >Kembali</ion-button>
+  </div> 
+  
+  
+</ion-content>

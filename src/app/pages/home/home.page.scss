@@ -56,8 +56,9 @@ ion-content{
       height: clamp(30%, 30vw, 50%);
       .mulaiBelajar{
         display: block;
-        margin-left: 30px;
+        margin-left: 10%;
         margin-top: 10px;
+        font-size: clamp(35px,5vw,70px);
         
         h1{
           font-size: clamp(0.5rem, 5vw, 3rem);
@@ -83,7 +84,6 @@ ion-content{
       ion-row{
         gap: 0;
 
-        
       }
     }
     .judulSlide{
@@ -107,6 +107,7 @@ ion-content{
       overflow: hidden;
       text-overflow: ellipsis;
     }
+  
 }
 
 

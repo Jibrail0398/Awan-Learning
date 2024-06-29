@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController,LoadingController } from '@ionic/angular';
 import { Location } from '@angular/common';
-import { ApiService } from 'src/app/api/api.service';
+import { AuthService } from 'src/app/api/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 
 
 
@@ -42,7 +42,7 @@ export class SignUpPage implements OnInit {
     private loadingController:LoadingController,
     private router:Router,
     private http: HttpClient,
-    private api:ApiService,
+    private auth:AuthService,
     private location:Location
     
   ) { }
@@ -63,7 +63,7 @@ export class SignUpPage implements OnInit {
         cssClass:"custom-alert"
       });
 
-      console.log(this.form)
+      
 
       await alert.present();
     }else if(this.form.password ==="" || this.form.passwordConfirm === ""){
@@ -88,10 +88,10 @@ export class SignUpPage implements OnInit {
       email:this.form.email,
       password:this.form.passwordConfirm,
     }
-    console.log(formSubmit);
+    
     const loading = await this.loadingController.create();
     await loading.present();
-    this.api.onRegister(formSubmit).subscribe(
+    this.auth.onRegister(formSubmit).subscribe(
       {
         next:async(res)=>{
           await loading.dismiss();
@@ -108,7 +108,7 @@ export class SignUpPage implements OnInit {
           const alert = await this.alertController.create({
           header: 'Registrasi Gagal',
           buttons: ['OK'],
-          message:res.error.message
+          message:res.email
         });
           await alert.present();
         }

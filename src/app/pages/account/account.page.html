@@ -10,36 +10,40 @@
   </div>
   
   <div class="container-profile">
-    <img src="/assets/img/user.jpg" alt="Foto User">
-    <h1>Jibrail Adji</h1>
+    <img src="/assets/img/user.png" alt="Foto User">
+    <h1>{{ name }}</h1>
     <div class="akun">
       <i class="fa-brands fa-google"></i>
-      <p>jibrail&#64;yahoo.com</p>
+      <p>{{ email }}</p>
     </div>
-    <p class="instruktur" >Menjadi Instruktur</p>
+    <p class="instruktur" (click)="toInstructor()" >Menjadi Instruktur</p>
   </div>
 
-  <ion-accordion-group >
-    <ion-accordion value="first">
-      <ion-item slot="header" color="none" >
-        <ion-label>First Accordion</ion-label>
+  <ion-list>
+    <a routerLink="/profile-peserta" >
+      <ion-item>
+        <ion-label>Ubah Profile</ion-label>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
       </ion-item>
-      <div class="ion-padding" slot="content">First Content</div>
-    </ion-accordion>
-    <ion-accordion value="second">
-      <ion-item slot="header" color="none">
-        <ion-label>Second Accordion</ion-label>
+    </a>
+    <a routerLink="/keamanan-akun"  >
+      <ion-item>
+        <ion-label>Keamanan Akun</ion-label>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
       </ion-item>
-      <div class="ion-padding" slot="content">Second Content</div>
-    </ion-accordion>
-    <ion-accordion value="third">
-      <ion-item slot="header" color="none">
-        <ion-label>Third Accordion</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">Third Content</div>
-    </ion-accordion>
-  </ion-accordion-group>
+    </a>
+    <a routerLink="/tentang-awan">
 
+      <ion-item>
+        <ion-label>Tentang Awan</ion-label>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+    </a>
+  </ion-list>
+
+  <div class="logout">
+    <h1 (click)="logout()" >Logout</h1>
+  </div>
 </ion-content>
 
 

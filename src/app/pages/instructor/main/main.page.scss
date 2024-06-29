@@ -1,0 +1,111 @@
+ion-content{
+    a{
+        ion-button{
+            --background:linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+            color: black;
+            margin-bottom: 30px;
+        }
+
+    }
+    ion-card{
+        img{
+            max-width: 20%;
+        }
+        ion-card-content{
+            display: flex;
+            ion-list{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                ion-item{
+                    
+                    font-size: clamp(0.7rem,5vw,2rem);
+                }
+                p{
+                    margin-left: 18px;
+                    font-size: clamp(0.3rem,5vw,1.2rem);
+                    
+                }
+            }
+        }
+    }
+
+    ion-list{
+        width: 100%;
+    }
+
+   .item-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+   }
+      
+    
+
+    height: 400px;
+    .circle{
+        background-color: #75A6F0;
+        height: 100px;
+        width: 100%;
+        margin:0 0 clamp(20px,5vw,60px) 0;
+        border-radius: 0 0 50% 50% / 0 0 100% 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .rectangle{
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 90%;
+        background: white;
+        border-radius: 30px;
+        
+        img{
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+
+       ion-button{
+            --color:#006DFF;
+            --margin-top: 20px;
+            --border-radius:50px;
+            --background:white;
+            margin-top: 40px;
+            width: 70%;
+        }
+        
+    }
+    ion-card{
+        img{
+            height: auto;
+            width: auto;
+            object-fit: contain;
+        }
+    }
+    .container-description{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: black;
+
+        display: flex;
+        flex-direction: column;
+        
+        
+
+        .confirm{
+            color: rgb(92, 213, 64);
+            align-self: flex-end;
+            
+        }
+        .notconfirm{
+            color: red;
+            align-self: flex-end;
+            
+        }
+    }
+}

@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true">
+
+  <div class="circle">
+    
+  </div>
+
+
+  <ion-card *ngFor="let content of contents;let i = index">
+    <ion-card-content>
+      
+      <ion-list lines="none">
+        <div class="icons">
+          <h1>Bab {{ i+1 }}</h1>
+          <ion-icon name="pencil-outline" size="large" (click)="modals.open(content.id)" >
+            <app-modal-edit #modals ></app-modal-edit>
+          </ion-icon>
+        </div>
+        
+        <ion-item>
+          <div class="item-header">
+            
+            <div class="title">
+              {{ content.title }}
+            </div>
+          </div>
+        </ion-item>
+        <p>{{ content.category }}</p>
+        <p>{{ content.description }}</p>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  
+
+  <div class="container-button">
+    <ion-button fill="outline" (click)="back()" >Kembali</ion-button>
+  </div>
+
+
+</ion-content>

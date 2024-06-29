@@ -41,7 +41,8 @@ const routes: Routes = [
   {
     path: 'tutorial',
     loadChildren: () => import('./pages/tutorial/tutorial.module').then( m => m.TutorialPageModule)
-  },  {
+  },
+  {
     path: 'intro',
     loadChildren: () => import('./pages/instructor/intro/intro.module').then( m => m.IntroPageModule)
   },
@@ -53,6 +54,52 @@ const routes: Routes = [
     path: 'content-course',
     loadChildren: () => import('./pages/content-course/content-course.module').then( m => m.ContentCoursePageModule)
   },
+  {
+    path: 'main',
+    loadChildren: () => import('./pages/instructor/main/main.module').then( m => m.MainPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./pages/instructor/notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'teacher-account',
+    loadChildren: () => import('./pages/instructor/teacher-account/teacher-account.module').then( m => m.TeacherAccountPageModule)
+  },
+  {
+    path: 'upload-content',
+    loadChildren: () => import('./pages/instructor/upload-content/upload-content.module').then( m => m.UploadContentPageModule)
+  },  {
+    path: 'upload-content-course',
+    loadChildren: () => import('./pages/upload-content-course/upload-content-course.module').then( m => m.UploadContentCoursePageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'tentang-awan',
+    loadChildren: () => import('./pages/tentang-awan/tentang-awan.module').then( m => m.TentangAwanPageModule)
+  },
+  {
+    path: 'update-content',
+    loadChildren: () => import('./pages/update-content/update-content.module').then( m => m.UpdateContentPageModule)
+  },
+  {
+    path: 'keamanan-akun',
+    loadChildren: () => import('./pages/keamanan-akun/keamanan-akun.module').then( m => m.KeamananAkunPageModule)
+  },
+  {
+    path: 'profile-peserta',
+    loadChildren: () => import('./pages/profile-peserta/profile-peserta.module').then( m => m.ProfilePesertaPageModule)
+  },
+
+  
+
+
+  
+
+ 
 
 ];
 

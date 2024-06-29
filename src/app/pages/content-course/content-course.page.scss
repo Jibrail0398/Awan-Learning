@@ -19,9 +19,17 @@ ion-content{
         .next-button, .prev-button {
             background-color: #fff;
             border: 1px solid #000;
-            padding: 5px 10px;
+            padding: clamp(5px,5vw,25px) clamp(10px,5vw,50px);
             margin: 5px;
+            font-size: clamp(0.5rem,5vw,2.5rem);
         }
+    }
+    .judul{
+        color: #000;
+        font-weight: 700;
+    }
+    .active{
+        background-color: #e9e7e7;
     }
 
 }

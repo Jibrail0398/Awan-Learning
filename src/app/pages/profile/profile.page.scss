@@ -1,0 +1,54 @@
+ion-content{
+  ion-button{
+    --background:linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+    color: black;
+  }
+  .ion-valid{
+    --highlight-color-valid: #124CFF;
+  }
+    ion-back-button{
+        --color: #124CFF;
+    }
+    ion-title{
+        font-family: "Ramaraja", serif;
+        font-size: 24px;
+        margin-top: 10px;
+        color: #000;
+    }
+    ion-label , ion-select, ion-select-option, ion-textarea, ion-input {
+      font-family: 'Ramaraja', sans-serif; 
+      
+    }
+    ion-label {
+      font-size: 30px; 
+    }
+    ion-input, ion-select {
+      font-size: 14px;
+      
+    }
+    ion-textarea {
+       font-size: 14px; 
+       
+    }
+
+    
+    .avatar-container {
+      width: 150px; 
+      height: 150px; 
+      overflow: hidden; 
+      margin: 20px auto; 
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%; 
+    }
+    .avatar-container img {
+      width: auto;
+      height: 100%;
+      object-fit: cover; 
+      border-radius: 50%; 
+    }
+
+    
+}

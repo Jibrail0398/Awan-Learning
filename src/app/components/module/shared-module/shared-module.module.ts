@@ -6,21 +6,23 @@ import { FullButtonComponent } from 'src/app/components/full-button/full-button.
 
 import { IonicModule } from '@ionic/angular';
 import { InputPasswordToogleComponent } from '../../input-password-toogle/input-password-toogle.component';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormsModule, NgSelectOption } from '@angular/forms';
+import { RouterModule } from '@angular/router'; //Wajib ketika ingin menggunakan komponen yang memanfaatkan properti routerLink
 import { FooterNavComponent } from '../../footer-nav/footer-nav.component';
-
+import { TeacherFooterNavComponent } from '../../teacher-footer-nav/teacher-footer-nav.component';
 
 
 
 @NgModule({
-  declarations: [FullButtonComponent,InputPasswordToogleComponent,FooterNavComponent],
+  declarations: [FullButtonComponent,InputPasswordToogleComponent,FooterNavComponent,TeacherFooterNavComponent],
   imports: [
     CommonModule,
     IonicModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    
+    
   ],
-  exports:[FullButtonComponent,InputPasswordToogleComponent,FooterNavComponent]
+  exports:[FullButtonComponent,InputPasswordToogleComponent,FooterNavComponent,TeacherFooterNavComponent]
 })
 export class SharedModuleModule { }
