@@ -60,10 +60,16 @@ export class SignInPage implements OnInit {
             buttons: ['OK'],
           });
           await alert.present();
-          // this.storage.saveData('token',res.token)
+          localStorage.clear();
           localStorage.setItem('token',res.token);
           localStorage.setItem('sub',res.sub);
+          localStorage.setItem('name',res.name);
+          localStorage.setItem('email',res.email);
           this.navCtrl.navigateRoot('/home');
+
+          await alert.onDidDismiss(); 
+          await this.navCtrl.navigateRoot('/home', { replaceUrl: true });
+          window.location.reload();
           
         },
         error: async (res) => {
@@ -78,9 +84,7 @@ export class SignInPage implements OnInit {
         }
       }
 
-    )
-    
-    
+    )  
 
   }
 }

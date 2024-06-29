@@ -89,50 +89,7 @@
     removerequirement(index: number) {
       this.requirements.splice(index, 1);
     }
-    // async uploadTabelCourses(){
-      
-    //   const loading = await this.loading.create();
-    //   await loading.present();
-      
-
-    //   this.api.uploadCourse(
-    //     this.courses.title,
-    //     this.courses.description,
-    //     this.price,
-    //     this.thumbnailVideo,
-    //     this.videoPreview,
-    //     this.category_id,
-    //     this.level,
-    //     this.requirements
-        
-    //   ).subscribe(
-    //     {
-    //       next: async (res) => {
-    //         await loading.dismiss();
-    //         const alert = await this.alert.create({
-    //           header: 'Upload Berhasil',
-    //           buttons: ['OK'],
-    //           message:res.message
-    //         });
-    //         await alert.present();
-            
-            
-    //       },
-    //       error: async (res) => {
-    //           await loading.dismiss();
-    //           const alert = await this.alert.create({
-    //           header: 'Upload Gagal',
-    //           message: res.message,
-    //           buttons: ['OK'],
-              
-    //           });
-    //           await alert.present();
-    //       }
-    //     }
-    //   )
     
-      
-    // }
     async uploadTabelCourses(){
       const confirm = await this.alert.create({
         header: 'Konfirmasi Upload',

@@ -29,13 +29,14 @@ export class UpdateContentPage implements OnInit {
 
     this.teacher.getContentCourse(courseID).subscribe((res:any)=>{
       this.contents=res;
-      console.log(this.contents);
+      
     });
-    console.log(courseID);
+    
 
   }
   back(){
-    localStorage.removeItem('data');  
+    localStorage.removeItem('data');
+    localStorage.removeItem('status');  
     this.navCtrl.navigateRoot('/main');
 
   }

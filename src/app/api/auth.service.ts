@@ -32,7 +32,6 @@ export class AuthService {
   getSub():any{
     return this.sub;
   }
-
   
-
+ 
 }

@@ -1,4 +1,12 @@
 ion-content{
+  .ion-valid{
+    
+    --highlight-color-valid: #124cff;
+  }
+  ion-button{
+    --background:linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+    color: black;
+  }
     ion-back-button{
         --color: #124CFF;
     }

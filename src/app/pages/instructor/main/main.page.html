@@ -2,9 +2,8 @@
   <div class="circle"></div>
 
   
-  
 
-  <div *ngIf="course===undefined" >
+  <div *ngIf="!course.length" >
     <div class="rectangle">
       <img src="/assets/img/8262271.jpg" alt="">
       <ion-button (click)="toUpload()">Buat Kursus Anda</ion-button>
@@ -12,7 +11,7 @@
   </div>
 
   
-  <div *ngIf="course!== undefined">
+  <div *ngIf="course.length">
     <a routerLink="/upload-content">
 
       <ion-button>Upload Kursus Baru</ion-button>
@@ -29,7 +28,7 @@
               </div>
               <div class="icons">
                 <ion-icon name="add-circle-outline" (click)="toUploadContentCourse(listcourse.id)" ></ion-icon>
-                <ion-icon name="pencil-outline" (click)="toContentCourse(listcourse.id)"></ion-icon>
+                <ion-icon name="pencil-outline" (click)="toContentCourse(listcourse.id,listcourse.status)"></ion-icon>
               </div>
             </div>
           </ion-item>

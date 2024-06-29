@@ -14,6 +14,12 @@ export class TeacherAccountPage implements OnInit {
 
   ngOnInit() {
   }
+  myname = localStorage.getItem("name");
+  email = localStorage.getItem('email');
+  
+  toProfile(){
+    this.route.navigate(['/profile']);
+  }
 
   toStudent(){
     this.route.navigate(['/home']);

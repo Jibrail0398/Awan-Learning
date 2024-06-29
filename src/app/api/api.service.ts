@@ -1,6 +1,5 @@
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { StorageService } from './storage.service';
 import { environment } from 'src/environments/environment';
@@ -47,7 +46,7 @@ export class ApiService {
   ){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`
-  });
+    });
 
   const formData = new FormData();
   formData.append('title', title);
@@ -99,7 +98,6 @@ export class ApiService {
 
   }
  
- 
   //Categories
   getCategory(){
     const headers = new HttpHeaders().set(
@@ -120,6 +118,65 @@ export class ApiService {
     const options = { headers: headers };
     return this.http.get(environment.urlDomain+"/courses/"+id, options);
   }
+
+  //Get Profile
+  getProfile(){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.get(environment.urlDomain+"/profile",{headers:headers});
+  }
+
+  makeProfile(
+    phone:string,
+    gender?:string,
+    address?: string,
+    city?:string,
+    state?:string,
+    country?:string,
+    zipcode?:string,
+  ){
+
+    const formData = new FormData();
+    formData.append('phone',phone);
+
+    if(address){
+      formData.append('address',address);
+    }
+    if(gender){
+      formData.append('gender',gender);
+    }
+    if(city){
+      formData.append('city',city);
+    }
+    if(state){  
+      formData.append('state',state);
+    }
+    if(country){
+      formData.append('country',country);
+    }
+    if(zipcode){
+      formData.append('zipcode',zipcode);
+    }
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.post(environment.urlDomain+"/profile",formData,{headers:headers});
+  }
+
+  updateProfile(
+    data:any
+  ){
+    
+    
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.put(environment.urlDomain+"/profile",data,{headers:headers});
+  }
+
+
 
     
 }

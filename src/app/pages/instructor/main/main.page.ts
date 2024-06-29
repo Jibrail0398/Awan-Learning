@@ -2,6 +2,8 @@ import { TeacherService } from 'src/app/api/teacher.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/api/auth.service';
+import { ApiService } from 'src/app/api/api.service';
+import { AlertController } from '@ionic/angular';
 
 
 interface Courses {
@@ -30,16 +32,50 @@ export class MainPage implements OnInit {
   constructor(
     private router: Router,
     private teacher:TeacherService,
-    private auth:AuthService
+    private auth:AuthService,
+    private api:ApiService,
+    private alert:AlertController
   ) {}
 
   ngOnInit() {
     this.getCourseUploaded();
+    this.getProfile();
   }
+ 
   sub = this.auth.getSub();
 
-  toUpload() {
-    this.router.navigate(['/upload-content']);
+  profile:any;
+
+    getProfile() {
+      this.api.getProfile().subscribe({
+        next: (res: any) => {
+          this.profile = res.profile;
+        },
+      error: (err) => {
+        // Menangani error jaringan atau server
+        this.profile = "error";
+        
+      }
+    });
+  }
+
+  async toUpload() {
+    if(this.profile === "error"){
+
+      const alert = await this.alert.create({
+        header: 'Lengkapi profil',
+        buttons: ['OK'],
+        message: "Lengkapi Profil anda terlebih Dahulu"
+      });
+      await alert.present();
+      alert.onDidDismiss().then(() => {
+        this.router.navigate(['/profile']);
+      });
+      
+    }else{
+      console.log(this.profile);
+      this.router.navigate(['/upload-content']);
+    }
   }
 
   getCourseUploaded(){
@@ -59,6 +95,7 @@ export class MainPage implements OnInit {
       }));
       
       
+      
 
     });
    
@@ -75,9 +112,10 @@ export class MainPage implements OnInit {
     }
   }
 
-  toContentCourse(id:any){
+  toContentCourse(id:any,status:any){
     this.router.navigate(["/update-content"]);
     localStorage.setItem("data",id);
+    localStorage.setItem("status",status);
   }
   toUploadContentCourse(id:any){
     this.router.navigate(["/upload-content-course"]);

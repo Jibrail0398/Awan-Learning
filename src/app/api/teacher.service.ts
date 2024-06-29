@@ -31,28 +31,7 @@ export class TeacherService {
     return this.http.get<any>(environment.urlDomain+"/courses/" + id+"/contents" ,{ headers: headers });
   }
 
-  // uploadCourse(
-  //   courseId:any,
-  //   id:any,
-  //   title: string,
-  //   description: string,
-  //   videoURL:File|null,   
-  // ){
-  //   const headers = new HttpHeaders({
-  //     'Authorization': `Bearer ${this.token}`,
-       
-  // });
-
   
-  // return this.http.put<any>(environment.urlDomain + "/courses/"+courseId+"/contents/"+id, 
-  //   {
-  //     "title":title,
-  //     "description":description,
-  //     // "vidioURL":videoURL
-  //   }, 
-    
-  //   { headers: headers });
-  // }
 
   uploadCourse(
     courseId: any,

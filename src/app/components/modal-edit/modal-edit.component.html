@@ -15,10 +15,11 @@
         <ion-input labelPlacement="floating" style="--padding-start:5px;"  fill="outline" [(ngModel)]="description" label="Deskripsi"></ion-input>
       </div>
 
-      <h1 class="label">Video</h1>
-      <div class="input-container">
-        <input type="file" (change)="onVideoSelected($event)" accept="video/*">
-        
+      <div *ngIf="status!=='confirm'" >
+        <h1 class="label">Video</h1>
+        <div class="input-container">
+          <input type="file" (change)="onVideoSelected($event)" accept="video/*">
+        </div>
       </div>
     </ion-content>
 

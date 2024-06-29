@@ -36,7 +36,6 @@ export class DetailCoursePage implements OnInit {
       console.log(this.detailCourse);
       this.vidioDomain = "https://awan.ylladev.my.id/storage/"+res.course.pre_vidio;
       this.imageDomain = "https://awan.ylladev.my.id/storage/"+res.course.image;
-      // this.price = res.course.price;
       function convertrRupiah(price:number){
     
         return new Intl.NumberFormat('id-ID', {

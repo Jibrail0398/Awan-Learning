@@ -42,6 +42,7 @@ export class ModalEditComponent  implements OnInit {
     
   }
 
+  status = localStorage.getItem('status');
   open(id:any){
     this.isOpen=true;
     localStorage.setItem("content_data",id);

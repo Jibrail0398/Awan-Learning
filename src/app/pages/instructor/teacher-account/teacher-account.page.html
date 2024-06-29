@@ -11,17 +11,17 @@
   
   <div class="container-profile">
     <img src="/assets/img/user.png" alt="Foto User">
-    <h1>Jibrail Adji</h1>
+    <h1>{{ myname }}</h1>
     <div class="akun">
       <i class="fa-brands fa-google"></i>
-      <p>jibrail&#64;yahoo.com</p>
+      <p>{{ email }}</p>
     </div>
     <p class="instruktur" (click)="toStudent()" >Menjadi Peserta</p>
   </div>
 
   <ion-list>
     <ion-item>
-      <ion-label>Ubah Profile</ion-label>
+      <ion-label (click)="toProfile()" >Ubah Profile</ion-label>
       <ion-icon name="chevron-forward-outline"></ion-icon>
     </ion-item>
     <ion-item>
@@ -35,7 +35,7 @@
   </ion-list>
 
   <div class="logout">
-    <h1 (click)="logout()" >Logout</h1>
+    <h1 (click)="logout()">Logout</h1>
   </div>
 </ion-content>
 

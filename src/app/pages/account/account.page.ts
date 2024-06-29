@@ -16,6 +16,8 @@ export class AccountPage implements OnInit {
 
   ngOnInit() {
   }
+  name = localStorage.getItem('name');
+  email=localStorage.getItem('email');
  
   toInstructor(){
     this.route.navigate(['main'])

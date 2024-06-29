@@ -4,7 +4,7 @@ import { ApiService } from 'src/app/api/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/api/auth.service';
 import { StorageService } from 'src/app/api/storage.service';
-import { environment } from 'src/environments/environment';
+
 
 interface Course {
   id: number;
@@ -44,7 +44,7 @@ export class HomePage implements OnInit {
     this.getCourseData();
   }
 
- 
+  myname = localStorage.getItem("name");
   listCourse: Course[] = [];
   filteredData: any[] = [];
   
@@ -53,20 +53,6 @@ export class HomePage implements OnInit {
   
   getCourseData(){
     this.api.getCourseData().subscribe((res:any) =>{
-      
-      // this.listCourse = res.course.map((course: any) => ({
-      //   id: course.id,
-      //   title: course.title,
-      //   description: course.description,
-      //   image: "https://awan.ylladev.my.id/storage/" + course.image,
-      //   pre_vidio: course.pre_vidio,
-      //   instructor_id: course.instructor_id,
-      //   price: course.price,
-      //   level_id: course.level_id,
-      //   status: course.status,
-      //   created_at: new Date(course.created_at),
-      //   updated_at: new Date(course.updated_at)
-      // }));
 
       if (res.course) {
         this.listCourse = Object.values(res.course).map((course: any) => ({
@@ -94,8 +80,6 @@ export class HomePage implements OnInit {
   getCategory(){
     this.api.getCategory().subscribe((res:any) =>{
       this.category = res;
-      
-      
     })
   }
 
