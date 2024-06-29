@@ -24,6 +24,9 @@ export class TeacherAccountPage implements OnInit {
   toStudent(){
     this.route.navigate(['/home']);
   }
+  toPassword(){
+    this.route.navigate(['/keamanan-akun']);  
+  }
   logout(){
     this.route.navigate(["/sign-in"]);
     localStorage.removeItem('sub');

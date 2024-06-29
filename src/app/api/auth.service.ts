@@ -32,6 +32,11 @@ export class AuthService {
   getSub():any{
     return this.sub;
   }
+  forgotPassword(email:string){
+    const formData = new FormData();
+    formData.append('email',email);
+    return this.http.post(environment.urlDomain+"/forgot-password",formData);
+  }
   
  
 }

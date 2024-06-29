@@ -69,7 +69,8 @@ const routes: Routes = [
   {
     path: 'upload-content',
     loadChildren: () => import('./pages/instructor/upload-content/upload-content.module').then( m => m.UploadContentPageModule)
-  },  {
+  },
+  {
     path: 'upload-content-course',
     loadChildren: () => import('./pages/upload-content-course/upload-content-course.module').then( m => m.UploadContentCoursePageModule)
   },
@@ -93,6 +94,7 @@ const routes: Routes = [
     path: 'profile-peserta',
     loadChildren: () => import('./pages/profile-peserta/profile-peserta.module').then( m => m.ProfilePesertaPageModule)
   },
+
 
   
 

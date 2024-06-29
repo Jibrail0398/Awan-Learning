@@ -127,6 +127,7 @@ export class ApiService {
     return this.http.get(environment.urlDomain+"/profile",{headers:headers});
   }
 
+  
   makeProfile(
     phone:string,
     gender?:string,
@@ -176,6 +177,16 @@ export class ApiService {
     return this.http.put(environment.urlDomain+"/profile",data,{headers:headers});
   }
 
+  changePassword(oldPassword:string,newPassword:string){
+
+    const formData = new FormData();
+    formData.append('oldPassword',oldPassword);
+    formData.append('newPassword',newPassword);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.post(environment.urlDomain+"/reset/password",formData,{headers:headers});
+  }
 
 
     

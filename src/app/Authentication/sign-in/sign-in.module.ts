@@ -9,6 +9,7 @@ import { SignInPageRoutingModule } from './sign-in-routing.module';
 import { SignInPage } from './sign-in.page';
 import { SharedModuleModule } from 'src/app/components/module/shared-module/shared-module.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ForgotPasswordComponent } from 'src/app/components/forgot-password/forgot-password.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     SignInPageRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SharedModuleModule
+    SharedModuleModule,
+    ForgotPasswordComponent
     
   ],
   declarations: [
