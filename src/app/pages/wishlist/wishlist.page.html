@@ -14,26 +14,26 @@
     </ion-buttons>
   </ion-toolbar>
 
-  <div *ngIf="course.length > 0">
+  <div *ngIf="myCourse">
 
-    <ion-card *ngFor="let c of course" (click)="onClick()" >
+    <ion-card *ngFor="let c of myCourse" (click)="onClick(c.id)" >
       <ion-card-content>
-        <img alt="Silhouette of mountains" src="/assets/img/home.png" />
+        <img alt="Silhouette of mountains"  [src]="getImageUrl(c.image)" />
         <ion-list lines="none">
           <ion-item>{{c.title}}</ion-item>
-          <p>{{c.category}}</p>
           <p>{{c.description}}</p>
+          <p>{{convertrRupiah(c.price)}}</p>
         </ion-list>
       </ion-card-content>
     </ion-card>
   
 </div>
-  <div  *ngIf="course.length === 0"  >
+  <div *ngIf="myCourse.length === 0"  >
     <div class="nothing-content">
-      <h1>Ingin menyimpan sesuatu untuk nanti?</h1>
+      <h1>Daftar keinginan anda masih Kosong</h1>
       <h2>Daftar keinginan Anda akan disimpan di sini.</h2>
       
-      <!-- <div class="container"> -->
+      <!-- <div class="container">
         <ion-title class="title">Telusuri kategori</ion-title>
         <ion-list class="category-list">
             <ion-item>TI & Perangkat Lunak</ion-item>
@@ -48,21 +48,10 @@
             <ion-item>Kesehatan dan Kebugaran</ion-item>
             <ion-item>Pengajaran & Akademis</ion-item>
             <ion-item>Pengembangan Personal</ion-item>
-        </ion-list>
+        </ion-list> -->
     </div>
   </div>
-<!-- </div> -->
 
-  <!-- <div class="container-header">
-    <ion-searchbar></ion-searchbar>
-    <ion-icon name="cart-outline" size="large" color="light" routerLink="/cart" ></ion-icon>
-  </div>
-  <div class="container-text">
-    <h1>
-      Anda Belum Menyimpan Daftar Keinginan
-    </h1>
-    <p>Ayo gali potensi anda dengan jelajahi semua kursus <a routerLink="/home"><b>disini</b></a> </p>
-  </div> -->
 </ion-content>
 
 

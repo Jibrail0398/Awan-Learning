@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/api/api.service';
 
-interface Course{
-  title:string;
-  category:string;
-  description:string;
+interface Course {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  price:number;
 }
 @Component({
   selector: 'app-wishlist',
@@ -14,48 +17,41 @@ interface Course{
 export class WishlistPage implements OnInit {
 
   constructor(
-    private route:Router
+    private route:Router,
+    private api:ApiService
   ) { }
 
   ngOnInit() {
-  }
-  // course:Course[]=[
     
-  // ]
-  course:Course[]=[
-    {
-      title:"Python Course",
-      category:"IT",
-      description:"Python course for Beginner"
-    },
-    {
-      title:"English Course",
-      category:"Language",
-      description:"English course for Beginner"
-    },
-    {
-      title:"Electronics Course",
-      category:"Electronics and electrical",
-      description:"Electronics course for Beginner"
-    },
-    {
-      title:"Physics Course",
-      category:"Physics",
-      description:"Physics course for Beginner"
-    },
-    {
-      title:"Astronomy Course",
-      category:"Astronomy",
-      description:"Astronomy course for Beginner"
-    },
-    {
-      title:"Math Course",
-      category:"Math",
-      description:"Math course for Beginner"
-    },
-  ]
-  onClick(){
-    this.route.navigate(['content-course']);
+  }
+  ionViewWillEnter(){
+    this.getwishlist();
+  }
+  
+  myCourse:Course[]=[];
+  
+  getwishlist(){
+    this.api.getWishlist().subscribe((res: any) => {
+      this.myCourse = res.wishlists.map((item: any) => item.course);
+      
+    });
+  }
+  getImageUrl(imagePath: string): string {
+    return `https://awan.ylladev.my.id/storage/${imagePath}`;
+  }
+ 
+  convertrRupiah(price:number){
+    
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+    }).format(price);
+  }
+  
+
+  onClick(id:any){
+    localStorage.setItem("data",id);
+    this.route.navigate(['detail-course']);
   }
 
 }

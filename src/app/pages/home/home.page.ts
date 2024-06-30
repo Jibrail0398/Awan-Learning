@@ -107,16 +107,22 @@ export class HomePage implements OnInit {
 
   }
   onBlur(){
-    this.isSearchFocused = false;
-    this.isDataFiltered = false;
-    this.filteredData = this.listCourse;
+    setTimeout(() => {
+      
+      this.isSearchFocused = false;
+      this.isDataFiltered = false;
+      this.filteredData = this.listCourse;
+    }, 200); 
   }
   onInput(event:any){
     const query = event.target.value.toLowerCase();
     this.filteredData = this.listCourse.filter(listCourse => listCourse.title.toLowerCase().includes(query));
     this.isDataFiltered = true;
   }
-  
+  resultfilter(id:any){
+    localStorage.setItem("data",id);
+    this.router.navigate(["detail-course"]);
+  }
   
   getDetailCourse(id:any){
     localStorage.setItem('data',id);    
