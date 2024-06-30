@@ -1,4 +1,24 @@
 ion-content{
+
+    .message{
+        -webkit-animation: fadeinout 2s linear forwards;
+        animation: fadeinout 2s linear forwards;
+        color: white;
+        background-color: black;
+        border-radius: 30px;
+        width: 60%;
+        height: 20px;
+        text-align: center;
+    }
+    @-webkit-keyframes fadeinout {
+        0%,100% { opacity: 0; }
+        50% { opacity: 1; }
+      }
+      
+      @keyframes fadeinout {
+        0%,100% { opacity: 0; }
+        50% { opacity: 1; }
+      }
     
     height: 900px;
     ion-toolbar{

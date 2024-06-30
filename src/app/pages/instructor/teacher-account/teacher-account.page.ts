@@ -27,6 +27,9 @@ export class TeacherAccountPage implements OnInit {
   toPassword(){
     this.route.navigate(['/keamanan-akun']);  
   }
+  AwanProfile(){
+    this.route.navigate(['/tentang-awan']);
+  }
   logout(){
     this.route.navigate(["/sign-in"]);
     localStorage.removeItem('sub');
