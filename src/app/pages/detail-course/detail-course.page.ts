@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/api/api.service';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-detail-course',
   templateUrl: './detail-course.page.html',
@@ -19,6 +20,7 @@ export class DetailCoursePage implements OnInit {
 
   ngOnInit() {
     this.getDetailCourse();
+    this.getWishlist(); 
     
   }
   
@@ -26,21 +28,60 @@ export class DetailCoursePage implements OnInit {
   iswishlist:boolean=false;
   showMessage: boolean = false;
   message: string = '';
+  courseId = localStorage.getItem("data");
 
+  mywishlist: number[] = [];
+
+  getWishlist(){
+    
+    this.api.getWishlist().subscribe((res:any)=>{   
+
+      if (res && res.wishlists && Array.isArray(res.wishlists)) {
+        this.mywishlist = res.wishlists.map((wishlist: any) => wishlist.course_id);
+      } 
+      if (this.courseId !== null) {
+        const courseIdNumber = parseInt(this.courseId, 10);
+        const checkwishlist = this.mywishlist.includes(courseIdNumber);
+        if(checkwishlist){
+          this.iswishlist=true;
+        }else{
+          this.iswishlist=false;
+        }
+      }
+      
+      console.log(this.mywishlist);
+      console.log(this.iswishlist);
+    })
+  }
   wishlistControl(){
     if(!this.iswishlist){
-      this.addWishlist();
+      this.addWishlist(this.courseId);
     }else{
-      this.removeWishlist();
+      this.removeWishlist(this.courseId);
     }
   }
-  addWishlist(){
-    this.iswishlist = !this.iswishlist;
-    this.displayMessage('Ditambahkan ke daftar wishlist');
+  addWishlist(id:any){
+    this.api.addWishlist(id).subscribe({
+      next:(res)=>{
+
+        this.iswishlist = !this.iswishlist;
+        this.displayMessage('Ditambahkan ke daftar wishlist');
+      },
+      error:(res)=>{
+        console.log(res.error);
+      }
+    })
   }
-  removeWishlist(){
-    this.iswishlist = !this.iswishlist;
-    this.displayMessage('Dihapus dari daftar wishlist');
+  removeWishlist(id:any){
+    this.api.removewishlist(id).subscribe(
+      (res:any)=>{
+        this.iswishlist = !this.iswishlist;
+        this.displayMessage('Dihapus dari daftar wishlist');
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
   displayMessage(msg: string) {
@@ -60,6 +101,9 @@ export class DetailCoursePage implements OnInit {
   detailCourse:any={};
   contents:any=[];
   
+
+  
+
   getDetailCourse(){
     const CourseId = localStorage.getItem('data');
     this.api.getDetailCourse(CourseId).subscribe((res:any) =>{

@@ -21,7 +21,6 @@ export class ApiService {
   
   token = this.auth.getBearerToken();
 
-
   //Home
   getCourseData(){
     const headers = new HttpHeaders({
@@ -44,9 +43,9 @@ export class ApiService {
     requirements: { description: string }[]
     
   ){
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
-    });
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.token}`
+  });
 
   const formData = new FormData();
   formData.append('title', title);
@@ -102,7 +101,6 @@ export class ApiService {
   getCategory(){
     const headers = new HttpHeaders().set(
       "Authorization",
-      // this.storage.decrypt(this.token)
       this.token
     );
     const options = { headers: headers };
@@ -168,8 +166,7 @@ export class ApiService {
   updateProfile(
     data:any
   ){
-    
-    
+        
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
       'Content-Type': 'application/json'
@@ -188,6 +185,27 @@ export class ApiService {
     return this.http.post(environment.urlDomain+"/reset/password",formData,{headers:headers});
   }
 
+  //wishlist
+  getWishlist(){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.get(environment.urlDomain+"/wishlist",{headers:headers});
+  }
+
+  addWishlist(id:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.post(environment.urlDomain + "/wishlist/" + id + "/add", {}, {headers:headers});
+  }
+
+  removewishlist(id:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.delete(environment.urlDomain + "/wishlist/" + id + "/remove",{headers:headers});
+  }
 
     
 }
