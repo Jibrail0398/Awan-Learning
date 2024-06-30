@@ -20,16 +20,17 @@
       <ion-card-content>
         <img alt="Silhouette of mountains" src={{listcourse.image}} />
         <ion-list lines="none">
+          <div class="icons" style=" float: right;" slot="end" >
+            <ion-icon name="add-circle-outline" size="large" (click)="toUploadContentCourse(listcourse.id)" ></ion-icon>
+            <ion-icon name="pencil-outline" size="large" (click)="toContentCourse(listcourse.id,listcourse.status)"></ion-icon>
+          </div>
           <ion-item>
             <div class="item-header">
               
-              <div class="title">
+              <div class="title" style="font-weight: 500;" >
                 {{ listcourse.title }}
               </div>
-              <div class="icons">
-                <ion-icon name="add-circle-outline" (click)="toUploadContentCourse(listcourse.id)" ></ion-icon>
-                <ion-icon name="pencil-outline" (click)="toContentCourse(listcourse.id,listcourse.status)"></ion-icon>
-              </div>
+              
             </div>
           </ion-item>
 

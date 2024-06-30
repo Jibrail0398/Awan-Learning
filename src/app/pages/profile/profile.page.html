@@ -24,7 +24,7 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="stacked" >Nama Lengkap</ion-label>
-          <ion-input type="text"  readonly value="{{ name }}"  placeholder="Nama Lengkap"></ion-input>
+          <ion-input type="text" class="custom-font-size"  readonly value="{{ name }}"  placeholder="Nama Lengkap"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -34,7 +34,7 @@
         <ion-item style="width: 100%;" >
           <ion-label  position="stacked">Nomor Handphone  </ion-label>
           <p style="display: inline;font-size: 0.7rem;margin: 3px 0 0 0;" >Harus terdaftar di E-wallet</p>
-          <ion-input type="tel"  [(ngModel)]="phone" placeholder="contoh:085812344321"></ion-input>
+          <ion-input type="tel" class="custom-font-size" [(ngModel)]="phone" placeholder="contoh:085812344321"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -43,7 +43,7 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="stacked">Email</ion-label>
-          <ion-input type="email" readonly value="{{ email }}" placeholder="Email"></ion-input>
+          <ion-input type="email" class="custom-font-size" readonly value="{{ email }}" placeholder="Email"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -80,7 +80,7 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="stacked">Provinsi</ion-label>
-          <ion-input  [(ngModel)]="state" type="text" placeholder="Nama Provinsi"></ion-input>
+          <ion-input class="custom-font-size" [(ngModel)]="state" type="text" placeholder="Nama Provinsi"></ion-input>
           
         </ion-item>
       </ion-col>
@@ -90,7 +90,7 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="stacked">Kabupaten/Kota</ion-label>
-          <ion-input type="text" [(ngModel)]="city" placeholder="Nama Kota"></ion-input>
+          <ion-input  class="custom-font-size" type="text" [(ngModel)]="city" placeholder="Nama Kota"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -99,7 +99,7 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="stacked">Kode Pos</ion-label>
-          <ion-input type="text" [(ngModel)]="zipcode" placeholder="Kode Pos"></ion-input>
+          <ion-input  class="custom-font-size" type="text" [(ngModel)]="zipcode" placeholder="Kode Pos"></ion-input>
           
         </ion-item>
       </ion-col>
@@ -109,7 +109,7 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="stacked">Alamat Tempat Tinggal</ion-label>
-          <ion-textarea [(ngModel)]="address" placeholder="Alamat Tempat Tinggal"></ion-textarea>
+          <ion-textarea class="custom-font-size" [(ngModel)]="address" placeholder="Alamat Tempat Tinggal"></ion-textarea>
         </ion-item>
       </ion-col>
     </ion-row>

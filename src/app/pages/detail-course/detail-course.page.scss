@@ -97,10 +97,15 @@ ion-content{
     }
 
     ion-button{
-        --background:linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+        
         color: black;
     }
-    
+    .addbutton{
+        --background:linear-gradient(-148.622deg, rgba(93, 159, 255, 90%) 0%, rgba(184, 220, 255, 90%) 48%, rgba(70, 170, 255, 90%) 100%);
+    }
+    .removebutton{
+        --background: linear-gradient(-148.622deg, rgba(255, 93, 93, 90%) 0%, rgba(255, 184, 184, 90%) 48%, rgba(255, 70, 70, 90%) 100%);
+    }
 
 }
 

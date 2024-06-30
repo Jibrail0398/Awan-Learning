@@ -23,7 +23,7 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="stacked">Nama Lengkap</ion-label>
-          <ion-input type="text" readonly value="{{ name }}" placeholder="Nama Lengkap" ></ion-input>
+          <ion-input class="custom-font-size" type="text" readonly value="{{ name }}" placeholder="Nama Lengkap" ></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -33,7 +33,7 @@
         <ion-item>
           <ion-label position="stacked">Nomor Handphone  </ion-label>
           <p style="display: inline;font-size: 0.8rem;margin: 2px 0 0 0;" >Harus terdaftar di E-wallet</p>
-          <ion-input type="text" [(ngModel)]="phone"  placeholder="contoh:085812344321" ></ion-input>
+          <ion-input class="custom-font-size" type="text" [(ngModel)]="phone"  placeholder="contoh:085812344321" ></ion-input>
             
         </ion-item>
       </ion-col>
@@ -43,7 +43,7 @@
       <ion-col size="12">
         <ion-item>
           <ion-label position="stacked">Email</ion-label>
-          <ion-input type="email" readonly value="{{ email }}" placeholder="Email"></ion-input>
+          <ion-input class="custom-font-size" type="email" readonly value="{{ email }}" placeholder="Email"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>

@@ -207,5 +207,28 @@ export class ApiService {
     return this.http.delete(environment.urlDomain + "/wishlist/" + id + "/remove",{headers:headers});
   }
 
+  //cart
+  getCart(){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.get(environment.urlDomain+"/cart",{headers:headers});
+  }
+
+  addCart(id:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.post(environment.urlDomain + "/cart/" + id + "/add", {}, {headers:headers});
+  }
+
+  removeCart(id:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.delete(environment.urlDomain + "/cart/" + id + "/remove",{headers:headers});
+  }
+
+
     
 }
