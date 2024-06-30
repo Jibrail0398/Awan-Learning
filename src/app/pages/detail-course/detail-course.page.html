@@ -68,8 +68,13 @@
     </div>
     
   </div>
-  <ion-button expand="full" >Tambah ke keranjang</ion-button>
-  <ion-button expand="full" >Beli Sekarang</ion-button>
+  <div *ngIf="showMessage" class="message">{{ message }}</div>
+  <div *ngIf="!iscart" >
+    <ion-button  class="addbutton" (click)="cartControl()" expand="full" >Tambah ke keranjang</ion-button>
+  </div>
+  <div *ngIf="iscart" >
+    <ion-button class="removebutton" (click)="cartControl()" expand="full" >Hapus dari keranjang</ion-button>
+  </div>
 
 
 

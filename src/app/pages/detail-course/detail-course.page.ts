@@ -21,16 +21,22 @@ export class DetailCoursePage implements OnInit {
   ngOnInit() {
     this.getDetailCourse();
     this.getWishlist(); 
-    
+    this.getCart();
+  }
+
+  ionViewWillEnter(){
+    this.getCart();
   }
   
   //Semua tentang Wishlist
   iswishlist:boolean=false;
+  iscart:boolean=false;
   showMessage: boolean = false;
   message: string = '';
   courseId = localStorage.getItem("data");
 
   mywishlist: number[] = [];
+  mycart:any[]=[];
 
   getWishlist(){
     
@@ -83,6 +89,58 @@ export class DetailCoursePage implements OnInit {
     )
   }
 
+  cartControl(){
+    if(!this.iscart){
+      this.addcart(this.courseId);
+    }else{
+      this.removecart(this.courseId);
+    }
+  }
+
+  getCart(){
+    this.api.getCart().subscribe(
+      (res:any)=>{
+        this.mycart=res.cart_items.map((cart_items: any) => cart_items.course.id);
+        if(this.courseId !== null){
+          const courseIdNumber = parseInt(this.courseId, 10);
+          const checkCart = this.mycart.includes(courseIdNumber)
+
+          if(checkCart){
+            this.iscart=true;
+        }else{
+          this.iscart=false;
+        }
+      }
+        
+    })
+  }
+
+  addcart(id:any){
+    this.api.addCart(id).subscribe({
+      next:(res)=>{
+
+        this.iscart = !this.iscart;
+        
+      },
+      error:(res)=>{
+        console.log(res.error);
+      }
+    })
+  }
+
+
+  removecart(id:any){
+    this.api.removeCart(id).subscribe(
+      (res:any)=>{
+        this.iscart = !this.iscart;
+        
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
   displayMessage(msg: string) {
     this.message = msg;
     this.showMessage = true;
@@ -90,6 +148,8 @@ export class DetailCoursePage implements OnInit {
       this.showMessage = false;
     }, 4000); 
   }
+
+
 
 
   

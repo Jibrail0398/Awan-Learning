@@ -102,6 +102,13 @@ export class HomePage implements OnInit {
     }
   
   }
+  convertrRupiah(price:number){
+    
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+    }).format(price);
+  }
   onFocus() {
     this.isSearchFocused = true;
 
