@@ -108,7 +108,6 @@ export class DetailCoursePage implements OnInit {
     const CourseId = localStorage.getItem('data');
     this.api.getDetailCourse(CourseId).subscribe((res:any) =>{
       this.detailCourse = res['course'];
-      console.log(this.detailCourse);
       this.vidioDomain = "https://awan.ylladev.my.id/storage/"+res.course.pre_vidio;
       this.imageDomain = "https://awan.ylladev.my.id/storage/"+res.course.image;
       function convertrRupiah(price:number){

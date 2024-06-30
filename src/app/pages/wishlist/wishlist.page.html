@@ -14,21 +14,21 @@
     </ion-buttons>
   </ion-toolbar>
 
-  <div *ngIf="course.length > 0">
+  <div *ngIf="myCourse">
 
-    <ion-card *ngFor="let c of course" (click)="onClick()" >
+    <ion-card *ngFor="let c of myCourse" (click)="onClick()" >
       <ion-card-content>
-        <img alt="Silhouette of mountains" src="/assets/img/home.png" />
+        <img alt="Silhouette of mountains"  [src]="getImageUrl(c.image)" />
         <ion-list lines="none">
           <ion-item>{{c.title}}</ion-item>
-          <p>{{c.category}}</p>
           <p>{{c.description}}</p>
+          <p>{{convertrRupiah(c.price)}}</p>
         </ion-list>
       </ion-card-content>
     </ion-card>
   
 </div>
-  <div  *ngIf="course.length === 0"  >
+  <div  *ngIf="!myCourse"  >
     <div class="nothing-content">
       <h1>Ingin menyimpan sesuatu untuk nanti?</h1>
       <h2>Daftar keinginan Anda akan disimpan di sini.</h2>
