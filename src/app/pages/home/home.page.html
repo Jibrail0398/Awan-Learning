@@ -94,12 +94,11 @@
         <ion-list *ngFor="let filter of filteredData">
           <ion-item>
             <ion-thumbnail slot="start">
-              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+              <img alt="Silhouette of mountains" src={{filter.image}} />
             </ion-thumbnail>
             <ion-label>{{filter.title}}</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label>Nanti Dulu</ion-label>
+            <ion-label slot="end" style="font-weight: 400;" ><b>Rp.{{ filter.price }}</b></ion-label>
+         
           </ion-item>
         </ion-list>
       </ion-card-content>

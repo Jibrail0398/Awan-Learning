@@ -36,7 +36,14 @@
         <app-input-password-toogle (Password)="getPassword($event)" placeholder="Password" ></app-input-password-toogle>
       </div>
     </div>  
-     <h4>Forgot Password?</h4>
+    
+    <h4 (click)="modals.open()" >
+      Lupa Password?
+
+      <app-forgot-password #modals ></app-forgot-password>
+    </h4>
+    
+    
     <div class="container-bottom">
       <app-full-button (click) = "onLogin()" >Sign In</app-full-button>
       <p>Tidak Punya akun? 

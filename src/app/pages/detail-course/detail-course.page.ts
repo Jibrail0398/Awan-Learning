@@ -19,10 +19,41 @@ export class DetailCoursePage implements OnInit {
 
   ngOnInit() {
     this.getDetailCourse();
-    console.log(this.detailCourse);
+    
   }
   
+  //Semua tentang Wishlist
+  iswishlist:boolean=false;
+  showMessage: boolean = false;
+  message: string = '';
 
+  wishlistControl(){
+    if(!this.iswishlist){
+      this.addWishlist();
+    }else{
+      this.removeWishlist();
+    }
+  }
+  addWishlist(){
+    this.iswishlist = !this.iswishlist;
+    this.displayMessage('Ditambahkan ke daftar wishlist');
+  }
+  removeWishlist(){
+    this.iswishlist = !this.iswishlist;
+    this.displayMessage('Dihapus dari daftar wishlist');
+  }
+
+  displayMessage(msg: string) {
+    this.message = msg;
+    this.showMessage = true;
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 4000); 
+  }
+
+
+  
+  //Semua tentang isi konten kursus
   vidioDomain:any;
   imageDomain:any;
   price:any;

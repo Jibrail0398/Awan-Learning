@@ -61,9 +61,7 @@ export class SignUpPage implements OnInit {
         message: 'Password dan Konfirmasi password tidak sama.',
         buttons: ['OK'],
         cssClass:"custom-alert"
-      });
-
-      
+      });    
 
       await alert.present();
     }else if(this.form.password ==="" || this.form.passwordConfirm === ""){

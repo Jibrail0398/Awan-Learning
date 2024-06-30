@@ -123,6 +123,10 @@
                     message: "Kursus Berhasil dibuat"
                   });
                   await alert.present();
+                  //catatan perubahan
+                  alert.onDidDismiss().then(() => {
+                    this.route.navigate(['/main']);
+                  });
                 },
                 error: async (res) => {
                   await loading.dismiss();
@@ -131,7 +135,11 @@
                     message: res.message,
                     buttons: ['OK']
                   });
+                  //catatan perubahan
                   await alert.present();
+                  alert.onDidDismiss().then(() => {
+                    this.route.navigate(['/main']);
+                  });
                 }
               });
             }
@@ -139,7 +147,7 @@
         ]
       });
       await confirm.present();
-      this.route.navigate(["/main"]);
+      
     }
 
     kirim(){
