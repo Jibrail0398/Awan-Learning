@@ -33,7 +33,7 @@ export class WishlistPage implements OnInit {
   getwishlist(){
     this.api.getWishlist().subscribe((res: any) => {
       this.myCourse = res.wishlists.map((item: any) => item.course);
-      console.log(this.myCourse);
+      
     });
   }
   getImageUrl(imagePath: string): string {
@@ -49,8 +49,9 @@ export class WishlistPage implements OnInit {
   }
   
 
-  onClick(){
-    this.route.navigate(['content-course']);
+  onClick(id:any){
+    localStorage.setItem("data",id);
+    this.route.navigate(['detail-course']);
   }
 
 }

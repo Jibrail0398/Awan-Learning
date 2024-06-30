@@ -49,8 +49,7 @@ export class DetailCoursePage implements OnInit {
         }
       }
       
-      console.log(this.mywishlist);
-      console.log(this.iswishlist);
+      
     })
   }
   wishlistControl(){
