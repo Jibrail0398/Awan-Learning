@@ -1,24 +1,28 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
 <ion-header [translucent]="true">
   
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
+
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button default-href="/"></ion-back-button>
     </ion-buttons>
-    <h1>Konten Kursus</h1>
+    <h1>Materi Kursus</h1>
     
   </ion-toolbar>
 
-  <div class="promotional-video">
-    <video #videoPlayer controls controlsList="nodownload" >
-      <source 
-      [src]="currentVideo.videoUrl"
-      >
-      Not support in your Device
-      </video>
+  <div class="promotional-video"  >
+    <video #videoPlayer controls controlsList="nodownload" *ngIf="currentVideo">
+      <source [src]="getVideoUrl(currentVideo.vidioURL)">
+      Not supported in your Device
+    </video>
       
         <div class="overlay-controls">
           <button (click)="prevVideo()" class="next-button" >Prev</button>
@@ -26,15 +30,7 @@
         </div>
   </div>
 
-  <!-- <div class="list-content">
-    <ion-card *ngFor="let content of contentCourse;let i = index" (click)="playVideo(i)" >
-      <ion-card-content>
-        <ion-list lines="none">
-          <ion-item>{{content.title}}</ion-item>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-  </div> -->
+  
 
   <ion-accordion-group >
     <ion-accordion  

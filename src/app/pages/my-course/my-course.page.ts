@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/api/api.service';
 
-interface Course{
-  title:string;
-  category:string;
-  description:string;
+interface Course {
+  id:string;
+  title: string;
+  description: string;
+  image: string;
+  owner:string;
 }
 
 @Component({
@@ -16,48 +19,66 @@ interface Course{
 export class MyCoursePage implements OnInit {
   
   constructor(
-    private route:Router
+    private route:Router,
+    private api:ApiService
   ) { }
 
   isSearchInput = false;
   isSearchFocused = false;
-  // course:Course[]=[
-    
-  // ]
-  course:Course[]=[
-    {
-      title:"Python Course",
-      category:"IT",
-      description:"Python course for Beginner"
-    },
-    {
-      title:"English Course",
-      category:"Language",
-      description:"English course for Beginner"
-    },
-    {
-      title:"Electronics Course",
-      category:"Electronics and electrical",
-      description:"Electronics course for Beginner"
-    },
-    {
-      title:"Physics Course",
-      category:"Physics",
-      description:"Physics course for Beginner"
-    },
-    {
-      title:"Astronomy Course",
-      category:"Astronomy",
-      description:"Astronomy course for Beginner"
-    },
-    {
-      title:"Math Course",
-      category:"Math",
-      description:"Math course for Beginner"
-    },
-  ]
+  
+  course:Course[]=[]
+
   ngOnInit() {
+    
   }
+
+  ionViewWillEnter(){
+    this.MyCourses();
+    this.getinstructor();
+  }
+  courseId:any=[];
+  MyCourses() {
+    this.api.getMyCourse().subscribe(
+      (response: any) => {
+        if (response && response.myCourse && Array.isArray(response.myCourse)) {
+          this.course = response.myCourse.map((item: any) => ({
+            id: item.course.id,
+            title: item.course.title,
+            description: item.course.description,
+            image: item.course.image
+          }));
+          this.courseId=response.myCourse.map((item:any) => item.course_id);
+            
+            
+          
+        }
+      },
+      (error) => {
+        console.error('Error fetching courses:', error);
+      }
+    );
+  }
+
+  instructorName:any[]=[];
+  
+  getinstructor() {
+    for (let id of this.courseId) {
+      this.api.viewCourse(id).subscribe(
+        (res: any) => {
+          if (res && res.course && res.course.owner) {
+            const name = res.course.owner.name; // Asumsikan owner adalah objek, bukan array
+            this.instructorName.push(name);
+            
+          }
+          
+        },
+        (error) => {
+          console.error('Error fetching course:', error);
+        }
+      );
+    }
+  }
+  
 
   filteredItems: Course[] = this.course;
 
@@ -71,8 +92,12 @@ export class MyCoursePage implements OnInit {
     this.isSearchInput = false;
     this.isSearchFocused = false;
   }
-  onClick(){
+  onClick(id:any){
+    localStorage.setItem("data",id);
     this.route.navigate(['content-course']);
+  }
+  getImageUrl(imagePath: string): string {
+    return `https://awan.ylladev.my.id/storage/${imagePath}`;
   }
 
 
