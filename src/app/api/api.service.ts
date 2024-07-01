@@ -226,7 +226,12 @@ export class ApiService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`
     });
-    return this.http.delete(environment.urlDomain + "/cart/" + id + "/remove",{headers:headers});
+    return this.http.delete(environment.urlDomain + "/cart-items/" + id,{headers:headers});
+  }
+
+  //Transaction
+  createTransaction(){
+    return this
   }
 
 

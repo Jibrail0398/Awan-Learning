@@ -21,7 +21,7 @@ export class DetailCoursePage implements OnInit {
   ngOnInit() {
     this.getDetailCourse();
     this.getWishlist(); 
-    this.getCart();
+    
   }
 
   ionViewWillEnter(){
@@ -37,6 +37,7 @@ export class DetailCoursePage implements OnInit {
 
   mywishlist: number[] = [];
   mycart:any[]=[];
+  allcartobject:any;
 
   getWishlist(){
     
@@ -90,21 +91,22 @@ export class DetailCoursePage implements OnInit {
   }
 
   cartControl(){
+    
     if(!this.iscart){
       this.addcart(this.courseId);
     }else{
       this.removecart(this.courseId);
     }
   }
-
+  
   getCart(){
     this.api.getCart().subscribe(
       (res:any)=>{
         this.mycart=res.cart_items.map((cart_items: any) => cart_items.course.id);
+        this.allcartobject = res.cart_items.map((cart_items: any) => cart_items.id);
         if(this.courseId !== null){
           const courseIdNumber = parseInt(this.courseId, 10);
           const checkCart = this.mycart.includes(courseIdNumber)
-
           if(checkCart){
             this.iscart=true;
         }else{
@@ -129,16 +131,30 @@ export class DetailCoursePage implements OnInit {
   }
 
 
-  removecart(id:any){
-    this.api.removeCart(id).subscribe(
-      (res:any)=>{
-        this.iscart = !this.iscart;
-        
-      },
-      (error)=>{
-        console.log(error);
-      }
-    )
+  
+  removecart(courseId: string | null) {
+    if (courseId === null) return;
+    
+    const courseIdNumber = parseInt(courseId);
+    const index = this.mycart.indexOf(courseIdNumber);
+    
+    if (index !== -1) {
+      const cartIdToRemove = this.allcartobject[index];
+      
+      this.api.removeCart(cartIdToRemove).subscribe(
+        (res: any) => {
+          this.iscart = !this.iscart;
+          this.mycart.splice(index, 1);
+          this.allcartobject.splice(index, 1);
+          
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      console.log("Course not found in cart");
+    }
   }
 
   displayMessage(msg: string) {
