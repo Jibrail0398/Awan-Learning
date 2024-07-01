@@ -16,26 +16,26 @@
   </ion-toolbar>
 
 
-  <div *ngIf="mycart.length>0" >
-    <ion-card>
-      <ion-card-content>
-        <ion-list *ngFor="let course of mycart">
-          <ion-item>
-            <ion-checkbox slot="start" (ionChange)="onCheckboxChange($event, course)"></ion-checkbox>
-            <ion-thumbnail slot="start">
-              <img alt="Silhouette of mountains" [src]="getImageUrl(course.image)" />
-            </ion-thumbnail>
-            <ion-label>{{ course.title }}</ion-label>
-            <ion-label slot="end" style="font-weight: 400;"></ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label><b>{{ convertrRupiah(course.price) }}</b></ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-    
-  </div>
+    <div *ngIf="mycart.length>0" >
+      <ion-card>
+        <ion-card-content>
+          <ion-list *ngFor="let course of mycart">
+            <ion-item>
+              <ion-checkbox slot="start" (ionChange)="onCheckboxChange($event, course)"></ion-checkbox>
+              <ion-thumbnail slot="start">
+                <img alt="Silhouette of mountains" [src]="getImageUrl(course.image)" />
+              </ion-thumbnail>
+              <ion-label>{{ course.title }}</ion-label>
+              <ion-label slot="end" style="font-weight: 400;"></ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label><b>{{ convertrRupiah(course.price) }}</b></ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      
+    </div>
 
   
 
