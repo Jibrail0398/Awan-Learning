@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/api/api.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/api/auth.service';
-import { StorageService } from 'src/app/api/storage.service';
+
+
 
 
 
@@ -38,7 +39,7 @@ export class HomePage implements OnInit {
     private api:ApiService,
     private router:Router,
     private auth:AuthService,
-    private storage:StorageService
+    
   ) { }
   ngOnInit() {
     

@@ -1,8 +1,9 @@
 import { Component, OnInit} from '@angular/core';
 import { ApiService } from 'src/app/api/api.service';
-
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
+import { TeacherService } from 'src/app/api/teacher.service';
+import { AuthService } from 'src/app/api/auth.service';
 
 
 @Component({
@@ -15,29 +16,123 @@ export class DetailCoursePage implements OnInit {
   
   constructor(
     private api:ApiService,
-    private route:Router
+    private teacher:TeacherService,
+    private route:Router,
+    private auth:AuthService
   ) { }
 
   ngOnInit() {
     this.getDetailCourse();
-    this.getWishlist(); 
+    this.getWishlist();
+    this.madebyme();
+    this.checkBoughtStatus();
     
   }
 
   ionViewWillEnter(){
     this.getCart();
+    
   }
   
-  //Semua tentang Wishlist
+  
+  isBought:boolean = false;
+  isMadeByMe:boolean=false;
   iswishlist:boolean=false;
   iscart:boolean=false;
   showMessage: boolean = false;
   message: string = '';
-  courseId = localStorage.getItem("data");
 
+  sub = this.auth.getSub();
+
+  madeByMeIds:number[]=[];
+  courseId = localStorage.getItem("data");
+  courseBoughtIds: number[] = [];
   mywishlist: number[] = [];
   mycart:any[]=[];
   allcartobject:any;
+
+  madebyme() {
+    const myidcourse = this.courseId ? Number(this.courseId) : null;
+
+    if (myidcourse === null) {
+      console.log('ID kursus tidak valid');
+      this.isMadeByMe = false;
+      return;
+    }
+
+    this.teacher.getCourseUploaded(this.sub).pipe(
+      map((response: any) => {
+        if (response && response.courses && Array.isArray(response.courses)) {
+          return response.courses.map((item: any) => item.id);
+        }
+        return [];
+      })
+    ).subscribe(
+      (courseIds: number[]) => {
+        if (courseIds.length > 0) {
+          this.madeByMeIds = courseIds;
+         
+          // Periksa apakah courseId ada dalam daftar kursus yang dibuat
+          this.isMadeByMe = this.madeByMeIds.includes(myidcourse);
+
+          if (this.isMadeByMe) {
+            console.log('Kursus ini dibuat oleh anda');
+          } else {
+            console.log('Kursus ini bukan dibuat oleh anda');
+          }
+        } else {
+          console.log('Tidak ada kursus yang ditemukan');
+          this.isMadeByMe = false;
+        }
+      },
+      (error) => {
+        console.error('Terjadi kesalahan:', error);
+        this.isMadeByMe = false;
+      }
+    );
+  }
+  
+  
+  checkBoughtStatus() {
+    const myidcourse = this.courseId ? Number(this.courseId) : null;
+
+    if (myidcourse === null) {
+      console.log('ID kursus tidak valid');
+      this.isBought = false;
+      return;
+    }
+
+    this.api.getMyCourse().pipe(
+      map((response: any) => {
+        if (response && response.myCourse && Array.isArray(response.myCourse)) {
+          return response.myCourse.map((item:any) => item.course.id);
+        }
+        return [];
+      })
+    ).subscribe(
+      (courseIds: number[]) => {
+        if (courseIds.length > 0) {
+          this.courseBoughtIds = courseIds;
+         
+          // Periksa apakah courseId dari localStorage ada dalam daftar kursus yang dibeli
+          this.isBought = this.courseBoughtIds.includes(myidcourse);
+         
+          if (this.isBought) {
+            console.log('Kursus ini telah dibeli');
+          } else {
+            console.log('Kursus ini belum dibeli');
+          }
+        } else {
+          console.log('Tidak ada kursus yang ditemukan');
+          this.isBought = false;
+        }
+      },
+      (error) => {
+        console.error('Terjadi kesalahan:', error);
+        this.isBought = false;
+      }
+    );
+  }
 
   getWishlist(){
     
@@ -71,7 +166,7 @@ export class DetailCoursePage implements OnInit {
       next:(res)=>{
 
         this.iswishlist = !this.iswishlist;
-        this.displayMessage('Ditambahkan ke daftar wishlist');
+        
       },
       error:(res)=>{
         console.log(res.error);
@@ -122,6 +217,7 @@ export class DetailCoursePage implements OnInit {
       next:(res)=>{
 
         this.iscart = !this.iscart;
+        this.getCart();
         
       },
       error:(res)=>{
@@ -204,7 +300,9 @@ export class DetailCoursePage implements OnInit {
 
   course =new Function('return ' + this.data)();
  
-
+  toMyCourse(){
+    this.route.navigate(['content-course']);
+  }
   backHome(){
     
     localStorage.removeItem('data');

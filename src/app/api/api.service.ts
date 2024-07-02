@@ -251,14 +251,5 @@ export class ApiService {
     return this.http.get(environment.urlDomain + "/courses/"+id+"/contents",{headers:headers})
   }
   
-
-  //Transaction
-  createTransaction(){
-    return this
-  }
-
-
-
-
     
 }

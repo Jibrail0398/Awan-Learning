@@ -23,6 +23,10 @@
     </video>
   </div>
 
+  <div *ngIf="isMadeByMe" >
+    <h1 style="font-size: 20px;" >Kursus Ini dibuat oleh Anda</h1>
+  </div>
+
   <div class="container-text">
     <ion-row class="ion-justify-content-evenly ">
       <ion-col size="10" >
@@ -69,12 +73,19 @@
     
   </div>
   <div *ngIf="showMessage" class="message">{{ message }}</div>
-  <div *ngIf="!iscart" >
-    <ion-button  class="addbutton" (click)="cartControl()" expand="full" >Tambah ke keranjang</ion-button>
+  <div *ngIf="!isBought && !isMadeByMe" >
+    <div *ngIf="!iscart" >
+      <ion-button  class="addbutton" (click)="cartControl()" expand="full" >Tambah ke keranjang</ion-button>
+    </div>
+    <div *ngIf="iscart" >
+      <ion-button class="removebutton" (click)="cartControl()" expand="full" >Hapus dari keranjang</ion-button>
+    </div>
   </div>
-  <div *ngIf="iscart" >
-    <ion-button class="removebutton" (click)="cartControl()" expand="full" >Hapus dari keranjang</ion-button>
+
+  <div *ngIf="isBought && !isMadeByMe" >
+    <ion-button class="learnNow" (click)="toMyCourse()" expand="full" >Pelajari Sekarang</ion-button>
   </div>
+  
 
 
 

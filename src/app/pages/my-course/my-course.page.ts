@@ -29,12 +29,12 @@ export class MyCoursePage implements OnInit {
   course:Course[]=[]
 
   ngOnInit() {
-    
-  }
-
-  ionViewWillEnter(){
     this.MyCourses();
+  }
+  
+  ionViewDidEnter(){
     this.getinstructor();
+    
   }
   courseId:any=[];
   MyCourses() {
@@ -48,8 +48,6 @@ export class MyCoursePage implements OnInit {
             image: item.course.image
           }));
           this.courseId=response.myCourse.map((item:any) => item.course_id);
-            
-            
           
         }
       },
