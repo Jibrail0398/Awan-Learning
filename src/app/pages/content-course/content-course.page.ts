@@ -4,6 +4,18 @@ import { HttpClient } from '@angular/common/http';
 import { Renderer2 } from '@angular/core';
 
 
+interface Content {
+  id: number;
+  course_id: number;
+  title: string;
+  description: string;
+  vidioURL: string;
+  thumnailURL: string | null;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
+
 @Component({
   selector: 'app-content-course',
   templateUrl: './content-course.page.html',
@@ -17,85 +29,67 @@ export class ContentCoursePage implements OnInit,AfterViewInit {
   constructor(
     private http:HttpClient,
     private api:ApiService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    
   ) { }
   
   ngOnInit() {
-    // this.getContentCourse()
+    this.getContents();
   }
-  ngAfterViewInit(){
-    this.renderer.addClass(this.activeVideoPlayers.get(0)!.nativeElement, 'active'); //otomatis memberikan kelas aktif di video pertama
+  ngAfterViewInit() {
+    // Tunggu sebentar untuk memastikan view sudah selesai dirender
+    setTimeout(() => {
+      this.initializeActiveVideo();
+    }, 0);
+  }
+  private initializeActiveVideo() {
+    if (this.activeVideoPlayers && this.activeVideoPlayers.length > 0) {
+      const firstPlayer = this.activeVideoPlayers.first;
+      if (firstPlayer) {
+        this.renderer.addClass(firstPlayer.nativeElement, 'active');
+      }
+    }
   }
 
-  contentCourse = [
-    {
-        "id": "1",
-        "title": "Big Buck Bunny",
-        "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Big_Buck_Bunny_thumbnail_vlc.png/1200px-Big_Buck_Bunny_thumbnail_vlc.png",
-        "duration": "8:18",
-        "uploadTime": "May 9, 2011",
-        "views": "24,969,123",
-        "author": "Vlc Media Player",
-        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        "description": "Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself. When one sunny day three rodents rudely harass him, something snaps... and the rabbit ain't no bunny anymore! In the typical cartoon tradition he prepares the nasty rodents a comical revenge.\n\nLicensed under the Creative Commons Attribution license\nhttp://www.bigbuckbunny.org",
-        "subscriber": "25254545 Subscribers",
-        "isLive": true
-    },
-    {
-        "id": "2",
-        "title": "The first Blender Open Movie from 2006",
-        "thumbnailUrl": "https://i.ytimg.com/vi_webp/gWw23EYM9VM/maxresdefault.webp",
-        "duration": "12:18",
-        "uploadTime": "May 9, 2011",
-        "views": "24,969,123",
-        "author": "Blender Inc.",
-        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-        "description": "Song : Raja Raja Kareja Mein Samaja\nAlbum : Raja Kareja Mein Samaja\nArtist : Radhe Shyam Rasia\nSinger : Radhe Shyam Rasia\nMusic Director : Sohan Lal, Dinesh Kumar\nLyricist : Vinay Bihari, Shailesh Sagar, Parmeshwar Premi\nMusic Label : T-Series",
-        "subscriber": "25254545 Subscribers",
-        "isLive": true
-    },
-    {
-        "id": "3",
-        "title": "For Bigger Blazes",
-        "thumbnailUrl": "https://i.ytimg.com/vi/Dr9C2oswZfA/maxresdefault.jpg",
-        "duration": "8:18",
-        "uploadTime": "May 9, 2011",
-        "views": "24,969,123",
-        "author": "T-Series Regional",
-        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-        "description": "Song : Raja Raja Kareja Mein Samaja\nAlbum : Raja Kareja Mein Samaja\nArtist : Radhe Shyam Rasia\nSinger : Radhe Shyam Rasia\nMusic Director : Sohan Lal, Dinesh Kumar\nLyricist : Vinay Bihari, Shailesh Sagar, Parmeshwar Premi\nMusic Label : T-Series",
-        "subscriber": "25254545 Subscribers",
-        "isLive": true
-    },
-    {
-        "id": "4",
-        "title": "For Bigger Escape",
-        "thumbnailUrl": "https://img.jakpost.net/c/2019/09/03/2019_09_03_78912_1567484272._large.jpg",
-        "duration": "8:18",
-        "uploadTime": "May 9, 2011",
-        "views": "24,969,123",
-        "author": "T-Series Regional",
-        "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-        "description": " Introducing Chromecast. The easiest way to enjoy online video and music on your TV—for when Batman's escapes aren't quite big enough. For $35. Learn how to use Chromecast with Google Play Movies and more at google.com/chromecast.",
-        "subscriber": "25254545 Subscribers",
-        "isLive": false
-    },
-    
-  ]
+  contentCourse: Content[] = [];
+
+  id=localStorage.getItem("data");
   
-  currentVideo: any = this.contentCourse[0];
+  
+  currentVideo: Content | null = null;
+  getContents() {
+    this.api.getContent(this.id).subscribe(
+      (response: any) => {
+        if (Array.isArray(response)) {
+          this.contentCourse = response.map(item => ({
+            id: item.id,
+            course_id: item.course_id,
+            title: item.title,
+            description: item.description,
+            vidioURL: item.vidioURL,
+            thumnailURL: item.thumnailURL,
+            status: item.status,
+            created_at: item.created_at,
+            updated_at: item.updated_at
+          }));
+          
+          if (this.contentCourse.length > 0) {
+            this.currentVideo = this.contentCourse[0];
+          }
+        }
+        console.log('Contents:', this.contentCourse);
+      },
+      (error) => {
+        console.error('Error fetching contents:', error);
+      }
+    );
+  }
   
   
 
   playVideo(index: any) {
     this.currentVideo = this.contentCourse[index];
     this.updateVideoPlayer()
-    
-
-    //  const videoElement: HTMLVideoElement = this.videoPlayer.nativeElement;
-    //  videoElement.src = this.currentVideo.videoUrl;
-    //  videoElement.load();
-    //  videoElement.play();
     
   }
   nextVideo() {
@@ -112,26 +106,30 @@ export class ContentCoursePage implements OnInit,AfterViewInit {
     this.updateVideoPlayer();
   }
   updateVideoPlayer() {
-    const videoElement: HTMLVideoElement = this.videoPlayer.nativeElement;
-    const currentIndex = this.contentCourse.findIndex(video => video === this.currentVideo);
-    videoElement.src = this.currentVideo.videoUrl;
-    videoElement.load();
-    videoElement.play();
-
-    this.activeVideoPlayers.forEach(player => {
-      this.renderer.removeClass(player.nativeElement, 'active');
-    });
-
-    this.renderer.addClass(this.activeVideoPlayers.get(currentIndex)!.nativeElement, 'active');
+    if (this.currentVideo && this.videoPlayer) {
+      const videoElement: HTMLVideoElement = this.videoPlayer.nativeElement;
+      const currentIndex = this.contentCourse.findIndex(video => video === this.currentVideo);
+      
+      if (this.currentVideo.vidioURL) {
+        videoElement.src = this.getVideoUrl(this.currentVideo.vidioURL);
+        videoElement.load();
+        videoElement.play().catch(error => console.error('Error playing video:', error));
+      }
+  
+      this.activeVideoPlayers.forEach(player => {
+        this.renderer.removeClass(player.nativeElement, 'active');
+      });
+  
+      const activePlayer = this.activeVideoPlayers.get(currentIndex);
+      if (activePlayer) {
+        this.renderer.addClass(activePlayer.nativeElement, 'active');
+      }
+    }
   }
 
 
-  // contentCourse:[] = [];
-  // getContentCourse(){
-  //   this.api.getContentCourse().subscribe((data:any) =>{
-  //     this.contentCourse = data['data'];
-  //     console.log(this.contentCourse);
-  //   })
-  // }
+  getVideoUrl(url: string): string {
+    return `https://awan.ylladev.my.id${url}`;
+  }
 
 }

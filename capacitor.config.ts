@@ -3,7 +3,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.awanLearning.starter',
-  appName: 'awan-learning',
+  appName: 'Awan Learning',
   webDir: 'www',
   server: {
     androidScheme: 'https'

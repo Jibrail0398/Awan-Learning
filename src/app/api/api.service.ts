@@ -229,11 +229,27 @@ export class ApiService {
     return this.http.delete(environment.urlDomain + "/cart-items/" + id,{headers:headers});
   }
 
-  //Transaction
-  createTransaction(){
-    return this
+  //mycourse
+  getMyCourse(){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.get(environment.urlDomain + "/mycourses",{headers:headers})
+  }
+  viewCourse(id:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.get(environment.urlDomain + "/courses/"+id,{headers:headers})
   }
 
-
+  //contents
+  getContent(id:any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.get(environment.urlDomain + "/courses/"+id+"/contents",{headers:headers})
+  }
+  
     
 }

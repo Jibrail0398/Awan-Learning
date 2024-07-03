@@ -13,13 +13,12 @@
   </div>
 
   <div *ngIf="isSearchInput" >
-    <ion-card *ngFor="let filter of filteredItems" (click)="onClick()" >
+    <ion-card *ngFor="let filter of filteredItems;let i = index" (click)="onClick(filter.id)" >
       <ion-card-content>
-        <img alt="Silhouette of mountains" src="/assets/img/home.png" />
+        <img alt="Silhouette of mountains" [src]="getImageUrl(filter.image)" />
         <ion-list lines="none">
           <ion-item>{{filter.title}}</ion-item>
-          <p>{{filter.category}}</p>
-          <p>{{filter.description}}</p>
+          <ion-item style="font-size: 15px;" >Instruktur: {{instructorName[i]}}</ion-item>
         </ion-list>
       </ion-card-content>
     </ion-card>
@@ -27,13 +26,14 @@
   
   <div *ngIf="course.length > 0 && !isSearchInput ">
 
-      <ion-card *ngFor="let c of course" (click)="onClick()" >
+      <ion-card *ngFor="let c of course;let i = index" (click)="onClick(c.id)" >
         <ion-card-content>
-          <img alt="Silhouette of mountains" src="/assets/img/home.png" />
+          <img alt="Silhouette of mountains" [src]="getImageUrl(c.image)" />
           <ion-list lines="none">
-            <ion-item>{{c.title}}</ion-item>
-            <ion-item>{{c.category}}</ion-item>
-            <ion-item>{{c.description}}</ion-item>
+            <ion-item class="title" >{{c.title}}</ion-item>            
+            <ion-item style="font-size: 15px;" >Instruktur: {{instructorName[i]}}</ion-item>
+          </ion-list>
+          <ion-list>
           </ion-list>
         </ion-card-content>
       </ion-card>
@@ -43,7 +43,7 @@
   <div *ngIf="course.length === 0"  >
     <div class="text-container">
       <h1>Apa yang Ingin anda pelajari?</h1>
-      <h3>Kursus Akan disimpan disini</h3>
+      <h3>Kursus yang anda beli akan disimpan disini</h3>
     </div>
   </div>
  

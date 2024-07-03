@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api/api.service';
+import { TransactionService } from 'src/app/api/transaction.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +10,8 @@ import { ApiService } from 'src/app/api/api.service';
 export class CartPage implements OnInit {
 
   constructor(
-    private api:ApiService
+    private api:ApiService,
+    private transaction:TransactionService
   ) { }
 
   ngOnInit() {
@@ -49,8 +51,23 @@ export class CartPage implements OnInit {
   calculateTotalPrice() {
     this.totalPrice = this.selectedCourses.reduce((total, course) => total + course.price, 0);
   }
-  pay(){
-    console.log('Pembayaran diproses untuk: ', this.selectedCourses);
+  pay() {
+    const cartItems = this.selectedCourses.map(course => ({
+      course_id: course.id,
+      quantity: 1 // atau sesuai kebutuhan
+    }));
+
+    this.transaction.createTransaction(cartItems).subscribe(
+      (response: any) => {
+        console.log('Pembayaran berhasil diproses:', response);
+        // Lakukan sesuatu dengan response, misalnya redirect ke URL pembayaran
+        window.open(response.redirect_url, '_blank');
+      },
+      (error: any) => {
+        console.error('Pembayaran gagal:', error);
+        
+      }
+    );
   }
   
 
